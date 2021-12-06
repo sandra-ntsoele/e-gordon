@@ -55,7 +55,7 @@ class OnboardingText extends StatelessWidget {
             ),
           ),
           Text(
-            " \"Don't just stand there like a big fucking muffin.\" ",
+            "Don't just stand there like a big fucking muffin.",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 16,
