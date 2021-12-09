@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:e_gordon/Screens/Onboarding/widgets/long_button.dart';
+import 'package:e_gordon/Screens/widgets/long_button.dart';
 import 'package:e_gordon/constants.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -40,9 +40,9 @@ class OnboardingScreen extends StatelessWidget {
             ),
           ]),
           Container(
-            margin: EdgeInsets.only(top: 72),
+            margin: const EdgeInsets.only(top: 72),
             width: double.infinity,
-            padding: EdgeInsets.only(left: 25, right: 25),
+            padding: const EdgeInsets.only(left: 25, right: 25),
             child: LongButton(
               text: "Start cooking",
               onPressed: () {
