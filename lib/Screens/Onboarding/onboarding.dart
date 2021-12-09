@@ -17,8 +17,8 @@ class OnboardingScreen extends StatelessWidget {
             height: 400,
             child: Image.asset('assets/images/onboarding-old.png'),
           ),
-          Column(children: const [
-            Text(
+          Column(children: [
+            const Text(
               "e-Gordon",
               style: TextStyle(
                 fontSize: 24,
@@ -26,7 +26,10 @@ class OnboardingScreen extends StatelessWidget {
                 height: 1.5,
               ),
             ),
-            Text(
+            SizedBox(
+              height: size.height * 0.03,
+            ),
+            const Text(
               "Don't just stand there like a big fucking muffin.",
               textAlign: TextAlign.center,
               style: TextStyle(
