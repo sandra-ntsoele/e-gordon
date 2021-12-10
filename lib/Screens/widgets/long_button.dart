@@ -10,11 +10,18 @@ class LongButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return ElevatedButton(
       onPressed: () {
         onPressed.call();
       },
-      child: Text(text),
+      child: SizedBox(
+        width: double.infinity,
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+        ),
+      ),
       style: ElevatedButton.styleFrom(
         textStyle: const TextStyle(
           fontWeight: FontWeight.bold,
@@ -22,7 +29,7 @@ class LongButton extends StatelessWidget {
           color: Colors.white,
         ),
         primary: primaryColour,
-        fixedSize: const Size.fromHeight(56),
+        fixedSize: Size.fromHeight(56),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(50)),
         ),
