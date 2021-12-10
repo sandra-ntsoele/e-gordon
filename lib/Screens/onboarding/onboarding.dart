@@ -36,7 +36,7 @@ class OnboardingScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 height: 1.5,
-                color: secondaryText,
+                color: secondaryTextColour,
               ),
             ),
           ]),
