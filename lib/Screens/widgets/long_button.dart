@@ -2,11 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:e_gordon/constants.dart';
 
 class LongButton extends StatelessWidget {
-  const LongButton({Key? key, required this.text, required this.onPressed})
-      : super(key: key);
+  LongButton({
+    Key? key,
+    required this.text,
+    required this.onPressed,
+    this.btnColour,
+    this.btnIcon,
+  }) : super(key: key);
 
   final String text;
   final Function onPressed;
+  Color? btnColour;
+  IconData? btnIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +24,20 @@ class LongButton extends StatelessWidget {
       },
       child: SizedBox(
         width: double.infinity,
-        child: Text(
-          text,
-          textAlign: TextAlign.center,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (btnIcon != null) ...[
+              Icon(btnIcon),
+              SizedBox(
+                width: size.width * 0.03,
+              ),
+            ],
+            Text(
+              text,
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ),
       style: ElevatedButton.styleFrom(
@@ -28,8 +46,8 @@ class LongButton extends StatelessWidget {
           fontSize: 15,
           color: Colors.white,
         ),
-        primary: primaryColour,
-        fixedSize: Size.fromHeight(56),
+        primary: btnColour != null ? btnColour : primaryColour,
+        fixedSize: const Size.fromHeight(56),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(50)),
         ),
