@@ -14,15 +14,15 @@ class PasswordRule extends StatelessWidget {
     return Row(
       children: [
         const Icon(
-          Icons.check_circle_outline,
+          Icons.check_circle,
           color: outlineColour,
         ),
         Text(
           rule,
           style: const TextStyle(
-            color: mainTextColour,
+            color: outlineColour,
             fontSize: paragraphOne,
-            height: 2,
+            height: 2.5,
           ),
           textAlign: TextAlign.left,
         ),
