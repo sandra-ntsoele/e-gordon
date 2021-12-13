@@ -18,7 +18,10 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.inter().fontFamily,
       ),
       home: const Scaffold(
-        body: OnboardingScreen(),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          child: SignUp(),
+        ),
       ),
     );
   }
