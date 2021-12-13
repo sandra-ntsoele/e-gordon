@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../constants.dart';
 
-class FormTextField extends StatelessWidget {
+class PasswordField extends StatelessWidget {
   String? labelText;
   IconData? prefixIcon;
 
-  FormTextField({
+  PasswordField({
     Key? key,
     required this.labelText,
     required this.prefixIcon,
