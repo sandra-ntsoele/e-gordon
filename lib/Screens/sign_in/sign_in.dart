@@ -1,4 +1,4 @@
-import 'package:e_gordon/Screens/widgets/long_button.dart';
+import 'package:e_gordon/Screens/components/long_button.dart';
 import 'package:e_gordon/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
