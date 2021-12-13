@@ -1,5 +1,7 @@
 import 'package:e_gordon/Screens/components/form_text_field.dart';
+import 'package:e_gordon/Screens/components/long_button.dart';
 import 'package:e_gordon/Screens/components/main_text.dart';
+import 'package:e_gordon/Screens/components/password_field.dart';
 import 'package:e_gordon/Screens/components/password_rule.dart';
 import 'package:e_gordon/Screens/components/secondary_text.dart';
 import 'package:e_gordon/constants.dart';
@@ -19,16 +21,19 @@ class SignUp extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // SECTION: Screen heading
           MainText(displayText: "Welcome!"),
           SecondaryText(displayText: "Please enter account details"),
+          // SECTION: Input fields
           FormTextField(
             labelText: "Email or phone number",
             prefixIcon: Icons.email_outlined,
           ),
-          FormTextField(
+          PasswordField(
             labelText: "Password",
             prefixIcon: Icons.lock_outline,
           ),
+          // SECTION: Password rules
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -38,6 +43,7 @@ class SignUp extends StatelessWidget {
                   color: mainTextColour,
                   fontSize: paragraphOne,
                   fontWeight: FontWeight.bold,
+                  height: 2.5,
                 ),
               ),
               Column(
@@ -48,7 +54,15 @@ class SignUp extends StatelessWidget {
                 ],
               )
             ],
-          )
+          ),
+          // SECTION: Submit button
+          SizedBox(
+            height: size.height * 0.05,
+          ),
+          LongButton(
+            text: "Sign Up",
+            onPressed: () {},
+          ),
         ],
       ),
     );
