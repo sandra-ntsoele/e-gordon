@@ -47,7 +47,23 @@ class SignUpVerification extends StatelessWidget {
             const Expanded(
               child: VerificationCodeTextField(),
             ),
-          ])
+          ]),
+          SizedBox(
+            height: size.height * 0.06,
+          ),
+          RoundedButton(
+            text: "Verify",
+            onPressed: () {},
+            isGhostButton: false,
+          ),
+          SizedBox(
+            height: size.height * 0.03,
+          ),
+          SecondaryButton(
+            text: "Send again",
+            onPressed: () {},
+            isGhostButton: true,
+          )
         ],
       ),
     );
