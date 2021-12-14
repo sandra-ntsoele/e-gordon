@@ -1,4 +1,6 @@
+import 'package:e_gordon/screens/components/rounded_button.dart';
 import 'package:e_gordon/screens/components/main_text.dart';
+import 'package:e_gordon/screens/components/secondary_button.dart';
 import 'package:e_gordon/screens/components/secondary_text.dart';
 import 'package:e_gordon/screens/components/verification_code_text_field.dart';
 import 'package:flutter/material.dart';
