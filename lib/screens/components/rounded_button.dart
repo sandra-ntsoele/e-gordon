@@ -8,12 +8,14 @@ class RoundedButton extends StatelessWidget {
     required this.onPressed,
     this.btnColour,
     this.btnIcon,
+    required this.isGhostButton,
   }) : super(key: key);
 
   final String text;
   final Function onPressed;
   Color? btnColour;
   IconData? btnIcon;
+  bool isGhostButton;
 
   @override
   Widget build(BuildContext context) {
