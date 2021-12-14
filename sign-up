@@ -1,0 +1,6 @@
+Unstaged changes after reset:
+M	lib/main.dart
+M	lib/screens/onboarding/onboarding.dart
+M	lib/screens/sign_in/sign_in.dart
+M	lib/screens/sign_up/sign_up.dart
+M	lib/screens/sign_up/verification.dart

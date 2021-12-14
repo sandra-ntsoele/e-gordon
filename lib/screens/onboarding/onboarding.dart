@@ -1,6 +1,6 @@
 import 'package:e_gordon/screens/sign_in/sign_in.dart';
 import 'package:flutter/material.dart';
-import 'package:e_gordon/screens/components/long_button.dart';
+import 'package:e_gordon/screens/components/rounded_button.dart';
 import 'package:e_gordon/constants.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -44,7 +44,7 @@ class OnboardingScreen extends StatelessWidget {
             margin: const EdgeInsets.only(top: 72),
             width: double.infinity,
             padding: const EdgeInsets.only(left: 25, right: 25),
-            child: LongButton(
+            child: RoundedButton(
               text: "Start cooking",
               onPressed: () {
                 Navigator.push(
@@ -52,6 +52,7 @@ class OnboardingScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const SignIn()),
                 );
               },
+              isGhostButton: false,
             ),
           ),
         ]),

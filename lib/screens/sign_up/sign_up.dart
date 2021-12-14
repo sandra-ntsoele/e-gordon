@@ -1,5 +1,5 @@
 import 'package:e_gordon/screens/components/form_text_field.dart';
-import 'package:e_gordon/screens/components/long_button.dart';
+import 'package:e_gordon/screens/components/rounded_button.dart';
 import 'package:e_gordon/screens/components/main_text.dart';
 import 'package:e_gordon/screens/components/password_field.dart';
 import 'package:e_gordon/screens/components/password_rule.dart';
@@ -59,9 +59,10 @@ class SignUp extends StatelessWidget {
           SizedBox(
             height: size.height * 0.05,
           ),
-          LongButton(
+          RoundedButton(
             text: "Sign Up",
             onPressed: () {},
+            isGhostButton: false,
           ),
         ],
       ),

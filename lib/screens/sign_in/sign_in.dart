@@ -1,4 +1,4 @@
-import 'package:e_gordon/screens/components/long_button.dart';
+import 'package:e_gordon/screens/components/rounded_button.dart';
 import 'package:e_gordon/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -91,9 +91,10 @@ class SignIn extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Column(
                 children: [
-                  LongButton(
+                  RoundedButton(
                     text: "Login",
                     onPressed: () {},
+                    isGhostButton: false,
                   ),
                   SizedBox(
                     height: size.height * 0.02,
@@ -108,11 +109,12 @@ class SignIn extends StatelessWidget {
                   SizedBox(
                     height: size.height * 0.02,
                   ),
-                  LongButton(
+                  RoundedButton(
                     text: "Google",
                     onPressed: () {},
                     btnColour: const Color.fromRGBO(222, 82, 70, 1),
                     btnIcon: Icons.email,
+                    isGhostButton: false,
                   ),
                   SizedBox(
                     height: size.height * 0.05,
