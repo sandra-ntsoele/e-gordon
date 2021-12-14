@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:e_gordon/constants.dart';
 
-class LongButton extends StatelessWidget {
-  LongButton({
+class RoundedButton extends StatelessWidget {
+  RoundedButton({
     Key? key,
     required this.text,
     required this.onPressed,

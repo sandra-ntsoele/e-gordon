@@ -1,4 +1,6 @@
-import 'package:e_gordon/screens/sign_up/sign_up.dart';
+import 'package:e_gordon/screens/password_recovery/new_password.dart';
+import 'package:e_gordon/screens/password_recovery/password_recovery.dart';
+import 'package:e_gordon/screens/password_recovery/password_reset_verification.dart';
 import 'package:flutter/material.dart';
 import 'screens/onboarding/onboarding.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,8 +21,8 @@ class MyApp extends StatelessWidget {
       ),
       home: const Scaffold(
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          child: SignUp(),
+          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+          child: NewPassword(),
         ),
       ),
     );
