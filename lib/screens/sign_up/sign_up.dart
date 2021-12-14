@@ -1,9 +1,9 @@
-import 'package:e_gordon/Screens/components/form_text_field.dart';
-import 'package:e_gordon/Screens/components/long_button.dart';
-import 'package:e_gordon/Screens/components/main_text.dart';
-import 'package:e_gordon/Screens/components/password_field.dart';
-import 'package:e_gordon/Screens/components/password_rule.dart';
-import 'package:e_gordon/Screens/components/secondary_text.dart';
+import 'package:e_gordon/screens/components/form_text_field.dart';
+import 'package:e_gordon/screens/components/long_button.dart';
+import 'package:e_gordon/screens/components/main_text.dart';
+import 'package:e_gordon/screens/components/password_field.dart';
+import 'package:e_gordon/screens/components/password_rule.dart';
+import 'package:e_gordon/screens/components/secondary_text.dart';
 import 'package:e_gordon/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
