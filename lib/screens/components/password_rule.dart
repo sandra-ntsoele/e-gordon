@@ -11,12 +11,16 @@ class PasswordRule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         const Icon(
           Icons.check_circle,
           color: outlineColour,
         ),
+        SizedBox(width: size.width * 0.02),
         Text(
           rule,
           style: const TextStyle(
