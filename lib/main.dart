@@ -1,6 +1,6 @@
-import 'package:e_gordon/Screens/sign_up/sign_up.dart';
+import 'package:e_gordon/screens/sign_up/sign_up.dart';
 import 'package:flutter/material.dart';
-import 'Screens/onboarding/onboarding.dart';
+import 'screens/onboarding/onboarding.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {

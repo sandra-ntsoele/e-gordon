@@ -1,6 +1,6 @@
-import 'package:e_gordon/Screens/sign_in/sign_in.dart';
+import 'package:e_gordon/screens/sign_in/sign_in.dart';
 import 'package:flutter/material.dart';
-import 'package:e_gordon/Screens/components/long_button.dart';
+import 'package:e_gordon/screens/components/long_button.dart';
 import 'package:e_gordon/constants.dart';
 
 class OnboardingScreen extends StatelessWidget {
