@@ -62,7 +62,6 @@ class SignUp extends StatelessWidget {
           RoundedButton(
             text: "Sign Up",
             onPressed: () {},
-            isGhostButton: false,
           ),
         ],
       ),

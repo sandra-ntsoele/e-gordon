@@ -54,7 +54,6 @@ class SignUpVerification extends StatelessWidget {
           RoundedButton(
             text: "Verify",
             onPressed: () {},
-            isGhostButton: false,
           ),
           SizedBox(
             height: size.height * 0.03,

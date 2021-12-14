@@ -52,7 +52,6 @@ class OnboardingScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const SignIn()),
                 );
               },
-              isGhostButton: false,
             ),
           ),
         ]),

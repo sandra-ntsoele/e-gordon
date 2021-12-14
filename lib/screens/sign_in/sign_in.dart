@@ -94,7 +94,6 @@ class SignIn extends StatelessWidget {
                   RoundedButton(
                     text: "Login",
                     onPressed: () {},
-                    isGhostButton: false,
                   ),
                   SizedBox(
                     height: size.height * 0.02,
@@ -114,7 +113,6 @@ class SignIn extends StatelessWidget {
                     onPressed: () {},
                     btnColour: const Color.fromRGBO(222, 82, 70, 1),
                     btnIcon: Icons.email,
-                    isGhostButton: false,
                   ),
                   SizedBox(
                     height: size.height * 0.05,
