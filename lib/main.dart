@@ -17,10 +17,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.inter().fontFamily,
       ),
       home: const Scaffold(
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-          child: OnboardingScreen(),
-        ),
+        body: OnboardingScreen(),
       ),
     );
   }
