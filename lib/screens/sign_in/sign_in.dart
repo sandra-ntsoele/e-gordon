@@ -4,6 +4,8 @@ import 'package:e_gordon/screens/components/rounded_button.dart';
 import 'package:e_gordon/constants.dart';
 import 'package:e_gordon/screens/components/text_components/heading.dart';
 import 'package:e_gordon/screens/components/text_components/paragraph.dart';
+import 'package:e_gordon/screens/sign_up/sign_up.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
@@ -94,25 +96,35 @@ class SignIn extends StatelessWidget {
                   ),
                   RichText(
                     text: TextSpan(
-                        style: DefaultTextStyle.of(context).style,
-                        children: const [
-                          TextSpan(
-                            text: "Don't have an account? ",
-                            style: TextStyle(
-                              fontSize: paragraphTwo,
-                              color: mainTextColour,
-                              decoration: TextDecoration.none,
-                            ),
+                      style: DefaultTextStyle.of(context).style,
+                      children: [
+                        const TextSpan(
+                          text: "Don't have an account? ",
+                          style: TextStyle(
+                            fontSize: paragraphTwo,
+                            color: mainTextColour,
+                            decoration: TextDecoration.none,
                           ),
-                          TextSpan(
-                            text: "Sign Up",
-                            style: TextStyle(
-                              fontSize: paragraphTwo,
-                              color: primaryColour,
-                              decoration: TextDecoration.none,
-                            ),
+                        ),
+                        TextSpan(
+                          text: "Sign Up",
+                          style: const TextStyle(
+                            fontSize: paragraphTwo,
+                            color: primaryColour,
+                            decoration: TextDecoration.none,
                           ),
-                        ]),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const SignUp(),
+                                    ),
+                                  )
+                                },
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
