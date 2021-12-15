@@ -12,7 +12,7 @@ class SignUpVerification extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: size.height,
       child: Column(

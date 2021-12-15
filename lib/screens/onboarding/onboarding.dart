@@ -9,13 +9,13 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
+    return SizedBox(
       height: size.height,
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
+          SizedBox(
             height: 400,
             child: Image.asset('assets/images/onboarding-old.png'),
           ),
