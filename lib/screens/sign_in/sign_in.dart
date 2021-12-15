@@ -37,35 +37,36 @@ class SignIn extends StatelessWidget {
             SizedBox(
               height: size.height * 0.02,
             ),
-            // SECTION: Input Fields
+            /* SECTION: Input fields */
             Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 16,
+                horizontal: 25,
+                vertical: 25,
               ),
               // Email text field
-              child: FormTextField(
-                labelText: "Email or phone number",
-                prefixIcon: Icons.email_outlined,
+              child: Column(
+                children: [
+                  /** SECTION: Input Fields */
+                  FormTextField(
+                    labelText: "Email or phone number",
+                    prefixIcon: Icons.email_outlined,
+                  ),
+                  SizedBox(
+                    height: size.height * 0.03,
+                  ),
+                  PasswordField(
+                    labelText: "Password",
+                    prefixIcon: Icons.lock_outline,
+                  ),
+                ],
               ),
             ),
+            /* SECTION: Sign-in buttons */
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 16,
+              padding: EdgeInsets.symmetric(
+                horizontal: 25,
+                vertical: size.height * 0.03,
               ),
-              // Password text field
-              child: PasswordField(
-                labelText: "Password",
-                prefixIcon: Icons.lock_outline,
-              ),
-            ),
-            SizedBox(
-              height: size.height * 0.03,
-            ),
-            // Sumision BUTTONS
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Column(
                 children: [
                   RoundedButton(
@@ -75,12 +76,9 @@ class SignIn extends StatelessWidget {
                   SizedBox(
                     height: size.height * 0.02,
                   ),
-                  const Text(
-                    "Or continue with",
-                    style: TextStyle(
-                      fontSize: paragraphTwo,
-                      color: secondaryTextColour,
-                    ),
+                  const Paragraph(
+                    text: "Or continue with",
+                    paragraphType: 2,
                   ),
                   SizedBox(
                     height: size.height * 0.02,
@@ -93,15 +91,7 @@ class SignIn extends StatelessWidget {
                   ),
                   SizedBox(
                     height: size.height * 0.05,
-                  ),
-                  const Text(
-                    "Don't have any account? Sign Up",
-                    style: TextStyle(
-                      fontSize: paragraphTwo,
-                      color: mainTextColour,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  )
                 ],
               ),
             ),
