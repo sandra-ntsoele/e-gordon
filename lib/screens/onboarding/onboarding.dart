@@ -16,9 +16,6 @@ class OnboardingScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset('assets/images/onboarding-old.png'),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
           Column(children: [
             const Text(
               "e-Gordon",
