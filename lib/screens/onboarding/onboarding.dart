@@ -26,12 +26,13 @@ class OnboardingScreen extends StatelessWidget {
           ),
           const Paragraph(
             text: "Don't just stand there like a big fucking muffin.",
-            paragraphType: 2,
+            paragraphType: 1,
           ),
-          Container(
-            margin: const EdgeInsets.only(top: 72),
-            width: double.infinity,
-            padding: const EdgeInsets.only(left: 25, right: 25),
+          SizedBox(
+            height: size.height * 0.06,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
             child: RoundedButton(
               text: "Start cooking",
               onPressed: () {
