@@ -19,13 +19,16 @@ class OnboardingScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset('assets/images/onboarding-old.png'),
+          SizedBox(
+            height: size.height * 0.03,
+          ),
           // SECTION: Text
           MainText(displayText: "e-Gordon"),
           SizedBox(
             height: size.height * 0.03,
           ),
           const Paragraph(
-            text: "Don't just stand there like a big fucking muffin.",
+            text: "Don't just stand there\nlike a big fucking muffin.",
             paragraphType: 1,
           ),
           SizedBox(
