@@ -1,9 +1,8 @@
 import 'package:e_gordon/screens/components/main_text.dart';
-import 'package:e_gordon/screens/components/text_styles/paragraph.dart';
+import 'package:e_gordon/screens/components/text_components/paragraph.dart';
 import 'package:e_gordon/screens/sign_in/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:e_gordon/screens/components/rounded_button.dart';
-import 'package:e_gordon/constants.dart';
 import 'package:flutter/widgets.dart';
 
 class OnboardingScreen extends StatelessWidget {
