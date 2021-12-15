@@ -1,5 +1,9 @@
+import 'package:e_gordon/screens/components/form_text_field.dart';
+import 'package:e_gordon/screens/components/password_field.dart';
 import 'package:e_gordon/screens/components/rounded_button.dart';
 import 'package:e_gordon/constants.dart';
+import 'package:e_gordon/screens/components/text_components/heading.dart';
+import 'package:e_gordon/screens/components/text_components/paragraph.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
@@ -16,75 +20,48 @@ class SignIn extends StatelessWidget {
         height: size.height,
         width: double.infinity,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: size.height * 0.2,
-            ),
-            const Text(
-              "Welcome Back!",
-              style: TextStyle(
-                fontSize: headingOne,
-                fontWeight: FontWeight.bold,
-                color: mainTextColour,
-              ),
+            // SECTION: Heading
+            const Heading(
+              text: "Welcome Back!",
+              headingType: 1,
             ),
             SizedBox(
               height: size.height * 0.02,
             ),
-            const Text(
-              "Enter account details here",
-              style: TextStyle(
-                fontSize: paragraphTwo,
-                color: secondaryTextColour,
-              ),
+            const Paragraph(
+              text: "Enter account details here",
+              paragraphType: 2,
             ),
             SizedBox(
               height: size.height * 0.02,
             ),
-            // Text Fields
+            // SECTION: Input Fields
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  labelText: "Email or phone number",
-                  prefixIcon: Icon(Icons.email),
-                  labelStyle: TextStyle(color: secondaryTextColour),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(100)),
-                    borderSide: BorderSide(color: outlineColour),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(100)),
-                    borderSide: BorderSide(color: outlineColour),
-                  ),
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                ),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 16,
+              ),
+              // Email text field
+              child: FormTextField(
+                labelText: "Email or phone number",
+                prefixIcon: Icons.email_outlined,
               ),
             ),
-            // PASSWORD Field
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  labelText: "Password",
-                  prefixIcon: Icon(Icons.password),
-                  labelStyle: TextStyle(color: secondaryTextColour),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(100)),
-                    borderSide: BorderSide(color: outlineColour),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(100)),
-                    borderSide: BorderSide(color: outlineColour),
-                  ),
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                ),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 16,
+              ),
+              // Password text field
+              child: PasswordField(
+                labelText: "Password",
+                prefixIcon: Icons.lock_outline,
               ),
             ),
             SizedBox(
-              height: size.height * 0.05,
+              height: size.height * 0.03,
             ),
             // Sumision BUTTONS
             Padding(
