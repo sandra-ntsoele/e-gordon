@@ -74,14 +74,14 @@ class SignIn extends StatelessWidget {
                     onPressed: () {},
                   ),
                   SizedBox(
-                    height: size.height * 0.02,
+                    height: size.height * 0.03,
                   ),
                   const Paragraph(
                     text: "Or continue with",
                     paragraphType: 2,
                   ),
                   SizedBox(
-                    height: size.height * 0.02,
+                    height: size.height * 0.03,
                   ),
                   RoundedButton(
                     text: "Google",
@@ -90,7 +90,7 @@ class SignIn extends StatelessWidget {
                     btnIcon: Icons.email,
                   ),
                   SizedBox(
-                    height: size.height * 0.05,
+                    height: size.height * 0.03,
                   )
                 ],
               ),
