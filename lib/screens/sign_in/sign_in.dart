@@ -91,6 +91,28 @@ class SignIn extends StatelessWidget {
                   ),
                   SizedBox(
                     height: size.height * 0.03,
+                  ),
+                  RichText(
+                    text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: const [
+                          TextSpan(
+                            text: "Don't have an account? ",
+                            style: TextStyle(
+                              fontSize: paragraphTwo,
+                              color: mainTextColour,
+                              decoration: TextDecoration.none,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "Sign Up",
+                            style: TextStyle(
+                              fontSize: paragraphTwo,
+                              color: primaryColour,
+                              decoration: TextDecoration.none,
+                            ),
+                          ),
+                        ]),
                   )
                 ],
               ),
