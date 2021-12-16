@@ -5,6 +5,8 @@ import 'package:e_gordon/screens/components/password_field.dart';
 import 'package:e_gordon/screens/components/password_rule.dart';
 import 'package:e_gordon/screens/components/secondary_text.dart';
 import 'package:e_gordon/constants.dart';
+import 'package:e_gordon/screens/components/text_components/heading.dart';
+import 'package:e_gordon/screens/components/text_components/paragraph.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -25,8 +27,17 @@ class SignUp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // SECTION: Screen heading
-                MainText(displayText: "Welcome!"),
-                SecondaryText(displayText: "Please enter account details"),
+                const Heading(
+                  text: "Welcome!",
+                  headingType: 1,
+                ),
+                const Paragraph(
+                  text: "Please enter account details",
+                  paragraphType: 2,
+                ),
+                SizedBox(
+                  height: size.height * 0.03,
+                ),
                 // SECTION: Input fields
                 FormTextField(
                   labelText: "Email or phone number",
