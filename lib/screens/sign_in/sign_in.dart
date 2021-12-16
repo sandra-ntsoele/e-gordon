@@ -21,115 +21,119 @@ class SignIn extends StatelessWidget {
       body: SizedBox(
         height: size.height,
         width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // SECTION: Heading
-            const Heading(
-              text: "Welcome Back!",
-              headingType: 1,
-            ),
-            SizedBox(
-              height: size.height * 0.02,
-            ),
-            const Paragraph(
-              text: "Enter account details here",
-              paragraphType: 2,
-            ),
-            SizedBox(
-              height: size.height * 0.02,
-            ),
-            /* SECTION: Input fields */
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 25,
-                vertical: 25,
-              ),
-              // Email text field
-              child: Column(
-                children: [
-                  /** SECTION: Input Fields */
-                  FormTextField(
-                    labelText: "Email or phone number",
-                    prefixIcon: Icons.email_outlined,
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // SECTION: Heading
+                const Heading(
+                  text: "Welcome Back!",
+                  headingType: 1,
+                ),
+                SizedBox(
+                  height: size.height * 0.02,
+                ),
+                const Paragraph(
+                  text: "Enter account details here",
+                  paragraphType: 2,
+                ),
+                SizedBox(
+                  height: size.height * 0.02,
+                ),
+                /* SECTION: Input fields */
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 25,
+                    vertical: 25,
                   ),
-                  SizedBox(
-                    height: size.height * 0.03,
+                  // Email text field
+                  child: Column(
+                    children: [
+                      /** SECTION: Input Fields */
+                      FormTextField(
+                        labelText: "Email or phone number",
+                        prefixIcon: Icons.email_outlined,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.03,
+                      ),
+                      PasswordField(
+                        labelText: "Password",
+                        prefixIcon: Icons.lock_outline,
+                      ),
+                    ],
                   ),
-                  PasswordField(
-                    labelText: "Password",
-                    prefixIcon: Icons.lock_outline,
+                ),
+                /* SECTION: Sign-in buttons */
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 25,
+                    vertical: size.height * 0.03,
                   ),
-                ],
-              ),
-            ),
-            /* SECTION: Sign-in buttons */
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 25,
-                vertical: size.height * 0.03,
-              ),
-              child: Column(
-                children: [
-                  RoundedButton(
-                    text: "Login",
-                    onPressed: () {},
-                  ),
-                  SizedBox(
-                    height: size.height * 0.03,
-                  ),
-                  const Paragraph(
-                    text: "Or continue with",
-                    paragraphType: 2,
-                  ),
-                  SizedBox(
-                    height: size.height * 0.03,
-                  ),
-                  RoundedButton(
-                    text: "Google",
-                    onPressed: () {},
-                    btnColour: const Color.fromRGBO(222, 82, 70, 1),
-                    btnIcon: Icons.email,
-                  ),
-                  SizedBox(
-                    height: size.height * 0.03,
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: [
-                        const TextSpan(
-                          text: "Don't have an account? ",
-                          style: TextStyle(
-                            fontSize: paragraphTwo,
-                            color: mainTextColour,
-                            decoration: TextDecoration.none,
-                          ),
+                  child: Column(
+                    children: [
+                      RoundedButton(
+                        text: "Login",
+                        onPressed: () {},
+                      ),
+                      SizedBox(
+                        height: size.height * 0.03,
+                      ),
+                      const Paragraph(
+                        text: "Or continue with",
+                        paragraphType: 2,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.03,
+                      ),
+                      RoundedButton(
+                        text: "Google",
+                        onPressed: () {},
+                        btnColour: const Color.fromRGBO(222, 82, 70, 1),
+                        btnIcon: Icons.email,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.03,
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          style: DefaultTextStyle.of(context).style,
+                          children: [
+                            const TextSpan(
+                              text: "Don't have an account? ",
+                              style: TextStyle(
+                                fontSize: paragraphTwo,
+                                color: mainTextColour,
+                                decoration: TextDecoration.none,
+                              ),
+                            ),
+                            TextSpan(
+                              text: "Sign Up",
+                              style: const TextStyle(
+                                fontSize: paragraphTwo,
+                                color: primaryColour,
+                                decoration: TextDecoration.none,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () => {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => const SignUp(),
+                                        ),
+                                      )
+                                    },
+                            )
+                          ],
                         ),
-                        TextSpan(
-                          text: "Sign Up",
-                          style: const TextStyle(
-                            fontSize: paragraphTwo,
-                            color: primaryColour,
-                            decoration: TextDecoration.none,
-                          ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () => {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const SignUp(),
-                                    ),
-                                  )
-                                },
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
