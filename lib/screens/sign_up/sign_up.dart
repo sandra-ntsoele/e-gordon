@@ -39,13 +39,26 @@ class SignUp extends StatelessWidget {
                   height: size.height * 0.03,
                 ),
                 // SECTION: Input fields
-                FormTextField(
-                  labelText: "Email or phone number",
-                  prefixIcon: Icons.email_outlined,
-                ),
-                PasswordField(
-                  labelText: "Password",
-                  prefixIcon: Icons.lock_outline,
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 25,
+                    vertical: 25,
+                  ),
+                  child: Column(
+                    children: [
+                      FormTextField(
+                        labelText: "Email or phone number",
+                        prefixIcon: Icons.email_outlined,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.03,
+                      ),
+                      PasswordField(
+                        labelText: "Password",
+                        prefixIcon: Icons.lock_outline,
+                      ),
+                    ],
+                  ),
                 ),
                 // SECTION: Password rules
                 Column(
