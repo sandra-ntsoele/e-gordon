@@ -61,34 +61,43 @@ class SignUp extends StatelessWidget {
                   ),
                 ),
                 // SECTION: Password rules
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Your password must contain:",
-                      style: TextStyle(
-                        color: mainTextColour,
-                        fontSize: paragraphOne,
-                        fontWeight: FontWeight.bold,
-                        height: 2.5,
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 25,
+                    vertical: 25,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Your password must contain:",
+                        style: TextStyle(
+                          color: mainTextColour,
+                          fontSize: paragraphOne,
+                          fontWeight: FontWeight.bold,
+                          height: 2.5,
+                        ),
                       ),
-                    ),
-                    Column(
-                      children: [
-                        PasswordRule(rule: "Atleast 8 characters,"),
-                        PasswordRule(rule: "Including 1 letter,"),
-                        PasswordRule(rule: "And 1 number"),
-                      ],
-                    )
-                  ],
+                      Column(
+                        children: [
+                          PasswordRule(rule: "Atleast 8 characters,"),
+                          PasswordRule(rule: "Including 1 letter,"),
+                          PasswordRule(rule: "And 1 number"),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
                 // SECTION: Submit button
-                SizedBox(
-                  height: size.height * 0.05,
-                ),
-                RoundedButton(
-                  text: "Sign Up",
-                  onPressed: () {},
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 25,
+                    vertical: size.height * 0.03,
+                  ),
+                  child: RoundedButton(
+                    text: "Sign Up",
+                    onPressed: () {},
+                  ),
                 ),
               ],
             ),
