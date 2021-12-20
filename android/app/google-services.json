@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "712914661608",
+    "project_id": "e-gordon",
+    "storage_bucket": "e-gordon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712914661608:android:49d92bd4542eb13658995d",
+        "android_client_info": {
+          "package_name": "com.egordon.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "712914661608-44pv05mh826j4resjbcee5lbdguektrn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_jn_iD4CYCRTBigKqSnrHssLMjqccxVw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "712914661608-44pv05mh826j4resjbcee5lbdguektrn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
