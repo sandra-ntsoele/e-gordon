@@ -1,9 +1,7 @@
 import 'package:e_gordon/screens/components/form_text_field.dart';
 import 'package:e_gordon/screens/components/rounded_button.dart';
-import 'package:e_gordon/screens/components/main_text.dart';
 import 'package:e_gordon/screens/components/password_field.dart';
 import 'package:e_gordon/screens/components/password_rule.dart';
-import 'package:e_gordon/screens/components/secondary_text.dart';
 import 'package:e_gordon/constants.dart';
 import 'package:e_gordon/screens/components/text_components/heading.dart';
 import 'package:e_gordon/screens/components/text_components/paragraph.dart';
