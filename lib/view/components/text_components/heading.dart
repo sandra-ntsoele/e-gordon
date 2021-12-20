@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../constants.dart';
+import '../../constants.dart';
 
 // Paragraph One
 class Heading extends StatelessWidget {

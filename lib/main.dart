@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/onboarding/onboarding.dart';
+import 'view/onboarding/onboarding.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {

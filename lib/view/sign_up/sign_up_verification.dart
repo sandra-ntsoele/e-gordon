@@ -1,12 +1,12 @@
-import 'package:e_gordon/screens/components/main_text.dart';
-import 'package:e_gordon/screens/components/rounded_button.dart';
-import 'package:e_gordon/screens/components/secondary_text.dart';
-import 'package:e_gordon/screens/components/verification_code_text_field.dart';
-import 'package:e_gordon/screens/components/secondary_button.dart';
+import 'package:e_gordon/view/components/rounded_button.dart';
+import 'package:e_gordon/view/components/text_components/heading.dart';
+import 'package:e_gordon/view/components/secondary_button.dart';
+import 'package:e_gordon/view/components/text_components/paragraph.dart';
+import 'package:e_gordon/view/components/verification_code_text_field.dart';
 import 'package:flutter/material.dart';
 
-class PasswordResetVerification extends StatelessWidget {
-  const PasswordResetVerification({Key? key}) : super(key: key);
+class SignUpVerification extends StatelessWidget {
+  const SignUpVerification({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +19,18 @@ class PasswordResetVerification extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // SECTION: Header text
-          MainText(displayText: "Check your email"),
-          SecondaryText(displayText: "We've sent the code to your email"),
+          const Heading(
+            text: "Check your email",
+            headingType: 1,
+          ),
+          const Paragraph(
+            text: "We've sent the code to your email",
+            paragraphType: 1,
+          ),
           SizedBox(
             height: size.height * 0.03,
           ),
-          // SECTION: Text fields for the verification code
+          // SECTION: Verification text fields
           Row(children: [
             const Expanded(
               child: VerificationCodeTextField(),
@@ -51,9 +57,8 @@ class PasswordResetVerification extends StatelessWidget {
           SizedBox(
             height: size.height * 0.06,
           ),
-          // SECTION: Submission buttons
           RoundedButton(
-            text: "Next",
+            text: "Verify",
             onPressed: () {},
           ),
           SizedBox(

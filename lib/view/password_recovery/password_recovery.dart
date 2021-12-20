@@ -1,7 +1,7 @@
-import 'package:e_gordon/screens/components/form_text_field.dart';
-import 'package:e_gordon/screens/components/main_text.dart';
-import 'package:e_gordon/screens/components/rounded_button.dart';
-import 'package:e_gordon/screens/components/secondary_text.dart';
+import 'package:e_gordon/view/components/form_text_field.dart';
+import 'package:e_gordon/view/components/text_components/heading.dart';
+import 'package:e_gordon/view/components/rounded_button.dart';
+import 'package:e_gordon/view/components/text_components/paragraph.dart';
 import 'package:flutter/material.dart';
 
 class PasswordRecovery extends StatelessWidget {
@@ -18,9 +18,14 @@ class PasswordRecovery extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // SECTION: Heading text
-          MainText(displayText: "Password recovery"),
-          SecondaryText(
-              displayText: "Enter your email to recover your password"),
+          const Heading(
+            text: "Password recovery",
+            headingType: 1,
+          ),
+          const Paragraph(
+            text: "Enter your email to recover your password",
+            paragraphType: 1,
+          ),
           SizedBox(height: size.height * 0.03),
           // SECTION: Input field
           FormTextField(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:e_gordon/constants.dart';
+import 'package:e_gordon/view/constants.dart';
 
 class SecondaryButton extends StatelessWidget {
   final String text;
@@ -45,7 +45,7 @@ class SecondaryButton extends StatelessWidget {
           fontWeight: FontWeight.bold,
           fontSize: 15,
         ),
-        // onPrimary: mainTextColour,
+        // onPrimary: HeadingColour,
         backgroundColor: Colors.white,
         primary: outlineColour,
         fixedSize: const Size.fromHeight(56),

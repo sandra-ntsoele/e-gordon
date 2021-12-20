@@ -1,8 +1,8 @@
-import 'package:e_gordon/screens/components/main_text.dart';
-import 'package:e_gordon/screens/components/text_components/paragraph.dart';
-import 'package:e_gordon/screens/sign_in/sign_in.dart';
+import 'package:e_gordon/view/components/text_components/heading.dart';
+import 'package:e_gordon/view/components/text_components/paragraph.dart';
+import 'package:e_gordon/view/sign_in/sign_in.dart';
 import 'package:flutter/material.dart';
-import 'package:e_gordon/screens/components/rounded_button.dart';
+import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:flutter/widgets.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -22,7 +22,10 @@ class OnboardingScreen extends StatelessWidget {
             height: size.height * 0.03,
           ),
           // SECTION: Text
-          MainText(displayText: "e-Gordon"),
+          const Heading(
+            text: "e-Gordon",
+            headingType: 1,
+          ),
           SizedBox(
             height: size.height * 0.03,
           ),
