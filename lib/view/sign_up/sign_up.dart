@@ -1,3 +1,4 @@
+import 'package:e_gordon/controller/validator.dart';
 import 'package:e_gordon/view/components/form_text_field.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/components/password_field.dart';
@@ -16,10 +17,11 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final _formKey = GlobalKey<FormState>();
 
     return Scaffold(
       body: SizedBox(
@@ -53,8 +55,11 @@ class _SignUpState extends State<SignUp> {
                     child: Column(
                       children: [
                         FormTextField(
+                          formKey: _formKey,
                           labelText: "Email or phone number",
                           prefixIcon: Icons.email_outlined,
+                          validationLogic: (userInput) =>
+                              Validator.validateEmail(userInput),
                         ),
                         SizedBox(
                           height: size.height * 0.03,
@@ -102,7 +107,11 @@ class _SignUpState extends State<SignUp> {
                     ),
                     child: RoundedButton(
                       text: "Sign Up",
-                      onPressed: () {},
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          print('Success');
+                        }
+                      },
                     ),
                   ),
                 ],
