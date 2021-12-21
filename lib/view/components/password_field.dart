@@ -1,3 +1,4 @@
+import 'package:e_gordon/controller/validator.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
@@ -50,11 +51,7 @@ class PasswordField extends StatelessWidget {
           ),
         ),
       ),
-      validator: (String? value) {
-        if (value!.trim().isEmpty) {
-          return "password is required";
-        }
-      },
+      validator: (String? value) => Validator.validatePassword(value),
     );
   }
 }
