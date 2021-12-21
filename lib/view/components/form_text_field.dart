@@ -1,16 +1,21 @@
+import 'package:e_gordon/controller/validator.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
 class FormTextField extends StatelessWidget {
+  GlobalKey? formKey;
   String? labelText;
   IconData? prefixIcon;
+  String? Function(String?)? validationLogic;
 
-  FormTextField({
-    Key? key,
-    required this.labelText,
-    required this.prefixIcon,
-  }) : super(key: key);
+  FormTextField(
+      {Key? key,
+      this.formKey,
+      required this.labelText,
+      required this.prefixIcon,
+      this.validationLogic})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +54,7 @@ class FormTextField extends StatelessWidget {
           ),
         ),
       ),
+      validator: validationLogic,
     );
   }
 }
