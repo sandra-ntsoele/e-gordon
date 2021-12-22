@@ -7,12 +7,14 @@ class PasswordField extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final String labelText;
   final IconData prefixIcon;
+  final String? Function(String?) validationLogic;
 
   const PasswordField({
     Key? key,
     required this.formKey,
     required this.labelText,
     required this.prefixIcon,
+    required this.validationLogic,
   }) : super(key: key);
 
   @override
@@ -53,7 +55,7 @@ class PasswordField extends StatelessWidget {
           ),
         ),
       ),
-      validator: (String? value) => Validator.validatePassword(value),
+      validator: validationLogic,
       onChanged: (value) => formKey.currentState!.validate(),
     );
   }
