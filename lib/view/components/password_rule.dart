@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class PasswordRule extends StatelessWidget {
-  String rule;
+  final String rule;
 
-  PasswordRule({
+  const PasswordRule({
     Key? key,
     required this.rule,
   }) : super(key: key);
