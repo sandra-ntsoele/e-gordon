@@ -10,8 +10,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
+
+  @override
+  State<SignIn> createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -23,115 +30,119 @@ class SignIn extends StatelessWidget {
         width: double.infinity,
         child: Center(
           child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // SECTION: Heading
-                const Heading(
-                  text: "Welcome Back!",
-                  headingType: 1,
-                ),
-                SizedBox(
-                  height: size.height * 0.02,
-                ),
-                const Paragraph(
-                  text: "Enter account details here",
-                  paragraphType: 2,
-                ),
-                SizedBox(
-                  height: size.height * 0.02,
-                ),
-                /* SECTION: Input fields */
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 25,
-                    vertical: 25,
+            child: Form(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // SECTION: Heading
+                  const Heading(
+                    text: "Welcome Back!",
+                    headingType: 1,
                   ),
-                  // Email text field
-                  child: Column(
-                    children: [
-                      /** SECTION: Input Fields */
-                      FormTextField(
-                        labelText: "Email or phone number",
-                        prefixIcon: Icons.email_outlined,
-                      ),
-                      SizedBox(
-                        height: size.height * 0.03,
-                      ),
-                      PasswordField(
-                        labelText: "Password",
-                        prefixIcon: Icons.lock_outline,
-                      ),
-                    ],
+                  SizedBox(
+                    height: size.height * 0.02,
                   ),
-                ),
-                /* SECTION: Sign-in buttons */
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 25,
-                    vertical: size.height * 0.03,
+                  const Paragraph(
+                    text: "Enter account details here",
+                    paragraphType: 2,
                   ),
-                  child: Column(
-                    children: [
-                      RoundedButton(
-                        text: "Login",
-                        onPressed: () {},
-                      ),
-                      SizedBox(
-                        height: size.height * 0.03,
-                      ),
-                      const Paragraph(
-                        text: "Or continue with",
-                        paragraphType: 2,
-                      ),
-                      SizedBox(
-                        height: size.height * 0.03,
-                      ),
-                      RoundedButton(
-                        text: "Google",
-                        onPressed: () {},
-                        btnColour: const Color.fromRGBO(222, 82, 70, 1),
-                        btnIcon: Icons.email,
-                      ),
-                      SizedBox(
-                        height: size.height * 0.03,
-                      ),
-                      RichText(
-                        text: TextSpan(
-                          style: DefaultTextStyle.of(context).style,
-                          children: [
-                            const TextSpan(
-                              text: "Don't have an account? ",
-                              style: TextStyle(
-                                fontSize: paragraphTwo,
-                                color: mainTextColour,
-                                decoration: TextDecoration.none,
-                              ),
-                            ),
-                            TextSpan(
-                              text: "Sign Up",
-                              style: const TextStyle(
-                                fontSize: paragraphTwo,
-                                color: primaryColour,
-                                decoration: TextDecoration.none,
-                              ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () => {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => const SignUp(),
-                                        ),
-                                      )
-                                    },
-                            )
-                          ],
+                  SizedBox(
+                    height: size.height * 0.02,
+                  ),
+                  /* SECTION: Input fields */
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 25,
+                      vertical: 25,
+                    ),
+                    // Email text field
+                    child: Column(
+                      children: [
+                        /** SECTION: Input Fields */
+                        FormTextField(
+                          labelText: "Email or phone number",
+                          prefixIcon: Icons.email_outlined,
                         ),
-                      )
-                    ],
+                        SizedBox(
+                          height: size.height * 0.03,
+                        ),
+                        PasswordField(
+                          formKey: _formKey,
+                          labelText: "Password",
+                          prefixIcon: Icons.lock_outline,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                  /* SECTION: Sign-in buttons */
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 25,
+                      vertical: size.height * 0.03,
+                    ),
+                    child: Column(
+                      children: [
+                        RoundedButton(
+                          text: "Login",
+                          onPressed: () {},
+                        ),
+                        SizedBox(
+                          height: size.height * 0.03,
+                        ),
+                        const Paragraph(
+                          text: "Or continue with",
+                          paragraphType: 2,
+                        ),
+                        SizedBox(
+                          height: size.height * 0.03,
+                        ),
+                        RoundedButton(
+                          text: "Google",
+                          onPressed: () {},
+                          btnColour: const Color.fromRGBO(222, 82, 70, 1),
+                          btnIcon: Icons.email,
+                        ),
+                        SizedBox(
+                          height: size.height * 0.03,
+                        ),
+                        RichText(
+                          text: TextSpan(
+                            style: DefaultTextStyle.of(context).style,
+                            children: [
+                              const TextSpan(
+                                text: "Don't have an account? ",
+                                style: TextStyle(
+                                  fontSize: paragraphTwo,
+                                  color: mainTextColour,
+                                  decoration: TextDecoration.none,
+                                ),
+                              ),
+                              TextSpan(
+                                text: "Sign Up",
+                                style: const TextStyle(
+                                  fontSize: paragraphTwo,
+                                  color: primaryColour,
+                                  decoration: TextDecoration.none,
+                                ),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () => {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const SignUp(),
+                                          ),
+                                        )
+                                      },
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
