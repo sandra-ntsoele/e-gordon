@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class PasswordField extends StatelessWidget {
-  final GlobalKey formKey;
+  final GlobalKey<FormState> formKey;
   final String labelText;
   final IconData prefixIcon;
 
@@ -54,6 +54,7 @@ class PasswordField extends StatelessWidget {
         ),
       ),
       validator: (String? value) => Validator.validatePassword(value),
+      onChanged: (value) => formKey.currentState!.validate(),
     );
   }
 }

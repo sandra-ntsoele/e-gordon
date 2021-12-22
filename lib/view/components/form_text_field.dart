@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class FormTextField extends StatelessWidget {
-  GlobalKey? formKey;
+  GlobalKey<FormState>? formKey;
   String? labelText;
   IconData? prefixIcon;
   String? Function(String?)? validationLogic;
@@ -55,6 +55,7 @@ class FormTextField extends StatelessWidget {
         ),
       ),
       validator: validationLogic,
+      onChanged: (value) => formKey!.currentState!.validate(),
     );
   }
 }
