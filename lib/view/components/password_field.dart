@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class PasswordField extends StatelessWidget {
-  String? labelText;
-  IconData? prefixIcon;
+  final GlobalKey formKey;
+  final String labelText;
+  final IconData prefixIcon;
 
-  PasswordField({
+  const PasswordField({
     Key? key,
+    required this.formKey,
     required this.labelText,
     required this.prefixIcon,
   }) : super(key: key);
