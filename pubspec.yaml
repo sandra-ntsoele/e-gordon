@@ -40,6 +40,8 @@ dependencies:
   firebase_auth: ^3.3.4
   provider: ^6.0.1
   email_validator: ^2.0.1
+  crypt: ^4.0.1
+  crypto: ^3.0.1
 
 dev_dependencies:
   flutter_test:
