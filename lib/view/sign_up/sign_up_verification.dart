@@ -12,64 +12,66 @@ class SignUpVerification extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return SizedBox(
-      width: double.infinity,
-      height: size.height,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // SECTION: Header text
-          const Heading(
-            text: "Check your email",
-            headingType: 1,
-          ),
-          const Paragraph(
-            text: "We've sent the code to your email",
-            paragraphType: 1,
-          ),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
-          // SECTION: Verification text fields
-          Row(children: [
-            const Expanded(
-              child: VerificationCodeTextField(),
+    return Scaffold(
+      body: SizedBox(
+        width: double.infinity,
+        height: size.height,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // SECTION: Header text
+            const Heading(
+              text: "Check your email",
+              headingType: 1,
+            ),
+            const Paragraph(
+              text: "We've sent the code to your email",
+              paragraphType: 1,
             ),
             SizedBox(
-              width: size.width * 0.03,
+              height: size.height * 0.03,
             ),
-            const Expanded(
-              child: VerificationCodeTextField(),
+            // SECTION: Verification text fields
+            Row(children: [
+              const Expanded(
+                child: VerificationCodeTextField(),
+              ),
+              SizedBox(
+                width: size.width * 0.03,
+              ),
+              const Expanded(
+                child: VerificationCodeTextField(),
+              ),
+              SizedBox(
+                width: size.width * 0.03,
+              ),
+              const Expanded(
+                child: VerificationCodeTextField(),
+              ),
+              SizedBox(
+                width: size.width * 0.03,
+              ),
+              const Expanded(
+                child: VerificationCodeTextField(),
+              ),
+            ]),
+            SizedBox(
+              height: size.height * 0.06,
+            ),
+            RoundedButton(
+              text: "Verify",
+              onPressed: () {},
             ),
             SizedBox(
-              width: size.width * 0.03,
+              height: size.height * 0.03,
             ),
-            const Expanded(
-              child: VerificationCodeTextField(),
-            ),
-            SizedBox(
-              width: size.width * 0.03,
-            ),
-            const Expanded(
-              child: VerificationCodeTextField(),
-            ),
-          ]),
-          SizedBox(
-            height: size.height * 0.06,
-          ),
-          RoundedButton(
-            text: "Verify",
-            onPressed: () {},
-          ),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
-          SecondaryButton(
-            text: "Send again",
-            onPressed: () {},
-            isGhostButton: true,
-          )
-        ],
+            SecondaryButton(
+              text: "Send again",
+              onPressed: () {},
+              isGhostButton: true,
+            )
+          ],
+        ),
       ),
     );
   }
