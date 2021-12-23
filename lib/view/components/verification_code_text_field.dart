@@ -10,9 +10,12 @@ class VerificationCodeTextField extends StatelessWidget {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(100)),
         ),
+        counterText: "",
       ),
       textAlign: TextAlign.center,
       autofocus: true,
+      maxLength: 1,
+      keyboardType: TextInputType.number,
     );
   }
 }
