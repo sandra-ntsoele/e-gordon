@@ -17,14 +17,20 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     // ignore: missing_enum_constant_in_switch
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -37,31 +43,11 @@ class DefaultFirebaseOptions {
     );
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCrdAXFBo3ee8j8-w6Aug9R-LKrHPDJ9mE',
-    appId: '1:712914661608:web:4a4a20819d471e6658995d',
-    messagingSenderId: '712914661608',
-    projectId: 'e-gordon',
-    authDomain: 'e-gordon.firebaseapp.com',
-    storageBucket: 'e-gordon.appspot.com',
-    measurementId: 'G-32SZWMB8GY',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyB_jn_iD4CYCRTBigKqSnrHssLMjqccxVw',
     appId: '1:712914661608:android:49d92bd4542eb13658995d',
     messagingSenderId: '712914661608',
     projectId: 'e-gordon',
     storageBucket: 'e-gordon.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAt1Vg51zZEU-ESlUWQkzOIApcLWXPhwhs',
-    appId: '1:712914661608:ios:465a1aa8ce14d6c658995d',
-    messagingSenderId: '712914661608',
-    projectId: 'e-gordon',
-    storageBucket: 'e-gordon.appspot.com',
-    iosClientId: '712914661608-ah35ppjfmcl7dh10aod4deon8bi307lk.apps.googleusercontent.com',
-    iosBundleId: 'com.egordon.ios',
   );
 }
