@@ -1,50 +1,45 @@
+import 'package:e_gordon/controller/user_controller.dart';
 import 'package:e_gordon/controller/validator.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
-class FormTextField extends StatelessWidget {
+class EmailTextField extends StatelessWidget {
   GlobalKey<FormState>? formKey;
-  String? labelText;
-  IconData? prefixIcon;
-  String? Function(String?)? validationLogic;
 
-  FormTextField(
-      {Key? key,
-      this.formKey,
-      required this.labelText,
-      required this.prefixIcon,
-      this.validationLogic})
-      : super(key: key);
+  EmailTextField({
+    Key? key,
+    this.formKey,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: InputDecoration(
-        labelText: labelText,
-        prefixIcon: Icon(prefixIcon),
-        labelStyle: const TextStyle(
+      decoration: const InputDecoration(
+        labelText: "Email",
+        prefixIcon: Icon(Icons.email_outlined),
+        labelStyle: TextStyle(
           color: secondaryTextColour,
         ),
-        contentPadding: const EdgeInsets.symmetric(
+        contentPadding: EdgeInsets.symmetric(
           horizontal: 16,
           vertical: 16,
         ),
-        border: const OutlineInputBorder(
+        border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(100)),
           borderSide: BorderSide(
             color: outlineColour,
             width: 2,
           ),
         ),
-        enabledBorder: const OutlineInputBorder(
+        enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(100)),
           borderSide: BorderSide(
             color: outlineColour,
             width: 2,
           ),
         ),
-        focusedBorder: const OutlineInputBorder(
+        focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: primaryColour,
             width: 2,
@@ -54,7 +49,7 @@ class FormTextField extends StatelessWidget {
           ),
         ),
       ),
-      validator: validationLogic,
+      validator: (userInput) => UserController.validateEmail(userInput),
       onChanged: (value) => formKey!.currentState!.validate(),
     );
   }
