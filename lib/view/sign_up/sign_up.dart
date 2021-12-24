@@ -1,5 +1,5 @@
 import 'package:e_gordon/controller/validator.dart';
-import 'package:e_gordon/view/components/form_text_field.dart';
+import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/components/password_field.dart';
 import 'package:e_gordon/view/components/password_rule.dart';
@@ -18,6 +18,7 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   final _formKey = GlobalKey<FormState>();
+  Validator validator = Validator();
 
   @override
   Widget build(BuildContext context) {
@@ -54,19 +55,16 @@ class _SignUpState extends State<SignUp> {
                     ),
                     child: Column(
                       children: [
-                        FormTextField(
-                          formKey: _formKey,
-                          labelText: "Email or phone number",
-                          prefixIcon: Icons.email_outlined,
-                          validationLogic: (userInput) =>
-                              Validator.validateEmail(userInput),
-                        ),
+                        EmailTextField(formKey: _formKey),
                         SizedBox(
                           height: size.height * 0.03,
                         ),
                         PasswordField(
+                          formKey: _formKey,
                           labelText: "Password",
                           prefixIcon: Icons.lock_outline,
+                          validationLogic: (userInput) =>
+                              validator.validatePassword(userInput),
                         ),
                       ],
                     ),
@@ -90,7 +88,7 @@ class _SignUpState extends State<SignUp> {
                           ),
                         ),
                         Column(
-                          children: [
+                          children: const [
                             PasswordRule(rule: "Atleast 8 characters,"),
                             PasswordRule(rule: "Including 1 letter,"),
                             PasswordRule(rule: "And 1 number"),
@@ -105,14 +103,7 @@ class _SignUpState extends State<SignUp> {
                       horizontal: 25,
                       vertical: size.height * 0.03,
                     ),
-                    child: RoundedButton(
-                      text: "Sign Up",
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          print('Success');
-                        }
-                      },
-                    ),
+                    child: RoundedButton(text: "Sign Up", onPressed: () {}),
                   ),
                 ],
               ),
