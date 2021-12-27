@@ -16,7 +16,7 @@ class UserController {
     }
   }
 
-  static String? validatePassword(String userInput) {
+  static String? validatePassword(String? userInput) {
     /* 
       r'^
       (?=.*[A-Z])       // should contain at least one upper case
@@ -36,7 +36,7 @@ class UserController {
 
     RegExp regExp = RegExp(pattern);
 
-    if (userInput.isEmpty) {
+    if (userInput!.isEmpty) {
       return "Password cannot be empty";
     } else if (!regExp.hasMatch(userInput)) {
       // If password does not meet alll rules. Investigate what is missing
