@@ -1,3 +1,4 @@
+import 'package:e_gordon/controller/user_controller.dart';
 import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/components/password_field.dart';
@@ -100,7 +101,11 @@ class _SignUpState extends State<SignUp> {
                       horizontal: 25,
                       vertical: size.height * 0.03,
                     ),
-                    child: RoundedButton(text: "Sign Up", onPressed: () {}),
+                    child: RoundedButton(
+                      text: "Sign Up",
+                      onPressed: () => UserController.registerUser(
+                          emailController.text, passwordController.text),
+                    ),
                   ),
                 ],
               ),
