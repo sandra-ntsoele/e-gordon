@@ -1,4 +1,5 @@
-import 'package:e_gordon/view/components/form_text_field.dart';
+import 'package:e_gordon/controller/validator.dart';
+import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/password_field.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/constants.dart';
@@ -19,6 +20,8 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -59,17 +62,14 @@ class _SignInState extends State<SignIn> {
                     child: Column(
                       children: [
                         /** SECTION: Input Fields */
-                        FormTextField(
-                          labelText: "Email or phone number",
-                          prefixIcon: Icons.email_outlined,
+                        EmailTextField(
+                          formKey: _formKey,
+                          textEditingController: emailController,
                         ),
-                        SizedBox(
-                          height: size.height * 0.03,
-                        ),
+                        SizedBox(height: size.height * 0.03),
                         PasswordField(
                           formKey: _formKey,
-                          labelText: "Password",
-                          prefixIcon: Icons.lock_outline,
+                          textEditingController: passwordController,
                         ),
                       ],
                     ),

@@ -1,15 +1,16 @@
 import 'package:e_gordon/controller/user_controller.dart';
-import 'package:e_gordon/controller/validator.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
 class EmailTextField extends StatelessWidget {
-  GlobalKey<FormState>? formKey;
+  final GlobalKey<FormState> formKey;
+  final TextEditingController textEditingController;
 
-  EmailTextField({
+  const EmailTextField({
     Key? key,
-    this.formKey,
+    required this.formKey,
+    required this.textEditingController,
   }) : super(key: key);
 
   @override
@@ -50,7 +51,8 @@ class EmailTextField extends StatelessWidget {
         ),
       ),
       validator: (userInput) => UserController.validateEmail(userInput),
-      onChanged: (value) => formKey!.currentState!.validate(),
+      onChanged: (value) => formKey.currentState!.validate(),
+      controller: textEditingController,
     );
   }
 }

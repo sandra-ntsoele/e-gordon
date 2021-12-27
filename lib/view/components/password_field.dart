@@ -5,10 +5,12 @@ import '../constants.dart';
 
 class PasswordField extends StatelessWidget {
   final GlobalKey<FormState> formKey;
+  final TextEditingController textEditingController;
 
   const PasswordField({
     Key? key,
     required this.formKey,
+    required this.textEditingController,
   }) : super(key: key);
 
   @override
@@ -51,6 +53,7 @@ class PasswordField extends StatelessWidget {
       ),
       validator: (userInput) => UserController.validatePassword(userInput),
       onChanged: (value) => formKey.currentState!.validate(),
+      controller: textEditingController,
     );
   }
 }

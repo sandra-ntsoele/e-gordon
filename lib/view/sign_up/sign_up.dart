@@ -1,4 +1,3 @@
-import 'package:e_gordon/controller/validator.dart';
 import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/components/password_field.dart';
@@ -7,7 +6,6 @@ import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/components/text_components/paragraph.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -18,7 +16,8 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   final _formKey = GlobalKey<FormState>();
-  Validator validator = Validator();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,16 +54,14 @@ class _SignUpState extends State<SignUp> {
                     ),
                     child: Column(
                       children: [
-                        EmailTextField(formKey: _formKey),
-                        SizedBox(
-                          height: size.height * 0.03,
+                        EmailTextField(
+                          formKey: _formKey,
+                          textEditingController: emailController,
                         ),
+                        SizedBox(height: size.height * 0.03),
                         PasswordField(
                           formKey: _formKey,
-                          labelText: "Password",
-                          prefixIcon: Icons.lock_outline,
-                          validationLogic: (userInput) =>
-                              validator.validatePassword(userInput),
+                          textEditingController: passwordController,
                         ),
                       ],
                     ),
