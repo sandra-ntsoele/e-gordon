@@ -1,9 +1,23 @@
+import 'dart:developer';
+
+import 'package:e_gordon/model/user_model.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:flutter/widgets.dart';
 
 class UserController {
   /* 
    * Class methods 
    */
+
+  static void registerUser(String email, String password) {
+    UserModel userModel = UserModel(email, password);
+
+    try {
+      userModel.addUser();
+    } catch (e) {
+      log(e.toString());
+    }
+  }
 
   static String? validateEmail(String? userInput) {
     if (userInput == null || userInput.isEmpty) {
