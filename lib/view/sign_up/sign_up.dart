@@ -112,7 +112,10 @@ class _SignUpState extends State<SignUp> {
                     child: RoundedButton(
                       text: "Sign Up",
                       onPressed: () => UserController.registerUser(
-                          emailController.text, passwordController.text),
+                        context,
+                        email: emailController.text,
+                        password: passwordController.text,
+                      ),
                     ),
                   ),
                 ],
