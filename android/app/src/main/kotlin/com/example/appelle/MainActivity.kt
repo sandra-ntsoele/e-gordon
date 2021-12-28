@@ -1,4 +1,4 @@
-package com.example.appelle
+package com.egordon.android
 
 import io.flutter.embedding.android.FlutterActivity
 
