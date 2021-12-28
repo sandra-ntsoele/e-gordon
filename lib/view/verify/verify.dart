@@ -27,11 +27,11 @@ class _VerifyEmailState extends State<VerifyEmail> {
     super.initState();
   }
 
-  // @override
-  // void dispose() {
-  //   timer!.cancel();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    timer!.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,13 +44,14 @@ class _VerifyEmailState extends State<VerifyEmail> {
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Heading(
+            children: [
+              const Heading(
                 text: "Verify your email to use\ne-gordon",
                 headingType: 1,
               ),
               Paragraph(
-                text: "We sent a verification link to your@email.com",
+                text:
+                    "We sent a verification link to ${user!.email ?? 'your email'}",
                 paragraphType: 2,
               )
             ],
