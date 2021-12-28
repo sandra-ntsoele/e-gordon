@@ -1,7 +1,9 @@
 import 'dart:developer';
 
 import 'package:e_gordon/model/user_model.dart';
+import 'package:e_gordon/view/verify/verify.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class UserController {
@@ -9,13 +11,18 @@ class UserController {
    * Class methods 
    */
 
-  static void registerUser(String email, String password) {
+  static void registerUser(context, {email, password}) {
     UserModel userModel = UserModel(email, password);
 
     try {
-      userModel.addUser();
+      userModel.addUser().then((value) => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const VerifyEmail(),
+            ),
+          ));
     } catch (e) {
-      log(e.toString());
+      log("Something went wrong:\n${e.toString()}");
     }
   }
 
