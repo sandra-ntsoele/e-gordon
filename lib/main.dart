@@ -1,4 +1,6 @@
 import 'package:e_gordon/view/components/rounded_button.dart';
+import 'package:e_gordon/view/profile/profile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'view/onboarding/onboarding.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,13 +21,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user = FirebaseAuth.instance.currentUser;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: GoogleFonts.inter().fontFamily,
       ),
-      home: const Scaffold(
-        body: OnboardingScreen(),
+      home: Scaffold(
+        body: user == null ? const OnboardingScreen() : const MyProfile(),
       ),
     );
   }
