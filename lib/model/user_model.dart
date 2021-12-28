@@ -1,8 +1,10 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crypt/crypt.dart';
 import 'package:crypto/crypto.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class UserModel {
   String email, password;
@@ -12,24 +14,33 @@ class UserModel {
   UserModel(this.email, this.password);
 
   Future addUser() async {
-    // Generate random salt
-    String salt = Crypt.sha256(password).toString();
+    FirebaseAuth auth = FirebaseAuth.instance;
+    UserCredential userCredential;
 
-    // Append salt to password
-    String saltedPassword = password + salt;
+    userCredential = await auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
 
-    // Hash password
-    String hashedPassword =
-        sha1.convert(utf8.encode(saltedPassword)).toString();
+    verifyUserEmail();
+  }
 
-    // Call user's CollectionReference to add a new user
-    return users
-        .add({
-          "emailAddress": email,
-          "passwordSalt": salt,
-          "passwordHash": hashedPassword,
-        })
-        .then((value) => print("User added"))
-        .catchError((error) => print("Failed: \n$error"));
+  void verifyUserEmail() {
+    User? user = FirebaseAuth.instance.currentUser;
+
+    if (user != null && !user.emailVerified) {
+      var actionCodeSettings = ActionCodeSettings(
+        url: 'https://e-gordon.web.app/?email=${user.email}',
+        androidPackageName: 'com.egordon.android',
+        androidInstallApp: true,
+        androidMinimumVersion: '12',
+        handleCodeInApp: true,
+        dynamicLinkDomain: "egordon.page.link",
+      );
+
+      user.sendEmailVerification();
+    } else {
+      print("userIsNULL: ${user == null}");
+    }
   }
 }
