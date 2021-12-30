@@ -38,10 +38,17 @@ class MyProfile extends StatelessWidget {
         height: size.height,
         child: Center(
           child: Column(
-            children: const [
-              Heading(
-                text: "My Profile",
-                headingType: 1,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                backgroundImage: const NetworkImage("https://bit.ly/3zcOVBL"),
+                radius: size.height * 0.06,
+                backgroundColor: outlineColour,
+              ),
+              SizedBox(height: size.height * 0.03),
+              const Heading(
+                text: "Gordon Ramsay",
+                headingType: 2,
               ),
             ],
           ),
