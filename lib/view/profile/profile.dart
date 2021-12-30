@@ -2,6 +2,7 @@ import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/components/text_components/paragraph.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class MyProfile extends StatelessWidget {
   const MyProfile({Key? key}) : super(key: key);
@@ -39,19 +40,24 @@ class MyProfile extends StatelessWidget {
         height: size.height,
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(
+                height: size.height * 0.08,
+              ),
+              /* Avatar */
               CircleAvatar(
                 backgroundImage: const NetworkImage("https://bit.ly/3zcOVBL"),
                 radius: size.height * 0.06,
                 backgroundColor: outlineColour,
               ),
               SizedBox(height: size.height * 0.03),
+              /* User Name */
               const Heading(
                 text: "Gordon Ramsay",
                 headingType: 2,
               ),
               SizedBox(height: size.height * 0.03),
+              /* Profile stats */
               Row(
                 children: [
                   Expanded(
@@ -81,9 +87,10 @@ class MyProfile extends StatelessWidget {
                 ],
               ),
               Divider(
-                height: size.height * 0.08,
+                height: size.height * 0.05,
                 thickness: 5,
-              )
+                color: outlineColour,
+              ),
             ],
           ),
         ),
