@@ -1,4 +1,5 @@
 import 'package:e_gordon/view/components/text_components/heading.dart';
+import 'package:e_gordon/view/components/text_components/paragraph.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -50,6 +51,39 @@ class MyProfile extends StatelessWidget {
                 text: "Gordon Ramsay",
                 headingType: 2,
               ),
+              SizedBox(height: size.height * 0.03),
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: const [
+                        Heading(text: "32", headingType: 3),
+                        Paragraph(text: "Recipes", paragraphType: 2),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: const [
+                        Heading(text: "32", headingType: 3),
+                        Paragraph(text: "Following", paragraphType: 2),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: const [
+                        Heading(text: "32", headingType: 3),
+                        Paragraph(text: "Followers", paragraphType: 2),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              Divider(
+                height: size.height * 0.08,
+                thickness: 5,
+              )
             ],
           ),
         ),
