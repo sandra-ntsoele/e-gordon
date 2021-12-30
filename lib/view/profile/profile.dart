@@ -10,19 +10,25 @@ class MyProfile extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.home_filled),
+        backgroundColor: primaryColour,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) => {},
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.create_outlined),
+            icon: Icon(Icons.create_rounded),
             label: "Create",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled),
+            icon: Icon(null),
             label: "Home",
-            backgroundColor: primaryColour,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
+            icon: Icon(Icons.person),
             label: "Profile",
           ),
         ],
