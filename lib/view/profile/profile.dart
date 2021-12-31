@@ -1,6 +1,5 @@
-import 'package:e_gordon/view/components/profile_header.dart';
-import 'package:e_gordon/view/components/profile_navigation_bar.dart';
-import 'package:e_gordon/view/components/text_components/heading.dart';
+import 'package:e_gordon/view/profile/components/profile_header.dart';
+import 'package:e_gordon/view/profile/components/profile_navigation_bar.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

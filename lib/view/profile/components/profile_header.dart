@@ -1,4 +1,4 @@
-import 'package:e_gordon/view/components/profile_statistic.dart';
+import 'package:e_gordon/view/profile/components/profile_statistic.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:flutter/material.dart';
