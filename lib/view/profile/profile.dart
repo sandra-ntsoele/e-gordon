@@ -1,11 +1,14 @@
 import 'package:e_gordon/view/components/profile_header.dart';
 import 'package:e_gordon/view/components/profile_navigation_bar.dart';
+import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+
+import 'components/recipe_card.dart';
 
 class MyProfile extends StatelessWidget {
   const MyProfile({Key? key}) : super(key: key);
@@ -44,7 +47,50 @@ class MyProfile extends StatelessWidget {
                 labelColor: mainTextColour,
                 labelStyle: TextStyle(fontWeight: FontWeight.bold),
                 indicatorColor: primaryColour,
-              )
+              ),
+              Expanded(
+                child: SizedBox(
+                  child: TabBarView(
+                    children: [
+                      GridView.count(
+                        crossAxisCount: 2,
+                        children: const [
+                          RecipeCard(
+                            recipe: "Pancake",
+                            category: "Food",
+                            duration: 60,
+                          ),
+                          RecipeCard(
+                            recipe: "Salad",
+                            category: "Food",
+                            duration: 60,
+                          ),
+                          RecipeCard(
+                            recipe: "Pancake",
+                            category: "Food",
+                            duration: 60,
+                          ),
+                        ],
+                      ),
+                      GridView.count(
+                        crossAxisCount: 2,
+                        children: const [
+                          RecipeCard(
+                            recipe: "Pancake",
+                            category: "Food",
+                            duration: 60,
+                          ),
+                          RecipeCard(
+                            recipe: "Salad",
+                            category: "Food",
+                            duration: 60,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
