@@ -1,8 +1,9 @@
 import 'package:e_gordon/view/components/profile_header.dart';
-import 'package:e_gordon/view/components/text_components/heading.dart';
-import 'package:e_gordon/view/components/text_components/paragraph.dart';
 import 'package:e_gordon/view/constants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 class MyProfile extends StatelessWidget {
@@ -15,13 +16,27 @@ class MyProfile extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: NestedScrollView(
-        headerSliverBuilder: (context, index) {
-          return const [
-            // Profile header
-            SliverToBoxAdapter(child: ProfileHeader())
-          ];
+        headerSliverBuilder: (context, _) {
+          return [const SliverToBoxAdapter(child: ProfileHeader())];
         },
-        body: Text("Hello tabs"),
+        body: Column(
+          children: [
+            Divider(
+              height: size.height * 0.05,
+              thickness: 3,
+              color: outlineColour,
+            ),
+            const TabBar(
+              tabs: [
+                Tab(text: "Recipes"),
+                Tab(text: "Liked"),
+              ],
+              labelColor: mainTextColour,
+              labelStyle: TextStyle(fontWeight: FontWeight.bold),
+              indicatorColor: primaryColour,
+            )
+          ],
+        ),
       ),
     );
 
