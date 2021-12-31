@@ -13,29 +13,67 @@ class MyProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return DefaultTabController(
-      length: 2,
-      child: NestedScrollView(
-        headerSliverBuilder: (context, _) {
-          return [const SliverToBoxAdapter(child: ProfileHeader())];
-        },
-        body: Column(
-          children: [
-            Divider(
-              height: size.height * 0.05,
-              thickness: 3,
-              color: outlineColour,
+    return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.create,
             ),
-            const TabBar(
-              tabs: [
-                Tab(text: "Recipes"),
-                Tab(text: "Liked"),
-              ],
-              labelColor: mainTextColour,
-              labelStyle: TextStyle(fontWeight: FontWeight.bold),
-              indicatorColor: primaryColour,
-            )
-          ],
+            label: "Upload",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(null),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+            ),
+            label: "Profile",
+          ),
+        ],
+        selectedItemColor: primaryColour,
+        selectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: smallText,
+        ),
+        unselectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: smallText,
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.home_filled),
+        backgroundColor: primaryColour,
+        onPressed: () {},
+      ),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
+      body: DefaultTabController(
+        length: 2,
+        child: NestedScrollView(
+          headerSliverBuilder: (context, _) {
+            return [const SliverToBoxAdapter(child: ProfileHeader())];
+          },
+          body: Column(
+            children: [
+              Divider(
+                height: size.height * 0.05,
+                thickness: 3,
+                color: outlineColour,
+              ),
+              const TabBar(
+                tabs: [
+                  Tab(text: "Recipes"),
+                  Tab(text: "Liked"),
+                ],
+                labelColor: mainTextColour,
+                labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                indicatorColor: primaryColour,
+              )
+            ],
+          ),
         ),
       ),
     );
