@@ -17,10 +17,6 @@ class ProfileNavigationBar extends StatelessWidget {
           label: "Upload",
         ),
         BottomNavigationBarItem(
-          icon: Icon(null),
-          label: "Home",
-        ),
-        BottomNavigationBarItem(
           icon: Icon(
             Icons.person,
           ),
