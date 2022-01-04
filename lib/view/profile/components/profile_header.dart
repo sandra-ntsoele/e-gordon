@@ -24,9 +24,10 @@ class _ProfileHeaderState extends State<ProfileHeader> {
         ),
         SizedBox(height: size.height * 0.03),
         /* User Name */
-        const Heading(
+        Heading(
           text: "Gordon Ramsay",
           headingType: 2,
+          overflow: false,
         ),
         SizedBox(height: size.height * 0.03),
         /* Profile stats */

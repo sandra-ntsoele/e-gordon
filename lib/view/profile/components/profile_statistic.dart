@@ -16,7 +16,7 @@ class ProfileStatistic extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Heading(text: figure, headingType: 3),
+        Heading(text: figure, headingType: 3, overflow: true),
         Paragraph(text: label, paragraphType: 2),
       ],
     );

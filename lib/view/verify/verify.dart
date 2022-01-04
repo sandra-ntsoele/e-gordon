@@ -45,9 +45,10 @@ class _VerifyEmailState extends State<VerifyEmail> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Heading(
+              Heading(
                 text: "Verify your email to use\ne-gordon",
                 headingType: 1,
+                overflow: false,
               ),
               Paragraph(
                 text:

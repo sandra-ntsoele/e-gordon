@@ -1,4 +1,4 @@
-import 'package:e_gordon/view/components/form_text_field.dart';
+import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/password_rule.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
@@ -20,9 +20,10 @@ class NewPassword extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // SECTION: Heading Text
-          const Heading(
+          Heading(
             text: "Reset your password",
             headingType: 1,
+            overflow: false,
           ),
           const Paragraph(
             text: "Please enter your new password",
@@ -30,16 +31,16 @@ class NewPassword extends StatelessWidget {
           ),
           SizedBox(height: size.height * 0.03),
           // SECTION: New password Input field
-          FormTextField(
-            labelText: "Password",
-            prefixIcon: Icons.lock_outline,
-          ),
+          // EmailTextField(
+          //   labelText: "Password",
+          //   prefixIcon: Icons.lock_outline,
+          // ),
           SizedBox(
             height: size.height * 0.03,
           ),
           // SECTION: Password rules
           Column(
-            children: [
+            children: const [
               PasswordRule(rule: "Atleast 8 characters,"),
               PasswordRule(rule: "Including 1 letter,"),
               PasswordRule(rule: "And 1 number"),

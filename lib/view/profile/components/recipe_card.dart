@@ -33,7 +33,7 @@ class RecipeCard extends StatelessWidget {
               ),
             ),
             SizedBox(height: size.height * 0.02),
-            Heading(text: recipe, headingType: 3),
+            Heading(text: recipe, headingType: 3, overflow: true),
             SizedBox(height: size.height * 0.01),
             Row(
               children: [

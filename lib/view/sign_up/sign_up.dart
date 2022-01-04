@@ -44,9 +44,10 @@ class _SignUpState extends State<SignUp> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // SECTION: Screen heading
-                  const Heading(
+                  Heading(
                     text: "Welcome!",
                     headingType: 1,
+                    overflow: false,
                   ),
                   const Paragraph(
                     text: "Please enter account details",

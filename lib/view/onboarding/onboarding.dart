@@ -22,9 +22,10 @@ class OnboardingScreen extends StatelessWidget {
             height: size.height * 0.03,
           ),
           // SECTION: Text
-          const Heading(
+          Heading(
             text: "e-Gordon",
             headingType: 1,
+            overflow: false,
           ),
           SizedBox(
             height: size.height * 0.03,

@@ -5,12 +5,14 @@ import '../../constants.dart';
 class Heading extends StatelessWidget {
   final String text;
   final int headingType;
+  bool overflow;
 
-  const Heading({
-    Key? key,
-    required this.text,
-    required this.headingType,
-  }) : super(key: key);
+  Heading(
+      {Key? key,
+      required this.text,
+      required this.headingType,
+      required this.overflow})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,25 +43,28 @@ class Heading extends StatelessWidget {
 
   TextStyle? headingStyle(int headingType) {
     if (headingType == 1) {
-      return const TextStyle(
+      return TextStyle(
         color: mainTextColour,
         fontSize: 22,
         fontWeight: FontWeight.bold,
         height: 1.5,
+        overflow: overflow ? TextOverflow.ellipsis : null,
       );
     } else if (headingType == 2) {
-      return const TextStyle(
+      return TextStyle(
         color: mainTextColour,
         fontSize: 17,
         fontWeight: FontWeight.bold,
         height: 1.5,
+        overflow: overflow ? TextOverflow.ellipsis : null,
       );
     } else if (headingType == 3) {
-      return const TextStyle(
+      return TextStyle(
         color: mainTextColour,
         fontSize: 15,
         fontWeight: FontWeight.bold,
         height: 1.5,
+        overflow: overflow ? TextOverflow.ellipsis : null,
       );
     }
   }

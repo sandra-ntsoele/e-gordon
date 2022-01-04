@@ -37,9 +37,10 @@ class _SignInState extends State<SignIn> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // SECTION: Heading
-                  const Heading(
+                  Heading(
                     text: "Welcome Back!",
                     headingType: 1,
+                    overflow: false,
                   ),
                   SizedBox(
                     height: size.height * 0.02,

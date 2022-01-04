@@ -19,9 +19,10 @@ class PasswordResetVerification extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // SECTION: Header text
-          const Heading(
+          Heading(
             text: "Check your email",
             headingType: 1,
+            overflow: false,
           ),
           const Paragraph(
             text: "We've sent the code to your email",

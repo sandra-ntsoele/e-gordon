@@ -1,4 +1,4 @@
-import 'package:e_gordon/view/components/form_text_field.dart';
+import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/components/text_components/paragraph.dart';
@@ -18,9 +18,10 @@ class PasswordRecovery extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // SECTION: Heading text
-          const Heading(
+          Heading(
             text: "Password recovery",
             headingType: 1,
+            overflow: false,
           ),
           const Paragraph(
             text: "Enter your email to recover your password",
@@ -28,10 +29,10 @@ class PasswordRecovery extends StatelessWidget {
           ),
           SizedBox(height: size.height * 0.03),
           // SECTION: Input field
-          FormTextField(
-            labelText: "Email or phone number",
-            prefixIcon: Icons.email_outlined,
-          ),
+          // EmailTextField(
+          //   labelText: "Email or phone number",
+          //   prefixIcon: Icons.email_outlined,
+          // ),
           SizedBox(
             height: size.height * 0.03,
           ),
