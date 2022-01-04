@@ -17,6 +17,23 @@ class _ProfileHeaderState extends State<ProfileHeader> {
 
     return Column(
       children: [
+        SizedBox(height: size.height * 0.03),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25),
+          child: Row(
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.share),
+              ),
+              const Spacer(),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.exit_to_app),
+              )
+            ],
+          ),
+        ),
         CircleAvatar(
           backgroundImage: const NetworkImage("https://bit.ly/3zcOVBL"),
           radius: size.height * 0.06,
