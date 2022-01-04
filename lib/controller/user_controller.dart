@@ -1,8 +1,10 @@
 import 'dart:developer';
 
 import 'package:e_gordon/model/user_model.dart';
+import 'package:e_gordon/view/sign_in/sign_in.dart';
 import 'package:e_gordon/view/verify/verify.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -10,6 +12,15 @@ class UserController {
   /* 
    * Class methods 
    */
+
+  static void signOutUser(context) {
+    FirebaseAuth.instance.signOut().then((value) => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const SignIn(),
+          ),
+        ));
+  }
 
   static void registerUser(context, {email, password}) {
     UserModel userModel = UserModel(email, password);

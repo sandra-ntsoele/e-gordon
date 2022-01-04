@@ -1,3 +1,4 @@
+import 'package:e_gordon/controller/user_controller.dart';
 import 'package:e_gordon/view/profile/components/profile_statistic.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/constants.dart';
@@ -28,7 +29,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
               ),
               const Spacer(),
               IconButton(
-                onPressed: () {},
+                onPressed: () => UserController.signOutUser(context),
                 icon: const Icon(Icons.exit_to_app),
               )
             ],
