@@ -1,4 +1,4 @@
-import 'package:e_gordon/controller/user_controller.dart';
+import 'package:e_gordon/controller/auth_controller.dart';
 import 'package:e_gordon/view/profile/components/profile_statistic.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/constants.dart';
@@ -15,6 +15,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    AuthController authController = AuthController();
 
     return Column(
       children: [
@@ -29,7 +30,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
               ),
               const Spacer(),
               IconButton(
-                onPressed: () => UserController.signOutUser(context),
+                onPressed: () => authController.signOutUser(context),
                 icon: const Icon(Icons.exit_to_app),
               )
             ],

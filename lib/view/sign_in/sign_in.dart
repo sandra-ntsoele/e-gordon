@@ -1,3 +1,4 @@
+import 'package:e_gordon/controller/auth_controller.dart';
 import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/password_field.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
@@ -25,6 +26,8 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    String email = emailController.text;
+    String password = passwordController.text;
 
     return Scaffold(
       body: SizedBox(
@@ -33,6 +36,7 @@ class _SignInState extends State<SignIn> {
         child: Center(
           child: SingleChildScrollView(
             child: Form(
+              key: _formKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -84,7 +88,10 @@ class _SignInState extends State<SignIn> {
                       children: [
                         RoundedButton(
                           text: "Login",
-                          onPressed: () {},
+                          onPressed: () => {}
+                          /* UserController.signInUser(
+                              context, emailController, passwordController) */
+                          ,
                         ),
                         SizedBox(
                           height: size.height * 0.03,

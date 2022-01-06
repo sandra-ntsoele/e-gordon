@@ -8,12 +8,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class UserController {
+class AuthController {
   /* 
    * Class methods 
    */
 
-  static void signOutUser(context) {
+  void signOutUser(context) {
     FirebaseAuth.instance.signOut().then((value) => Navigator.push(
           context,
           MaterialPageRoute(
@@ -22,7 +22,7 @@ class UserController {
         ));
   }
 
-  static void registerUser(context, {email, password}) {
+  void registerUser(context, {email, password}) {
     UserModel userModel = UserModel(email, password);
 
     try {
@@ -37,7 +37,7 @@ class UserController {
     }
   }
 
-  static String? validateEmail(String? userInput) {
+  String? validateEmail(String? userInput) {
     if (userInput == null || userInput.isEmpty) {
       return "Email cannot be empty";
     } else if (!EmailValidator.validate(userInput)) {
@@ -48,7 +48,7 @@ class UserController {
     }
   }
 
-  static String? validatePassword(String? userInput) {
+  String? validatePassword(String? userInput) {
     /* 
       r'^
       (?=.*[A-Z])       // should contain at least one upper case

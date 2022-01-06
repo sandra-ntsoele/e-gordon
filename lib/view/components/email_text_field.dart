@@ -1,4 +1,4 @@
-import 'package:e_gordon/controller/user_controller.dart';
+import 'package:e_gordon/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
@@ -15,6 +15,8 @@ class EmailTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthController authController = AuthController();
+
     return TextFormField(
       decoration: const InputDecoration(
         labelText: "Email",
@@ -50,7 +52,7 @@ class EmailTextField extends StatelessWidget {
           ),
         ),
       ),
-      validator: (userInput) => UserController.validateEmail(userInput),
+      validator: (userInput) => authController.validateEmail(userInput),
       onChanged: (value) => formKey.currentState!.validate(),
       controller: textEditingController,
     );

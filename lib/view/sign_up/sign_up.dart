@@ -1,4 +1,4 @@
-import 'package:e_gordon/controller/user_controller.dart';
+import 'package:e_gordon/controller/auth_controller.dart';
 import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/components/password_field.dart';
@@ -55,6 +55,7 @@ class _SignUpState extends State<SignUp> {
   Padding signUpBtn(Size size, BuildContext context) {
     String email = emailController.text;
     String password = passwordController.text;
+    AuthController authController = AuthController();
 
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -63,7 +64,7 @@ class _SignUpState extends State<SignUp> {
       ),
       child: RoundedButton(
         text: "Sign Up",
-        onPressed: () => UserController.registerUser(
+        onPressed: () => authController.registerUser(
           context,
           email: email,
           password: password,
