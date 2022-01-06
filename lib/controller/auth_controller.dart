@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:e_gordon/model/user_model.dart';
+import 'package:e_gordon/model/auth_model.dart';
 import 'package:e_gordon/view/sign_in/sign_in.dart';
 import 'package:e_gordon/view/verify/verify.dart';
 import 'package:email_validator/email_validator.dart';
@@ -23,7 +23,7 @@ class AuthController {
   }
 
   void registerUser(context, {email, password}) {
-    UserModel userModel = UserModel(email, password);
+    AuthModel userModel = AuthModel(email, password);
 
     try {
       userModel.addUser().then((value) => Navigator.push(
