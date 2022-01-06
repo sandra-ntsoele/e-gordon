@@ -49,11 +49,17 @@ class _VerifyEmailState extends State<VerifyEmail> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Image.asset(
+                "assets/images/verify-email-trans.png",
+                height: size.height * 0.25,
+              ),
+              SizedBox(height: size.height * 0.03),
               Heading(
-                text: "Verify your email to use\ne-gordon",
+                text: "Check your email",
                 headingType: 1,
                 overflow: false,
               ),
+              SizedBox(height: size.height * 0.05),
               Paragraph(
                 text:
                     "We sent a verification link to \n${widget.user!.email ?? 'your email'}",
