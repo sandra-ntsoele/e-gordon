@@ -1,4 +1,5 @@
 import 'package:e_gordon/controller/auth_controller.dart';
+import 'package:e_gordon/view/components/display_name.dart';
 import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/components/password_field.dart';
@@ -19,6 +20,7 @@ class _SignUpState extends State<SignUp> {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final displayNameController = TextEditingController();
 
   @override
   void dispose() {
@@ -42,7 +44,7 @@ class _SignUpState extends State<SignUp> {
               children: [
                 screenHeader(size),
                 inputFields(size),
-                passwordRules(),
+                // passwordRules(),
                 signUpBtn(size, context),
               ],
             ),
@@ -111,6 +113,11 @@ class _SignUpState extends State<SignUp> {
       ),
       child: Column(
         children: [
+          FullNameField(
+            formKey: _formKey,
+            textEditingController: displayNameController,
+          ),
+          SizedBox(height: size.height * 0.03),
           EmailTextField(
             formKey: _formKey,
             textEditingController: emailController,
