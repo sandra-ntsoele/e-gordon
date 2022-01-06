@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
-class FullNameField extends StatelessWidget {
+class DisplayNameField extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final TextEditingController textEditingController;
 
-  const FullNameField({
+  const DisplayNameField({
     Key? key,
     required this.formKey,
     required this.textEditingController,
@@ -52,8 +52,6 @@ class FullNameField extends StatelessWidget {
           ),
         ),
       ),
-      validator: (userInput) => authController.validateEmail(userInput),
-      onChanged: (value) => formKey.currentState!.validate(),
       controller: textEditingController,
     );
   }
