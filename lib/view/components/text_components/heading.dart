@@ -3,7 +3,7 @@ import '../../constants.dart';
 
 // Paragraph One
 class Heading extends StatelessWidget {
-  final String text;
+  String? text;
   final int headingType;
   bool overflow;
 
@@ -17,7 +17,7 @@ class Heading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,
+      text ?? "John Doe",
       textAlign: TextAlign.center,
       style: headingStyle(headingType),
     );

@@ -3,6 +3,7 @@ import 'package:e_gordon/view/profile/components/profile_statistic.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ProfileHeader extends StatefulWidget {
   const ProfileHeader({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     AuthController authController = AuthController();
+    User? user = FirebaseAuth.instance.currentUser;
 
     return Column(
       children: [
@@ -44,7 +46,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
         SizedBox(height: size.height * 0.03),
         /* User Name */
         Heading(
-          text: "Gordon Ramsay",
+          text: user!.displayName,
           headingType: 2,
           overflow: false,
         ),
