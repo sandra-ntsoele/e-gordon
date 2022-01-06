@@ -23,15 +23,21 @@ class AuthController {
   }
 
   void registerUser(context, {email, password}) {
-    AuthModel userModel = AuthModel(email, password);
+    AuthModel userModel = AuthModel();
 
     try {
-      userModel.addUser().then((value) => Navigator.push(
+      userModel.addUser(email, password).then(
+        (value) {
+          User? user = FirebaseAuth.instance.currentUser;
+
+          Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const VerifyEmail(),
+              builder: (context) => VerifyEmail(user: user),
             ),
-          ));
+          );
+        },
+      );
     } catch (e) {
       log("Something went wrong:\n${e.toString()}");
     }

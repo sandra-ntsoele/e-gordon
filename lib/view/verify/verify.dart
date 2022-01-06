@@ -7,7 +7,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class VerifyEmail extends StatefulWidget {
-  const VerifyEmail({Key? key}) : super(key: key);
+  User? user;
+
+  VerifyEmail({
+    Key? key,
+    this.user,
+  }) : super(key: key);
 
   @override
   _VerifyEmailState createState() => _VerifyEmailState();
@@ -15,7 +20,6 @@ class VerifyEmail extends StatefulWidget {
 
 class _VerifyEmailState extends State<VerifyEmail> {
   final auth = FirebaseAuth.instance;
-  User? user;
   Timer? timer;
 
   @override
@@ -52,7 +56,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
               ),
               Paragraph(
                 text:
-                    "We sent a verification link to ${user!.email ?? 'your email'}",
+                    "We sent a verification link to \n${widget.user!.email ?? 'your email'}",
                 paragraphType: 2,
               )
             ],
@@ -63,10 +67,10 @@ class _VerifyEmailState extends State<VerifyEmail> {
   }
 
   Future<void> checkEmailVerified() async {
-    user = auth.currentUser;
-    await user!.reload();
+    widget.user = auth.currentUser;
+    await widget.user!.reload();
 
-    if (user!.emailVerified) {
+    if (widget.user!.emailVerified) {
       timer!.cancel();
 
       Navigator.push(
