@@ -57,6 +57,7 @@ class _SignUpState extends State<SignUp> {
   Padding signUpBtn(Size size, BuildContext context) {
     String email = emailController.text;
     String password = passwordController.text;
+    String displayName = displayNameController.text;
     AuthController authController = AuthController();
 
     return Padding(
@@ -68,6 +69,7 @@ class _SignUpState extends State<SignUp> {
         text: "Sign Up",
         onPressed: () => authController.registerUser(
           context,
+          displayName: displayName,
           email: email,
           password: password,
         ),
@@ -113,7 +115,7 @@ class _SignUpState extends State<SignUp> {
       ),
       child: Column(
         children: [
-          FullNameField(
+          DisplayNameField(
             formKey: _formKey,
             textEditingController: displayNameController,
           ),

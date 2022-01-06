@@ -22,11 +22,11 @@ class AuthController {
         ));
   }
 
-  void registerUser(context, {email, password}) {
+  void registerUser(context, {displayName, email, password}) {
     AuthModel userModel = AuthModel();
 
     try {
-      userModel.addUser(email, password).then(
+      userModel.addUser(displayName, email, password).then(
         (value) {
           User? user = FirebaseAuth.instance.currentUser;
 

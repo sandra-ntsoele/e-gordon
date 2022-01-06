@@ -4,13 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthModel {
-  String email, password;
-  final CollectionReference users =
-      FirebaseFirestore.instance.collection("users");
+  CollectionReference users = FirebaseFirestore.instance.collection("users");
 
-  AuthModel(this.email, this.password);
-
-  Future addUser() async {
+  Future addUser(displayName, email, password) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user = FirebaseAuth.instance.currentUser;
 
@@ -25,8 +21,11 @@ class AuthModel {
     // Send verification email
 
     if (user != null && !user.emailVerified) {
-      user.sendEmailVerification();
+      user.sendEmailVerification().then((value) {
+        user.updateDisplayName(displayName);
+      });
     }
+    return user;
   }
 
   void verifyUserEmail() {
