@@ -7,6 +7,8 @@ import 'package:e_gordon/view/components/password_rule.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/components/text_components/paragraph.dart';
+import 'package:e_gordon/view/sign_in/sign_in.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
@@ -46,9 +48,48 @@ class _SignUpState extends State<SignUp> {
                 inputFields(size),
                 // passwordRules(),
                 signUpBtn(size, context),
+                loginSpan(size),
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Padding loginSpan(size) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: size.height * 0.03),
+      child: RichText(
+        text: TextSpan(
+          style: DefaultTextStyle.of(context).style,
+          children: [
+            const TextSpan(
+              text: "Already have an account? ",
+              style: TextStyle(
+                fontSize: paragraphTwo,
+                color: mainTextColour,
+                decoration: TextDecoration.none,
+              ),
+            ),
+            TextSpan(
+              text: "Login",
+              style: const TextStyle(
+                fontSize: paragraphTwo,
+                color: primaryColour,
+                decoration: TextDecoration.none,
+              ),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignIn(),
+                        ),
+                      )
+                    },
+            )
+          ],
         ),
       ),
     );
