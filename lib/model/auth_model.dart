@@ -21,18 +21,9 @@ class AuthModel {
     // Send verification email
 
     if (user != null && !user.emailVerified) {
-      user.sendEmailVerification().then((value) {
-        user.updateDisplayName(displayName);
-      });
+      user.sendEmailVerification();
+      user.updateDisplayName(displayName);
     }
     return user;
-  }
-
-  void verifyUserEmail() {
-    User? user = FirebaseAuth.instance.currentUser;
-
-    if (user != null && !user.emailVerified) {
-      user.sendEmailVerification();
-    }
   }
 }
