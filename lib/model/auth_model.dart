@@ -8,8 +8,6 @@ class AuthModel {
 
   Future addUser(displayName, email, password) async {
     FirebaseAuth auth = FirebaseAuth.instance;
-    User? user = FirebaseAuth.instance.currentUser;
-
     UserCredential userCredential;
 
     // Create user
@@ -17,9 +15,9 @@ class AuthModel {
       email: email,
       password: password,
     );
+    User? user = FirebaseAuth.instance.currentUser;
 
     // Send verification email
-
     if (user != null && !user.emailVerified) {
       user.sendEmailVerification();
       user.updateDisplayName(displayName);
