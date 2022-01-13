@@ -6,11 +6,13 @@ import '../constants.dart';
 class EmailTextField extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final TextEditingController textEditingController;
+  final Function setEmail;
 
   const EmailTextField({
     Key? key,
     required this.formKey,
     required this.textEditingController,
+    required this.setEmail,
   }) : super(key: key);
 
   @override
@@ -53,7 +55,10 @@ class EmailTextField extends StatelessWidget {
         ),
       ),
       validator: (userInput) => authController.validateEmail(userInput),
-      onChanged: (value) => formKey.currentState!.validate(),
+      onChanged: (value) {
+        formKey.currentState!.validate();
+        setEmail(value);
+      },
       controller: textEditingController,
     );
   }

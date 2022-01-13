@@ -6,11 +6,13 @@ import '../constants.dart';
 class DisplayNameField extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final TextEditingController textEditingController;
+  final Function setDisplayName;
 
   const DisplayNameField({
     Key? key,
     required this.formKey,
     required this.textEditingController,
+    required this.setDisplayName,
   }) : super(key: key);
 
   @override
@@ -53,6 +55,7 @@ class DisplayNameField extends StatelessWidget {
         ),
       ),
       controller: textEditingController,
+      onChanged: (value) => setDisplayName(value),
     );
   }
 }

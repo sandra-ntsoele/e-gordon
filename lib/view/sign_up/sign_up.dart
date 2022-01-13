@@ -24,6 +24,10 @@ class _SignUpState extends State<SignUp> {
   final passwordController = TextEditingController();
   final displayNameController = TextEditingController();
 
+  String email = "";
+  String password = "";
+  String displayName = "";
+
   @override
   void dispose() {
     emailController.dispose();
@@ -96,9 +100,6 @@ class _SignUpState extends State<SignUp> {
   }
 
   Padding signUpBtn(Size size, BuildContext context) {
-    String email = emailController.text;
-    String password = passwordController.text;
-    String displayName = displayNameController.text;
     AuthController authController = AuthController();
 
     return Padding(
@@ -159,16 +160,19 @@ class _SignUpState extends State<SignUp> {
           DisplayNameField(
             formKey: _formKey,
             textEditingController: displayNameController,
+            setDisplayName: (value) => displayName = value,
           ),
           SizedBox(height: size.height * 0.03),
           EmailTextField(
             formKey: _formKey,
             textEditingController: emailController,
+            setEmail: (value) => email = value,
           ),
           SizedBox(height: size.height * 0.03),
           PasswordField(
             formKey: _formKey,
             textEditingController: passwordController,
+            setPassword: (value) => password = value,
           ),
         ],
       ),

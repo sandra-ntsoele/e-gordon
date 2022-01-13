@@ -23,11 +23,12 @@ class _SignInState extends State<SignIn> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
+  String email = "";
+  String password = "";
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    String email = emailController.text;
-    String password = passwordController.text;
 
     return Scaffold(
       body: SizedBox(
@@ -69,11 +70,13 @@ class _SignInState extends State<SignIn> {
                         EmailTextField(
                           formKey: _formKey,
                           textEditingController: emailController,
+                          setEmail: (value) => email = value,
                         ),
                         SizedBox(height: size.height * 0.03),
                         PasswordField(
                           formKey: _formKey,
                           textEditingController: passwordController,
+                          setPassword: (value) => password = value,
                         ),
                       ],
                     ),
