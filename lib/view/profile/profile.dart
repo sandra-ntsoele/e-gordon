@@ -1,3 +1,4 @@
+import 'package:e_gordon/model/get_user_recipes.dart';
 import 'package:e_gordon/view/profile/components/profile_header.dart';
 import 'package:e_gordon/view/profile/components/profile_navigation_bar.dart';
 import 'package:e_gordon/view/constants.dart';
@@ -7,7 +8,8 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
-import 'components/recipe_card.dart';
+import 'components/profile_tab_bar.dart';
+import 'components/profile_tab_bar_view.dart';
 
 class MyProfile extends StatelessWidget {
   const MyProfile({Key? key}) : super(key: key);
@@ -33,63 +35,8 @@ class MyProfile extends StatelessWidget {
           },
           body: Column(
             children: [
-              Divider(
-                height: size.height * 0.05,
-                thickness: 3,
-                color: outlineColour,
-              ),
-              const TabBar(
-                tabs: [
-                  Tab(text: "Recipes"),
-                  Tab(text: "Liked"),
-                ],
-                labelColor: mainTextColour,
-                labelStyle: TextStyle(fontWeight: FontWeight.bold),
-                indicatorColor: primaryColour,
-              ),
-              Expanded(
-                child: SizedBox(
-                  child: TabBarView(
-                    children: [
-                      GridView.count(
-                        crossAxisCount: 2,
-                        children: const [
-                          RecipeCard(
-                            recipe: "Pancake",
-                            category: "Food",
-                            duration: 60,
-                          ),
-                          RecipeCard(
-                            recipe: "Salad",
-                            category: "Food",
-                            duration: 60,
-                          ),
-                          RecipeCard(
-                            recipe: "Pancake",
-                            category: "Food",
-                            duration: 60,
-                          ),
-                        ],
-                      ),
-                      GridView.count(
-                        crossAxisCount: 2,
-                        children: const [
-                          RecipeCard(
-                            recipe: "Pancake",
-                            category: "Food",
-                            duration: 60,
-                          ),
-                          RecipeCard(
-                            recipe: "Salad",
-                            category: "Food",
-                            duration: 60,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              ProfileTabBar(size: size),
+              ProfileTabBarView(),
             ],
           ),
         ),
