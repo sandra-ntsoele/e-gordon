@@ -31,7 +31,11 @@ class AuthController {
       } else {
         showDialog(
           context: context,
-          builder: (context) => CustomAlert(message: error),
+          builder: (context) {
+            const duration = Duration(seconds: 2);
+            Future.delayed(duration, () => Navigator.of(context).pop());
+            return CustomAlert(message: error);
+          },
         );
       }
     });
