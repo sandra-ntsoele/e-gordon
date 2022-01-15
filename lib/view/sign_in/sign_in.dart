@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:e_gordon/controller/auth_controller.dart';
 import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/password_field.dart';
@@ -25,6 +27,7 @@ class _SignInState extends State<SignIn> {
 
   String email = "";
   String password = "";
+  bool isButtonDisabled = true;
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +99,8 @@ class _SignInState extends State<SignIn> {
   }
 
   Widget signInButtons(Size size) {
+    AuthController authController = AuthController();
+
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 25,
@@ -105,10 +110,10 @@ class _SignInState extends State<SignIn> {
         children: [
           RoundedButton(
             text: "Login",
-            onPressed: () => {}
-            /* UserController.signInUser(
-                                  context, emailController, passwordController) */
-            ,
+            onPressed: () => email.isEmpty || password.isEmpty
+                ? null
+                : authController.signIn(context, email, password),
+            btnIcon: Icons.login,
           ),
           SizedBox(
             height: size.height * 0.03,

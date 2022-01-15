@@ -1,6 +1,10 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:e_gordon/model/auth_model.dart';
+import 'package:e_gordon/view/components/text_components/paragraph.dart';
+import 'package:e_gordon/view/constants.dart';
+import 'package:e_gordon/view/profile/profile.dart';
 import 'package:e_gordon/view/sign_in/sign_in.dart';
 import 'package:e_gordon/view/verify/verify.dart';
 import 'package:email_validator/email_validator.dart';
@@ -12,6 +16,26 @@ class AuthController {
   /* 
    * Class methods 
    */
+
+  void signIn(context, email, password) async {
+    AuthModel authModel = AuthModel();
+
+    authModel.signIn(email, password).then((error) {
+      if (error == null) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const MyProfile(),
+          ),
+        );
+      } else {
+        showDialog(
+          context: context,
+          builder: (context) => CustomAlert(message: error),
+        );
+      }
+    });
+  }
 
   void signOutUser(context) {
     FirebaseAuth.instance.signOut().then((value) => Navigator.push(
@@ -95,5 +119,45 @@ class AuthController {
       // _password = userInput;
       return null;
     }
+  }
+}
+
+class CustomAlert extends StatelessWidget {
+  const CustomAlert({
+    Key? key,
+    required this.message,
+  }) : super(key: key);
+
+  final String message;
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
+    Timer startTimer() {
+      const duration = Duration(seconds: 2);
+
+      return Timer(duration, () {
+        Navigator.pop(context);
+      });
+    }
+
+    return AlertDialog(
+      content: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset(
+            "assets/images/verify-email-trans.png",
+            width: size.width * 0.13,
+            fit: BoxFit.contain,
+          ),
+          SizedBox(width: size.width * 0.03),
+          Text(
+            message,
+            style: TextStyle(fontSize: smallText),
+          )
+        ],
+      ),
+    );
   }
 }

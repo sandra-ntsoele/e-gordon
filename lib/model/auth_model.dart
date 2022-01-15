@@ -1,10 +1,31 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 
 class AuthModel {
   CollectionReference users = FirebaseFirestore.instance.collection("users");
+
+  Future signIn(email, password) async {
+    try {
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      log("Code: ${e.code}");
+      if (e.code == 'user-not-found') {
+        return "No user found for that email.";
+      } else if (e.code == 'wrong-password') {
+        return "Incorrect password.";
+      } else if (e.code == "too-many-requests") {
+        return "Please try again later.";
+      }
+    }
+  }
 
   Future addUser(displayName, email, password) async {
     FirebaseAuth auth = FirebaseAuth.instance;
