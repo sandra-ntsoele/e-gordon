@@ -1,4 +1,3 @@
-import 'package:e_gordon/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
@@ -17,8 +16,6 @@ class DisplayNameField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthController authController = AuthController();
-
     return TextFormField(
       decoration: const InputDecoration(
         labelText: "Full name",

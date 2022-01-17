@@ -1,4 +1,3 @@
-import 'package:e_gordon/model/get_user_recipes.dart';
 import 'package:e_gordon/view/profile/components/profile_header.dart';
 import 'package:e_gordon/view/profile/components/profile_navigation_bar.dart';
 import 'package:e_gordon/view/constants.dart';
@@ -36,7 +35,7 @@ class MyProfile extends StatelessWidget {
           body: Column(
             children: [
               ProfileTabBar(size: size),
-              ProfileTabBarView(),
+              const ProfileTabBarView(),
             ],
           ),
         ),

@@ -1,5 +1,5 @@
 import 'package:e_gordon/controller/auth_controller.dart';
-import 'package:e_gordon/view/components/display_name.dart';
+import 'package:e_gordon/view/components/display_name_text_field.dart';
 import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/components/password_field.dart';

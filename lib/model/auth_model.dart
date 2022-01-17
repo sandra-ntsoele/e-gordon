@@ -1,9 +1,10 @@
+// ignore_for_file: unused_local_variable
+
 import 'dart:async';
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 
 class AuthModel {
   CollectionReference users = FirebaseFirestore.instance.collection("users");

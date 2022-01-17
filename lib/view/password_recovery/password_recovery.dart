@@ -1,4 +1,3 @@
-import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/components/text_components/paragraph.dart';
