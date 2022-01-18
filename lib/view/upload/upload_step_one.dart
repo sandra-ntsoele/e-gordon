@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:e_gordon/controller/upload_controller.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
@@ -65,16 +63,14 @@ class _UploadStepOneState extends State<UploadStepOne> {
                   SizedBox(height: size.height * 0.03),
                   Heading(text: "Duration", headingType: 3, overflow: false),
                   SizedBox(height: size.height * 0.03),
-                  CustomSlider(),
+                  const CustomSlider(),
                   SizedBox(height: size.height * 0.03),
                   RoundedButton(
                       text: "Next",
                       onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          print("Valid form");
-                        } else {
-                          print("Invalid form");
-                        }
+                        formKey.currentState!.validate()
+                            ? uploadController.goToStepTwo(context)
+                            : null;
                       }),
                 ],
               ),

@@ -1,4 +1,4 @@
-import 'package:e_gordon/view/upload/upload_step_1.dart';
+import 'package:e_gordon/view/upload/upload_step_one.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
