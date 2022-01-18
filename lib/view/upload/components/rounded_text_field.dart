@@ -2,16 +2,24 @@ import 'package:e_gordon/view/constants.dart';
 import 'package:flutter/material.dart';
 
 class RoundedTextField extends StatelessWidget {
-  const RoundedTextField({
+  RoundedTextField({
     Key? key,
     required this.label,
+    this.onChanged,
+    this.fieldController,
   }) : super(key: key);
 
   final String label;
+  Function(String)? onChanged;
+  TextEditingController? fieldController;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
+      controller: fieldController,
+      autocorrect: true,
+      autovalidateMode: AutovalidateMode.always,
       decoration: InputDecoration(
         labelText: label,
         labelStyle: const TextStyle(

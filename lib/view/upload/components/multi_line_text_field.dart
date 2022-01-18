@@ -2,12 +2,14 @@ import 'package:e_gordon/view/constants.dart';
 import 'package:flutter/material.dart';
 
 class MultiLineTextField extends StatelessWidget {
-  const MultiLineTextField({
+  MultiLineTextField({
     Key? key,
     required this.label,
+    this.fieldController,
   }) : super(key: key);
 
   final String label;
+  TextEditingController? fieldController;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +18,7 @@ class MultiLineTextField extends StatelessWidget {
     return SizedBox(
       height: size.height * 0.2,
       child: TextFormField(
+        controller: fieldController,
         autocorrect: true,
         textAlignVertical: TextAlignVertical.top,
         expands: true,
