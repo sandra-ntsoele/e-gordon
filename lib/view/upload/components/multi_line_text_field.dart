@@ -6,10 +6,12 @@ class MultiLineTextField extends StatelessWidget {
     Key? key,
     required this.label,
     this.fieldController,
+    this.validatorFunction,
   }) : super(key: key);
 
   final String label;
   TextEditingController? fieldController;
+  String? Function(String?)? validatorFunction;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,8 @@ class MultiLineTextField extends StatelessWidget {
     return SizedBox(
       height: size.height * 0.2,
       child: TextFormField(
+        validator: validatorFunction,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         controller: fieldController,
         autocorrect: true,
         textAlignVertical: TextAlignVertical.top,

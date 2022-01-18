@@ -1,3 +1,4 @@
+import 'package:e_gordon/controller/validator.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -7,19 +8,22 @@ class RoundedTextField extends StatelessWidget {
     required this.label,
     this.onChanged,
     this.fieldController,
+    this.validatorFunc,
   }) : super(key: key);
 
   final String label;
   Function(String)? onChanged;
   TextEditingController? fieldController;
+  String? Function(String?)? validatorFunc;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: validatorFunc,
       onChanged: onChanged,
       controller: fieldController,
       autocorrect: true,
-      autovalidateMode: AutovalidateMode.always,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
         labelText: label,
         labelStyle: const TextStyle(

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:e_gordon/controller/upload_controller.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:flutter/material.dart';
@@ -17,15 +18,15 @@ class UploadStepOne extends StatefulWidget {
 
 class _UploadStepOneState extends State<UploadStepOne> {
   final formKey = GlobalKey<FormState>();
-  TextEditingController rcpNameController = TextEditingController();
-  TextEditingController rcpDescriptionController = TextEditingController();
-  TextEditingController rcpDurationController = TextEditingController();
+  UploadController uploadController = UploadController();
+
+  TextEditingController nameTxtController = TextEditingController();
+  TextEditingController descriptionTxtController = TextEditingController();
 
   @override
   void dispose() {
-    rcpNameController.dispose();
-    rcpDescriptionController.dispose();
-    rcpDurationController.dispose();
+    nameTxtController.dispose();
+    descriptionTxtController.dispose();
 
     super.dispose();
   }
@@ -48,21 +49,33 @@ class _UploadStepOneState extends State<UploadStepOne> {
                   SizedBox(height: size.height * 0.03),
                   RoundedTextField(
                     label: "Enter food name",
-                    fieldController: rcpNameController,
+                    fieldController: nameTxtController,
+                    validatorFunc: (input) =>
+                        uploadController.validateName(input),
                   ),
                   SizedBox(height: size.height * 0.03),
                   Heading(text: "Description", headingType: 3, overflow: false),
                   SizedBox(height: size.height * 0.03),
                   MultiLineTextField(
                     label: "Tell a little about your food.",
-                    fieldController: rcpDescriptionController,
+                    fieldController: descriptionTxtController,
+                    validatorFunction: (input) =>
+                        uploadController.validateDescription(input),
                   ),
                   SizedBox(height: size.height * 0.03),
                   Heading(text: "Duration", headingType: 3, overflow: false),
                   SizedBox(height: size.height * 0.03),
                   CustomSlider(),
                   SizedBox(height: size.height * 0.03),
-                  RoundedButton(text: "Next", onPressed: () {}),
+                  RoundedButton(
+                      text: "Next",
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          print("Valid form");
+                        } else {
+                          print("Invalid form");
+                        }
+                      }),
                 ],
               ),
             ),
