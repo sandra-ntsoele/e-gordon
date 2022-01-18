@@ -19,6 +19,7 @@ class RoundedTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textCapitalization: TextCapitalization.sentences,
       validator: validatorFunc,
       onChanged: onChanged,
       controller: fieldController,

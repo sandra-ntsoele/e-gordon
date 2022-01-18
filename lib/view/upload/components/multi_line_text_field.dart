@@ -20,6 +20,7 @@ class MultiLineTextField extends StatelessWidget {
     return SizedBox(
       height: size.height * 0.2,
       child: TextFormField(
+        textCapitalization: TextCapitalization.sentences,
         validator: validatorFunction,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         controller: fieldController,
