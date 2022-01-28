@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
+import 'components/add_ingredient_section.dart';
 
 class UploadStepTwo extends StatefulWidget {
   const UploadStepTwo({Key? key}) : super(key: key);
@@ -12,40 +15,25 @@ class _UploadStepTwoState extends State<UploadStepTwo> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Form(
-          key: formKey,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                IngredientsSection(),
-                RCPSteps(),
-              ],
+      body: Center(
+        child: SingleChildScrollView(
+          child: Form(
+            key: formKey,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  IngredientsSection(),
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
-  }
-}
-
-class IngredientsSection extends StatelessWidget {
-  const IngredientsSection({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class RCPSteps extends StatelessWidget {
-  const RCPSteps({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
