@@ -7,11 +7,13 @@ class MultiLineTextField extends StatelessWidget {
     required this.label,
     this.fieldController,
     this.validatorFunction,
+    this.onChanged,
   }) : super(key: key);
 
   final String label;
   TextEditingController? fieldController;
   String? Function(String?)? validatorFunction;
+  Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class MultiLineTextField extends StatelessWidget {
         textAlignVertical: TextAlignVertical.top,
         expands: true,
         maxLines: null,
+        onChanged: onChanged,
         decoration: InputDecoration(
           labelText: label,
           labelStyle: const TextStyle(
