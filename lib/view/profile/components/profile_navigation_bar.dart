@@ -24,6 +24,7 @@ class ProfileNavigationBar extends StatelessWidget {
           label: "Profile",
         ),
       ],
+      currentIndex: 1,
       selectedItemColor: primaryColour,
       selectedLabelStyle: const TextStyle(
         fontWeight: FontWeight.bold,
