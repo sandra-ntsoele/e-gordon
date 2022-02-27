@@ -1,4 +1,5 @@
 import 'package:e_gordon/view/constants.dart';
+import 'package:e_gordon/view/upload/components/app_bar.dart';
 import 'package:e_gordon/view/upload/recipe.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -27,6 +28,10 @@ class _UploadStepTwoState extends State<UploadStepTwo> {
     print(widget.recipe.name);
 
     return Scaffold(
+      appBar: CustomAppBar(
+        appBar: AppBar(),
+        index: 2,
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: Form(
