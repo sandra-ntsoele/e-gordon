@@ -2,8 +2,10 @@ import 'package:e_gordon/controller/upload_controller.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/upload/recipe.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
+import 'components/image_picker.dart';
 import 'components/multi_line_text_field.dart';
 import 'components/rounded_text_field.dart';
 
@@ -43,6 +45,9 @@ class _UploadStepOneState extends State<UploadStepOne> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: size.height * 0.03),
+            ImagePicker(size: size),
+            SizedBox(height: size.height * 0.03),
             Heading(text: "Food Name", headingType: 3, overflow: false),
             SizedBox(height: size.height * 0.03),
             RoundedTextField(
