@@ -1,13 +1,14 @@
-import 'package:e_gordon/view/components/text_components/paragraph.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final AppBar appBar;
+  const CustomAppBar({
+    Key? key,
+    required this.appBar,
+    required this.index,
+  }) : super(key: key);
 
-  const CustomAppBar({Key? key, required this.appBar, required this.index})
-      : super(key: key);
+  final AppBar appBar;
   final int index;
 
   @override
@@ -15,42 +16,46 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     Size size = MediaQuery.of(context).size;
 
     return AppBar(
-      foregroundColor: const Color.fromRGBO(44, 44, 44, 1),
+      foregroundColor: mainTextColour,
       backgroundColor: Colors.white,
-      leading: Padding(
-        padding: const EdgeInsets.only(left: 0),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 25),
-          child: GestureDetector(
-            child: const Text(
-              "Cancel",
-              style: TextStyle(
-                height: 3,
-                fontWeight: FontWeight.bold,
-                color: Colors.red,
-              ),
-            ),
-            onTap: () => Navigator.pop(context),
-          ),
-        ),
-      ),
-      leadingWidth: size.width * 0.3,
-      actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 25),
-          child: Text(
-            "${index}/2",
-            style: const TextStyle(
-              height: 3,
-              fontWeight: FontWeight.bold,
-              color: mainTextColour,
-            ),
-          ),
-        ),
-      ],
+      leading: cancelButton(context),
+      leadingWidth: size.width * 0.2,
+      actions: [stepTracker(index)],
     );
   }
 
   @override
   Size get preferredSize => new Size.fromHeight(appBar.preferredSize.height);
+
+  Widget cancelButton(context) {
+    return GestureDetector(
+      child: const Padding(
+        padding: EdgeInsets.only(left: 25),
+        child: Text(
+          "Cancel",
+          style: TextStyle(
+            height: 3,
+            color: Colors.red,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      onTap: () => Navigator.pop(context),
+    );
+  }
+
+  Widget stepTracker(index) {
+    int currentStep = index + 1;
+
+    return Padding(
+      padding: const EdgeInsets.only(right: 25),
+      child: Text(
+        "$currentStep/2",
+        style: const TextStyle(
+          height: 3,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
 }
