@@ -2,7 +2,6 @@ import 'package:e_gordon/controller/upload_controller.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/upload/recipe.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 import 'components/image_picker.dart';
@@ -65,7 +64,26 @@ class _UploadStepOneState extends State<UploadStepOne> {
                   uploadController.validateDescription(input),
             ),
             SizedBox(height: size.height * 0.03),
-            Heading(text: "Duration", headingType: 3, overflow: false),
+            RichText(
+              text: const TextSpan(
+                text: "Duration ",
+                style: TextStyle(
+                  color: mainTextColour,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  height: 1.5,
+                ),
+                children: [
+                  TextSpan(
+                    text: "(in minutes)",
+                    style: TextStyle(
+                      color: outlineColour,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             SizedBox(height: size.height * 0.03),
             Slider(
               value: _currentSliderValue,
