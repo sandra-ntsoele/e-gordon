@@ -1,5 +1,6 @@
 import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/upload/components/app_bar.dart';
+import 'package:e_gordon/view/upload/upload_step_one.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
@@ -22,12 +23,16 @@ class _UploadScreenState extends State<UploadScreen> {
 
     return Scaffold(
       appBar: CustomAppBar(appBar: AppBar(), index: index),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _uploadScreenStack(),
-          _navigationButtons(size),
-        ],
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _uploadScreenStack(),
+              _navigationButtons(size),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -84,11 +89,9 @@ class _UploadScreenState extends State<UploadScreen> {
     return IndexedStack(
       index: index,
       children: [
+        UploadStepOne(),
         Center(
-          child: Text("Step 1"),
-        ),
-        Center(
-          child: Text("Step 2"),
+          child: Text("Step Two"),
         )
       ],
     );
