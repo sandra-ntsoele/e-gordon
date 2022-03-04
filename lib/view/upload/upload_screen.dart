@@ -65,9 +65,6 @@ class _UploadScreenState extends State<UploadScreen> {
                 builder: (BuildContext context) =>
                     const CustomAlert(message: "You did not complete the form"),
               );
-
-              print("name status: $name");
-              print("desc. status: $description");
             }
           });
         },
