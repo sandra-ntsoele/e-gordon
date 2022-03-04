@@ -1,16 +1,15 @@
+import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/constants.dart';
-import 'package:e_gordon/view/upload/components/app_bar.dart';
 import 'package:e_gordon/view/upload/recipe.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
-
-import 'components/add_ingredient_section.dart';
-import 'components/recipe_steps.dart';
+import 'components/add_ingredients_list_view.dart';
 
 class UploadStepTwo extends StatefulWidget {
   final Recipe recipe;
 
-  UploadStepTwo({
+  const UploadStepTwo({
     Key? key,
     required this.recipe,
   }) : super(key: key);
@@ -25,37 +24,30 @@ class _UploadStepTwoState extends State<UploadStepTwo> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    print(widget.recipe.name);
 
-    return Scaffold(
-      appBar: CustomAppBar(
-        appBar: AppBar(),
-        index: 2,
-      ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Form(
-            key: formKey,
+    return Form(
+      key: formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25),
-                  child: IngredientsSection(),
+                SizedBox(height: size.height * 0.03),
+                Heading(
+                  text: "Ingredients",
+                  headingType: 2,
+                  overflow: false,
                 ),
-                Divider(
-                  height: size.height * 0.1,
-                  color: outlineColour,
-                  thickness: 5,
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25),
-                  child: RecipeSteps(),
-                )
+                SizedBox(height: size.height * 0.015),
+                const IngredientsListView(),
               ],
             ),
           ),
-        ),
+          Divider(thickness: 5, color: Colors.grey.shade100, height: 50),
+        ],
       ),
     );
   }
