@@ -1,3 +1,4 @@
+import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/profile/profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: GoogleFonts.inter().fontFamily,
+        scrollbarTheme: ScrollbarThemeData(
+          thumbColor: MaterialStateProperty.all(outlineColour),
+          radius: const Radius.circular(100),
+        ),
       ),
       home: Scaffold(
         body: user == null ? const OnboardingScreen() : const MyProfile(),
