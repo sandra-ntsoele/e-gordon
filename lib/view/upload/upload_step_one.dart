@@ -9,7 +9,14 @@ import 'components/multi_line_text_field.dart';
 import 'components/rounded_text_field.dart';
 
 class UploadStepOne extends StatefulWidget {
-  const UploadStepOne({Key? key}) : super(key: key);
+  final ValueChanged onDescriptionChange;
+  final ValueChanged onNameChange;
+
+  UploadStepOne({
+    Key? key,
+    required this.onDescriptionChange,
+    required this.onNameChange,
+  }) : super(key: key);
 
   @override
   State<UploadStepOne> createState() => _UploadStepOneState();
@@ -53,6 +60,17 @@ class _UploadStepOneState extends State<UploadStepOne> {
               label: "Enter food name",
               fieldController: nameTxtController,
               validatorFunc: (input) => uploadController.validateName(input),
+              onChanged: (value) {
+                bool formIsValid = formKey.currentState!.validate();
+
+                if (value.isNotEmpty) {
+                  formIsValid
+                      ? widget.onNameChange(true)
+                      : widget.onNameChange(false);
+                } else {
+                  widget.onNameChange(false);
+                }
+              },
             ),
             SizedBox(height: size.height * 0.03),
             Heading(text: "Description", headingType: 3, overflow: false),
@@ -62,6 +80,17 @@ class _UploadStepOneState extends State<UploadStepOne> {
               fieldController: descriptionTxtController,
               validatorFunction: (input) =>
                   uploadController.validateDescription(input),
+              onChanged: (value) {
+                bool formIsValid = formKey.currentState!.validate();
+
+                if (value.isNotEmpty) {
+                  formIsValid
+                      ? widget.onDescriptionChange(true)
+                      : widget.onDescriptionChange(true);
+                } else {
+                  widget.onDescriptionChange(false);
+                }
+              },
             ),
             SizedBox(height: size.height * 0.03),
             RichText(

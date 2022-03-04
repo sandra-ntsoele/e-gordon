@@ -1,4 +1,3 @@
-import 'package:e_gordon/controller/validator.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:flutter/material.dart';
 
