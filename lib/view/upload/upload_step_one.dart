@@ -12,7 +12,7 @@ class UploadStepOne extends StatefulWidget {
   final ValueChanged onDescriptionChange;
   final ValueChanged onNameChange;
 
-  UploadStepOne({
+  const UploadStepOne({
     Key? key,
     required this.onDescriptionChange,
     required this.onNameChange,
@@ -61,12 +61,8 @@ class _UploadStepOneState extends State<UploadStepOne> {
               fieldController: nameTxtController,
               validatorFunc: (input) => uploadController.validateName(input),
               onChanged: (value) {
-                bool formIsValid = formKey.currentState!.validate();
-
                 if (value.isNotEmpty) {
-                  formIsValid
-                      ? widget.onNameChange(true)
-                      : widget.onNameChange(false);
+                  widget.onNameChange(true);
                 } else {
                   widget.onNameChange(false);
                 }
@@ -81,12 +77,8 @@ class _UploadStepOneState extends State<UploadStepOne> {
               validatorFunction: (input) =>
                   uploadController.validateDescription(input),
               onChanged: (value) {
-                bool formIsValid = formKey.currentState!.validate();
-
                 if (value.isNotEmpty) {
-                  formIsValid
-                      ? widget.onDescriptionChange(true)
-                      : widget.onDescriptionChange(true);
+                  widget.onDescriptionChange(true);
                 } else {
                   widget.onDescriptionChange(false);
                 }
