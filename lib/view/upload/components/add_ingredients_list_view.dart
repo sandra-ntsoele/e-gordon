@@ -13,7 +13,7 @@ class IngredientsListView extends StatefulWidget {
 }
 
 class _IngredientsListViewState extends State<IngredientsListView> {
-  List additionalInputFields = [];
+  List inputFieldList = [];
   ScrollController scrollController = ScrollController();
 
   @override
@@ -24,36 +24,7 @@ class _IngredientsListViewState extends State<IngredientsListView> {
       children: [
         SizedBox(
           height: 200,
-          child: Scrollbar(
-            child: additionalInputFields.isEmpty
-                ? Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          "assets/images/empty-state-greyscale.png",
-                          width: 125,
-                        ),
-                        const Paragraph(
-                          text: "Start adding ingredients",
-                          paragraphType: 2,
-                        ),
-                      ],
-                    ),
-                  )
-                : Scrollbar(
-                    isAlwaysShown: true,
-                    controller: scrollController,
-                    child: ListView.builder(
-                      controller: scrollController,
-                      reverse: true,
-                      itemCount: additionalInputFields.length,
-                      itemBuilder: (context, int index) {
-                        return additionalInputFields[index];
-                      },
-                    ),
-                  ),
-          ),
+          child: inputFieldList.isEmpty ? emptyState() : listViewBuilder(),
         ),
         SizedBox(height: size.height * 0.01),
         const Divider(
@@ -68,13 +39,46 @@ class _IngredientsListViewState extends State<IngredientsListView> {
     );
   }
 
+  Scrollbar listViewBuilder() {
+    return Scrollbar(
+      isAlwaysShown: true,
+      controller: scrollController,
+      child: ListView.builder(
+        controller: scrollController,
+        reverse: true,
+        itemCount: inputFieldList.length,
+        itemBuilder: (context, int index) {
+          return inputFieldList[index];
+        },
+      ),
+    );
+  }
+
+  Center emptyState() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            "assets/images/empty-state-greyscale.png",
+            width: 125,
+          ),
+          const Paragraph(
+            text: "Start adding ingredients",
+            paragraphType: 2,
+          ),
+        ],
+      ),
+    );
+  }
+
   Padding addIngredientButton(Size size) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: TextButton.icon(
         onPressed: () {
           setState(() {
-            additionalInputFields.add(_inputField(size));
+            inputFieldList.add(_inputField(size));
           });
         },
         icon: const Icon(
