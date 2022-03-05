@@ -8,12 +8,18 @@ import 'package:file_picker/file_picker.dart';
 
 import 'circular_icon_button.dart';
 
-class RecipeSteps extends StatelessWidget {
-  const RecipeSteps({Key? key}) : super(key: key);
+class RecipeMethods extends StatefulWidget {
+  RecipeMethods({Key? key}) : super(key: key);
+
+  @override
+  State<RecipeMethods> createState() => _RecipeMethodsState();
+}
+
+class _RecipeMethodsState extends State<RecipeMethods> {
+  final List listOfSteps = [];
 
   @override
   Widget build(BuildContext context) {
-    int counter = 1;
     Size size = MediaQuery.of(context).size;
 
     return Column(
@@ -25,27 +31,13 @@ class RecipeSteps extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              child: Column(
-                /* Input TextField + add image button */
-                children: [
-                  MultiLineTextField(
-                    label: "Describe step $counter of preparation",
-                  ),
-                  // Add image button
-                  SizedBox(
-                    width: size.width,
-                    child: OutlinedButton(
-                      onPressed: () async {
-                        final result = await FilePicker.platform.pickFiles();
-                      },
-                      child: const Icon(
-                        Icons.camera_alt_rounded,
-                        color: mainTextColour,
-                      ),
-                    ),
-                  )
-                ],
+            Flexible(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: listOfSteps.length,
+                itemBuilder: (context, index) {
+                  return listOfSteps[index];
+                },
               ),
             ),
             SizedBox(width: size.height * 0.02),
@@ -72,6 +64,41 @@ class RecipeSteps extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+}
+
+class MethodInputField extends StatelessWidget {
+  const MethodInputField({Key? key}) : super(key: key);
+
+  final int counter = 1;
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
+    return Expanded(
+      child: Column(
+        /* Input TextField + add image button */
+        children: [
+          MultiLineTextField(
+            label: "Describe step $counter of preparation",
+          ),
+          // Add image button
+          SizedBox(
+            width: size.width,
+            child: OutlinedButton(
+              onPressed: () async {
+                final result = await FilePicker.platform.pickFiles();
+              },
+              child: const Icon(
+                Icons.camera_alt_rounded,
+                color: mainTextColour,
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

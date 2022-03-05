@@ -1,6 +1,6 @@
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/constants.dart';
-import 'package:e_gordon/view/upload/components/recipe_steps.dart';
+import 'package:e_gordon/view/upload/components/recipe_methods.dart';
 import 'package:e_gordon/view/upload/recipe.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -42,9 +42,9 @@ class _UploadStepTwoState extends State<UploadStepTwo> {
             height: size.height * 0.02,
           ),
           /* Recipe Steps */
-          const Padding(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-            child: RecipeSteps(),
+            child: RecipeMethods(),
           ),
         ],
       ),
