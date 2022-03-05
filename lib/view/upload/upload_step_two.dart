@@ -36,7 +36,16 @@ class _UploadStepTwoState extends State<UploadStepTwo> {
             padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
             child: IngredientsListView(),
           ),
-          Divider(thickness: 5, color: Colors.grey.shade100, height: 25),
+          Divider(
+            thickness: 5,
+            color: Colors.grey.shade100,
+            height: size.height * 0.02,
+          ),
+          /* Recipe Steps */
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+            child: RecipeSteps(),
+          ),
         ],
       ),
     );

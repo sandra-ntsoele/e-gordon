@@ -29,16 +29,12 @@ class _IngredientsListViewState extends State<IngredientsListView> {
           headingType: 2,
           overflow: false,
         ),
-        SizedBox(height: size.height * 0.03),
+        SizedBox(height: size.height * 0.02),
         SizedBox(
           height: 200,
           child: inputFieldList.isEmpty ? emptyState() : listViewBuilder(),
         ),
-        SizedBox(height: size.height * 0.01),
-        const Divider(
-          thickness: 0,
-          color: Colors.transparent,
-        ),
+        SizedBox(height: size.height * 0.02),
         SizedBox(
           width: size.width,
           child: addIngredientButton(size),
