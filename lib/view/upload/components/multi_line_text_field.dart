@@ -20,7 +20,7 @@ class MultiLineTextField extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return SizedBox(
-      height: size.height * 0.2,
+      height: size.height * 0.16,
       child: TextFormField(
         textCapitalization: TextCapitalization.sentences,
         validator: validatorFunction,
@@ -31,6 +31,7 @@ class MultiLineTextField extends StatelessWidget {
         expands: true,
         maxLines: null,
         onChanged: onChanged,
+        style: TextStyle(fontSize: 13),
         decoration: InputDecoration(
           labelText: label,
           labelStyle: const TextStyle(
