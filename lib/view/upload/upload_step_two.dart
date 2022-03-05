@@ -1,5 +1,6 @@
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/constants.dart';
+import 'package:e_gordon/view/upload/components/recipe_steps.dart';
 import 'package:e_gordon/view/upload/recipe.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -30,23 +31,12 @@ class _UploadStepTwoState extends State<UploadStepTwo> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: size.height * 0.03),
-                Heading(
-                  text: "Ingredients",
-                  headingType: 2,
-                  overflow: false,
-                ),
-                SizedBox(height: size.height * 0.015),
-                const IngredientsListView(),
-              ],
-            ),
+          /* Add Ingredients */
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+            child: IngredientsListView(),
           ),
-          Divider(thickness: 5, color: Colors.grey.shade100, height: 50),
+          Divider(thickness: 5, color: Colors.grey.shade100, height: 25),
         ],
       ),
     );

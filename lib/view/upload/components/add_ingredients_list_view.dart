@@ -1,3 +1,4 @@
+import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/components/text_components/paragraph.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/upload/components/rounded_text_field.dart';
@@ -21,7 +22,14 @@ class _IngredientsListViewState extends State<IngredientsListView> {
     Size size = MediaQuery.of(context).size;
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Heading(
+          text: "Ingredients",
+          headingType: 2,
+          overflow: false,
+        ),
+        SizedBox(height: size.height * 0.03),
         SizedBox(
           height: 200,
           child: inputFieldList.isEmpty ? emptyState() : listViewBuilder(),
