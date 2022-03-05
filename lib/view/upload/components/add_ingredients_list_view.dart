@@ -1,3 +1,4 @@
+import 'package:e_gordon/view/components/text_components/paragraph.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/upload/components/rounded_text_field.dart';
 import 'package:flutter/material.dart';
@@ -23,13 +24,29 @@ class _IngredientsListViewState extends State<IngredientsListView> {
         SizedBox(
           height: 200,
           child: Scrollbar(
-            child: ListView.builder(
-              reverse: true,
-              itemCount: additionalInputFields.length,
-              itemBuilder: (context, int index) {
-                return additionalInputFields[index];
-              },
-            ),
+            child: additionalInputFields.isEmpty
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/images/empty-state-greyscale.png",
+                          width: 125,
+                        ),
+                        const Paragraph(
+                          text: "Start adding ingredients",
+                          paragraphType: 2,
+                        ),
+                      ],
+                    ),
+                  )
+                : ListView.builder(
+                    reverse: true,
+                    itemCount: additionalInputFields.length,
+                    itemBuilder: (context, int index) {
+                      return additionalInputFields[index];
+                    },
+                  ),
           ),
         ),
         SizedBox(height: size.height * 0.01),
