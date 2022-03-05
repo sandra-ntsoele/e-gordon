@@ -85,17 +85,17 @@ class _IngredientsListViewState extends State<IngredientsListView> {
             inputFieldList.add(_inputField(size));
           });
         },
-        icon: const Icon(
+        icon: Icon(
           Icons.add,
-          size: 25,
+          size: size.height * 0.025,
           color: mainTextColour,
         ),
-        label: const Text(
+        label: Text(
           "INGREDIENT",
           style: TextStyle(
             color: mainTextColour,
             fontWeight: FontWeight.w600,
-            fontSize: 15,
+            fontSize: size.height * 0.018,
           ),
         ),
         style: TextButton.styleFrom(
