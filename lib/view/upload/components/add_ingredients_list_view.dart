@@ -14,6 +14,7 @@ class IngredientsListView extends StatefulWidget {
 
 class _IngredientsListViewState extends State<IngredientsListView> {
   List additionalInputFields = [];
+  ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +41,17 @@ class _IngredientsListViewState extends State<IngredientsListView> {
                       ],
                     ),
                   )
-                : ListView.builder(
-                    reverse: true,
-                    itemCount: additionalInputFields.length,
-                    itemBuilder: (context, int index) {
-                      return additionalInputFields[index];
-                    },
+                : Scrollbar(
+                    isAlwaysShown: true,
+                    controller: scrollController,
+                    child: ListView.builder(
+                      controller: scrollController,
+                      reverse: true,
+                      itemCount: additionalInputFields.length,
+                      itemBuilder: (context, int index) {
+                        return additionalInputFields[index];
+                      },
+                    ),
                   ),
           ),
         ),
