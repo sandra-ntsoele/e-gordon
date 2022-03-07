@@ -1,7 +1,6 @@
-import 'dart:io';
-
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/constants.dart';
+import 'package:e_gordon/view/upload/components/empty_state.dart';
 import 'package:e_gordon/view/upload/components/multi_line_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
@@ -17,6 +16,8 @@ class RecipeMethods extends StatefulWidget {
 
 class _RecipeMethodsState extends State<RecipeMethods> {
   final List listOfSteps = [];
+  final List prepMethodCards = [];
+  final ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +33,22 @@ class _RecipeMethodsState extends State<RecipeMethods> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Flexible(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: listOfSteps.length,
-                itemBuilder: (context, index) {
-                  return listOfSteps[index];
-                },
+              child: SizedBox(
+                height: 180,
+                child: listOfSteps.isEmpty
+                    ? EmptyState(stateLabel: "Start adding instructions")
+                    : Scrollbar(
+                        isAlwaysShown: true,
+                        controller: scrollController,
+                        child: ListView.builder(
+                          controller: scrollController,
+                          shrinkWrap: true,
+                          itemCount: listOfSteps.length,
+                          itemBuilder: (context, index) {
+                            return listOfSteps[index];
+                          },
+                        ),
+                      ),
               ),
             ),
             SizedBox(width: size.height * 0.02),
