@@ -1,6 +1,7 @@
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/components/text_components/paragraph.dart';
 import 'package:e_gordon/view/constants.dart';
+import 'package:e_gordon/view/upload/components/empty_state.dart';
 import 'package:e_gordon/view/upload/components/rounded_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,9 @@ class _IngredientsListViewState extends State<IngredientsListView> {
         SizedBox(height: size.height * 0.02),
         SizedBox(
           height: 200,
-          child: inputFieldList.isEmpty ? emptyState() : listViewBuilder(),
+          child: inputFieldList.isEmpty
+              ? const EmptyState(stateLabel: "Start adding ingredients")
+              : listViewBuilder(),
         ),
         SizedBox(height: size.height * 0.02),
         SizedBox(
@@ -54,24 +57,6 @@ class _IngredientsListViewState extends State<IngredientsListView> {
         itemBuilder: (context, int index) {
           return inputFieldList[index];
         },
-      ),
-    );
-  }
-
-  Center emptyState() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            "assets/images/empty-state-greyscale.png",
-            width: 125,
-          ),
-          const Paragraph(
-            text: "Start adding ingredients",
-            paragraphType: 2,
-          ),
-        ],
       ),
     );
   }
