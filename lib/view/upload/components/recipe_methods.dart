@@ -43,20 +43,31 @@ class _RecipeMethodsState extends State<RecipeMethods> {
             SizedBox(width: size.height * 0.02),
             /* Side buttons to add/remove a step */
             Column(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                /* Button ADDS new input field */
                 CircularIconButton(
                   icon: const Icon(Icons.add),
                   bgColour: mainTextColour,
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      listOfSteps.add(const MethodInputField());
+                    });
+                  },
                   iconColour: Colors.white,
                 ),
                 SizedBox(
                   height: size.height * 0.015,
                 ),
+                /* Button REMOVES input field */
                 CircularIconButton(
                   icon: const Icon(Icons.remove),
                   bgColour: outlineColour,
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      listOfSteps.removeLast();
+                    });
+                  },
                   iconColour: Colors.white,
                 )
               ],
@@ -77,28 +88,27 @@ class MethodInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Expanded(
-      child: Column(
-        /* Input TextField + add image button */
-        children: [
-          MultiLineTextField(
-            label: "Describe step $counter of preparation",
-          ),
-          // Add image button
-          SizedBox(
-            width: size.width,
-            child: OutlinedButton(
-              onPressed: () async {
-                final result = await FilePicker.platform.pickFiles();
-              },
-              child: const Icon(
-                Icons.camera_alt_rounded,
-                color: mainTextColour,
-              ),
+    return Column(
+      /* Input TextField + add image button */
+      children: [
+        SizedBox(height: size.height * 0.01),
+        MultiLineTextField(
+          label: "Describe step $counter of preparation",
+        ),
+        // Add image button
+        SizedBox(
+          width: size.width,
+          child: OutlinedButton(
+            onPressed: () async {
+              final result = await FilePicker.platform.pickFiles();
+            },
+            child: const Icon(
+              Icons.camera_alt_rounded,
+              color: mainTextColour,
             ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }
