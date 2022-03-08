@@ -2,6 +2,7 @@ import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/upload/components/empty_state.dart';
 import 'package:e_gordon/view/upload/components/multi_line_text_field.dart';
+import 'package:e_gordon/view/upload/components/prep_method_card.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 
@@ -18,6 +19,7 @@ class _RecipeMethodsState extends State<RecipeMethods> {
   final List listOfSteps = [];
   final List prepMethodCards = [];
   final ScrollController scrollController = ScrollController();
+  int methodCounter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class _RecipeMethodsState extends State<RecipeMethods> {
             Flexible(
               child: SizedBox(
                 height: 180,
-                child: listOfSteps.isEmpty
+                child: prepMethodCards.isEmpty
                     ? EmptyState(stateLabel: "Start adding instructions")
                     : Scrollbar(
                         isAlwaysShown: true,
@@ -43,9 +45,9 @@ class _RecipeMethodsState extends State<RecipeMethods> {
                         child: ListView.builder(
                           controller: scrollController,
                           shrinkWrap: true,
-                          itemCount: listOfSteps.length,
+                          itemCount: prepMethodCards.length,
                           itemBuilder: (context, index) {
-                            return listOfSteps[index];
+                            return prepMethodCards[index];
                           },
                         ),
                       ),
@@ -61,8 +63,10 @@ class _RecipeMethodsState extends State<RecipeMethods> {
                   icon: const Icon(Icons.add),
                   bgColour: mainTextColour,
                   onPressed: () {
+                    methodCounter++;
                     setState(() {
-                      listOfSteps.add(const MethodInputField());
+                      // listOfSteps.add(const MethodInputField());
+                      prepMethodCards.add(PreparationMethodCard(methodCounter));
                     });
                   },
                   iconColour: Colors.white,
@@ -75,8 +79,12 @@ class _RecipeMethodsState extends State<RecipeMethods> {
                   icon: const Icon(Icons.remove),
                   bgColour: outlineColour,
                   onPressed: () {
+                    methodCounter--;
                     setState(() {
-                      listOfSteps.removeLast();
+                      // listOfSteps.removeLast();
+                      prepMethodCards.isNotEmpty
+                          ? prepMethodCards.removeLast()
+                          : null;
                     });
                   },
                   iconColour: Colors.white,
