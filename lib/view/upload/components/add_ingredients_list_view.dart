@@ -1,9 +1,10 @@
 import 'package:e_gordon/view/components/text_components/heading.dart';
-import 'package:e_gordon/view/components/text_components/paragraph.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/upload/components/empty_state.dart';
-import 'package:e_gordon/view/upload/components/rounded_text_field.dart';
+import 'package:e_gordon/view/upload/components/ingredient_input_group.dart';
 import 'package:flutter/material.dart';
+
+import 'circular_icon_button.dart';
 
 class IngredientsListView extends StatefulWidget {
   const IngredientsListView({
@@ -15,7 +16,7 @@ class IngredientsListView extends StatefulWidget {
 }
 
 class _IngredientsListViewState extends State<IngredientsListView> {
-  List inputFieldList = [];
+  List inputGroupList = [];
   ScrollController scrollController = ScrollController();
 
   @override
@@ -27,94 +28,66 @@ class _IngredientsListViewState extends State<IngredientsListView> {
       children: [
         Heading(
           text: "Ingredients",
-          headingType: 2,
+          headingType: 3,
           overflow: false,
         ),
-        SizedBox(height: size.height * 0.02),
         SizedBox(
-          height: 200,
-          child: inputFieldList.isEmpty
+          height: size.height * 0.25,
+          child: inputGroupList.isEmpty
               ? const EmptyState(stateLabel: "Start adding ingredients")
-              : listViewBuilder(),
+              : Scrollbar(
+                  isAlwaysShown: true,
+                  controller: scrollController,
+                  child: ListView.builder(
+                    controller: scrollController,
+                    shrinkWrap: true,
+                    itemCount: inputGroupList.length,
+                    itemBuilder: (context, index) {
+                      scrollController.animateTo(
+                        0.0,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeOut,
+                      );
+                      return inputGroupList[index];
+                    },
+                  ),
+                ),
         ),
-        SizedBox(height: size.height * 0.02),
-        SizedBox(
-          width: size.width,
-          child: addIngredientButton(size),
+        SizedBox(width: size.height * 0.02),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            /* Button ADDS new input group */
+            CircularIconButton(
+              icon: const Icon(Icons.add),
+              bgColour: mainTextColour,
+              onPressed: () {
+                setState(() {
+                  var inputGroup = IngredientInputGroup(FocusNode());
+
+                  inputGroupList.add(inputGroup);
+                  inputGroup.focusNode?.requestFocus();
+                });
+              },
+              iconColour: Colors.white,
+            ),
+            SizedBox(width: size.height * 0.015),
+            /* Button REMOVES input group */
+            CircularIconButton(
+              icon: const Icon(Icons.remove),
+              bgColour: outlineColour,
+              onPressed: () {
+                setState(() {
+                  inputGroupList.isNotEmpty
+                      ? inputGroupList.removeLast()
+                      : null;
+                });
+              },
+              iconColour: Colors.white,
+            )
+          ],
         ),
       ],
-    );
-  }
-
-  Scrollbar listViewBuilder() {
-    return Scrollbar(
-      isAlwaysShown: true,
-      controller: scrollController,
-      child: ListView.builder(
-        controller: scrollController,
-        reverse: true,
-        itemCount: inputFieldList.length,
-        itemBuilder: (context, int index) {
-          return inputFieldList[index];
-        },
-      ),
-    );
-  }
-
-  Padding addIngredientButton(Size size) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0),
-      child: TextButton.icon(
-        onPressed: () {
-          setState(() {
-            inputFieldList.add(_inputField(size));
-          });
-        },
-        icon: Icon(
-          Icons.add,
-          size: size.height * 0.025,
-          color: mainTextColour,
-        ),
-        label: Text(
-          "INGREDIENT",
-          style: TextStyle(
-            color: mainTextColour,
-            fontWeight: FontWeight.w600,
-            fontSize: size.height * 0.018,
-          ),
-        ),
-        style: TextButton.styleFrom(
-          padding: const EdgeInsets.all(15),
-          side: const BorderSide(
-            color: outlineColour,
-            style: BorderStyle.solid,
-            width: 1.5,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _inputField(Size size) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-      child: Row(
-        children: [
-          const Icon(
-            Icons.drag_indicator_outlined,
-            color: outlineColour,
-          ),
-          SizedBox(width: size.width * 0.015),
-          Expanded(
-            child: RoundedTextField(
-              label: "Enter ingredient",
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
