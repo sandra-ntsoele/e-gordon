@@ -3,6 +3,8 @@ import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/upload/components/empty_state.dart';
 import 'package:e_gordon/view/upload/components/ingredient_input_group.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter/widgets.dart';
 
 import 'circular_icon_button.dart';
 
@@ -43,11 +45,14 @@ class _IngredientsListViewState extends State<IngredientsListView> {
                     shrinkWrap: true,
                     itemCount: inputGroupList.length,
                     itemBuilder: (context, index) {
-                      scrollController.animateTo(
-                        0.0,
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeOut,
-                      );
+                      SchedulerBinding.instance
+                          ?.addPostFrameCallback((timeStamp) {
+                        scrollController.animateTo(
+                          scrollController.position.maxScrollExtent,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                        );
+                      });
                       return inputGroupList[index];
                     },
                   ),
