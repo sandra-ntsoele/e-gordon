@@ -9,7 +9,7 @@ import 'package:file_picker/file_picker.dart';
 import 'circular_icon_button.dart';
 
 class RecipeMethods extends StatefulWidget {
-  RecipeMethods({Key? key}) : super(key: key);
+  const RecipeMethods({Key? key}) : super(key: key);
 
   @override
   State<RecipeMethods> createState() => _RecipeMethodsState();
@@ -36,9 +36,9 @@ class _RecipeMethodsState extends State<RecipeMethods> {
           children: [
             Flexible(
               child: SizedBox(
-                height: 180,
+                height: size.height * 0.3,
                 child: prepMethodCards.isEmpty
-                    ? EmptyState(stateLabel: "Start adding instructions")
+                    ? const EmptyState(stateLabel: "Start adding instructions")
                     : Scrollbar(
                         isAlwaysShown: true,
                         controller: scrollController,
