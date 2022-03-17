@@ -1,8 +1,11 @@
+import 'package:e_gordon/controller/upload_controller.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/constants.dart';
+import 'package:e_gordon/view/upload/components/custom_text_button.dart';
 import 'package:e_gordon/view/upload/components/empty_state.dart';
 import 'package:e_gordon/view/upload/components/multi_line_text_field.dart';
 import 'package:e_gordon/view/upload/components/prep_method_card.dart';
+import 'package:e_gordon/view/upload/components/recipe_instructions_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 
@@ -19,7 +22,8 @@ class _RecipeMethodsState extends State<RecipeMethods> {
   final List listOfSteps = [];
   final List prepMethodCards = [];
   final ScrollController scrollController = ScrollController();
-  int methodCounter = 0;
+  final UploadController uploadController = UploadController();
+  int instructionCount = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -63,11 +67,14 @@ class _RecipeMethodsState extends State<RecipeMethods> {
                   icon: const Icon(Icons.add),
                   bgColour: mainTextColour,
                   onPressed: () {
-                    methodCounter++;
-                    setState(() {
-                      // listOfSteps.add(const MethodInputField());
-                      prepMethodCards.add(PreparationMethodCard(methodCounter));
-                    });
+                    instructionCount++;
+                    uploadController.showInstructionDialog(
+                        context, instructionCount);
+                    // methodCounter++;
+                    // setState(() {
+                    //   // listOfSteps.add(const MethodInputField());
+                    //   prepMethodCards.add(PreparationMethodCard(methodCounter));
+                    // });
                   },
                   iconColour: Colors.white,
                 ),
@@ -79,7 +86,7 @@ class _RecipeMethodsState extends State<RecipeMethods> {
                   icon: const Icon(Icons.remove),
                   bgColour: outlineColour,
                   onPressed: () {
-                    methodCounter--;
+                    instructionCount--;
                     setState(() {
                       // listOfSteps.removeLast();
                       prepMethodCards.isNotEmpty
