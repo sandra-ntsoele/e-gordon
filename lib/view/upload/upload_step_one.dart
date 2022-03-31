@@ -38,7 +38,6 @@ class _UploadStepOneState extends State<UploadStepOne> {
   }
 
   double _currentSliderValue = 10;
-  Recipe recipe = Recipe();
 
   @override
   Widget build(BuildContext context) {
@@ -120,9 +119,7 @@ class _UploadStepOneState extends State<UploadStepOne> {
                   _currentSliderValue = value;
                 });
               },
-              onChangeEnd: (value) {
-                recipe.duration = value;
-              },
+              onChangeEnd: (value) {},
             ),
           ],
         ),

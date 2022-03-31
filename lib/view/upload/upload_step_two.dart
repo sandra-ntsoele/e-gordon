@@ -1,5 +1,3 @@
-import 'package:e_gordon/view/components/text_components/heading.dart';
-import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/upload/components/recipe_methods.dart';
 import 'package:e_gordon/view/upload/recipe.dart';
 import 'package:flutter/material.dart';
@@ -8,11 +6,8 @@ import 'package:flutter/widgets.dart';
 import 'components/add_ingredients_list_view.dart';
 
 class UploadStepTwo extends StatefulWidget {
-  final Recipe recipe;
-
   const UploadStepTwo({
     Key? key,
-    required this.recipe,
   }) : super(key: key);
 
   @override
@@ -31,7 +26,7 @@ class _UploadStepTwoState extends State<UploadStepTwo> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          /* Add Ingredients */
+          /* Add Ingredients Section */
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
             child: IngredientsListView(),
@@ -41,8 +36,8 @@ class _UploadStepTwoState extends State<UploadStepTwo> {
             color: Colors.grey.shade100,
             height: size.height * 0.02,
           ),
-          /* Recipe Steps */
-          Padding(
+          /* Recipe Instructions Section */
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
             child: RecipeMethods(),
           ),
