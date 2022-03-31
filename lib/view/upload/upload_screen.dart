@@ -3,6 +3,7 @@ import 'package:e_gordon/view/sign_in/components/custom_alert.dart';
 import 'package:e_gordon/view/upload/components/app_bar.dart';
 import 'package:e_gordon/view/upload/recipe.dart';
 import 'package:e_gordon/view/upload/upload_step_one.dart';
+import 'package:e_gordon/view/upload/upload_step_two.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
@@ -17,9 +18,9 @@ class UploadScreen extends StatefulWidget {
 }
 
 class _UploadScreenState extends State<UploadScreen> {
-  int index = 0;
+  int screenIndex = 0;
   final _formKey = GlobalKey<FormState>();
-  Recipe recipe = Recipe();
+  // Recipe recipe = Recipe(name: "snack");
   Map formFieldStatus = {
     "name": false,
     "description": false,
@@ -30,7 +31,8 @@ class _UploadScreenState extends State<UploadScreen> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: CustomAppBar(appBar: AppBar(), index: index),
+      backgroundColor: Colors.white,
+      appBar: CustomAppBar(appBar: AppBar(), index: screenIndex),
       body: Center(
         child: SingleChildScrollView(
           child: Form(
@@ -38,7 +40,20 @@ class _UploadScreenState extends State<UploadScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _uploadScreenStack(),
+                /* A Two-Step Form for uploading a Recipe */
+                IndexedStack(
+                  index: screenIndex,
+                  children: [
+                    UploadStepOne(
+                      onNameChange: (status) =>
+                          formFieldStatus['name'] = status,
+                      onDescriptionChange: (status) =>
+                          formFieldStatus['description'] = status,
+                    ),
+                    UploadStepTwo(),
+                  ],
+                ),
+                /* Navigation buttons */
                 _navigationButtons(size, context),
               ],
             ),
@@ -58,7 +73,7 @@ class _UploadScreenState extends State<UploadScreen> {
 
           setState(() {
             if (name == true && description == true) {
-              index = 1;
+              screenIndex = 1;
             } else {
               showDialog(
                 context: context,
@@ -75,7 +90,7 @@ class _UploadScreenState extends State<UploadScreen> {
         bgColour: Colors.grey.shade100,
         onPressed: () {
           setState(() {
-            index = 0;
+            screenIndex = 0;
           });
         },
         label: "Back",
@@ -90,7 +105,7 @@ class _UploadScreenState extends State<UploadScreen> {
       ),
       child: Row(
         children: [
-          if (index == 0)
+          if (screenIndex == 0)
             Expanded(child: _navigationButtons[0])
           else
             for (var i = 0; i < _navigationButtons.length; i++)
@@ -104,22 +119,6 @@ class _UploadScreenState extends State<UploadScreen> {
               )
         ],
       ),
-    );
-  }
-
-  Widget _uploadScreenStack() {
-    return IndexedStack(
-      index: index,
-      children: [
-        UploadStepOne(
-          onNameChange: (status) => formFieldStatus['name'] = status,
-          onDescriptionChange: (status) =>
-              formFieldStatus['description'] = status,
-        ),
-        const Center(
-          child: Text("Step Two"),
-        )
-      ],
     );
   }
 }
