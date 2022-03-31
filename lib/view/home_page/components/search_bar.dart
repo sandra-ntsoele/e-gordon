@@ -29,7 +29,7 @@ class _SearchBarState extends State<SearchBar> {
     return Expanded(
       flex: 6,
       child: SizedBox(
-        height: size.height * 0.05,
+        height: size.height * 0.08,
         child: TextFormField(
           controller: widget.controller,
           // [START Event handling]
@@ -38,10 +38,10 @@ class _SearchBarState extends State<SearchBar> {
           // [END Event handling]
           // [START Input field styling]
           textCapitalization: TextCapitalization.words,
-          style: const TextStyle(fontSize: 11),
+          style: const TextStyle(fontSize: 12),
           decoration: InputDecoration(
             labelText: "Search",
-            labelStyle: TextStyle(fontSize: 11, color: ColourStyles.outline),
+            labelStyle: TextStyle(fontSize: 12, color: ColourStyles.outline),
             contentPadding: const EdgeInsets.only(top: 0),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(50),
