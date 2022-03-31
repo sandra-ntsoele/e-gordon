@@ -8,19 +8,21 @@ class MultiLineTextField extends StatelessWidget {
     this.fieldController,
     this.validatorFunction,
     this.onChanged,
+    this.height,
   }) : super(key: key);
 
   final String label;
   TextEditingController? fieldController;
   String? Function(String?)? validatorFunction;
   Function(String)? onChanged;
+  final height;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
     return SizedBox(
-      height: size.height * 0.16,
+      height: height ?? size.height * 0.16,
       child: TextFormField(
         textCapitalization: TextCapitalization.sentences,
         validator: validatorFunction,
@@ -31,7 +33,7 @@ class MultiLineTextField extends StatelessWidget {
         expands: true,
         maxLines: null,
         onChanged: onChanged,
-        style: TextStyle(fontSize: 13),
+        style: const TextStyle(fontSize: 13),
         decoration: InputDecoration(
           labelText: label,
           labelStyle: const TextStyle(
