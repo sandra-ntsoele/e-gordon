@@ -9,8 +9,6 @@ class ProfileController {
   void viewProfile() {}
 
   void getUploadScreen(context) {
-    Recipe recipe = Recipe();
-
     Navigator.push(
       context,
       MaterialPageRoute(

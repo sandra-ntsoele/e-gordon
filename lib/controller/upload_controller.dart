@@ -22,7 +22,7 @@ class UploadController {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (builder) => UploadStepTwo(recipe: recipe),
+        builder: (builder) => UploadStepTwo(),
       ),
     );
   }
