@@ -18,13 +18,15 @@ class ProfileNavigationBar extends StatelessWidget {
           label: "Upload",
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.person,
-          ),
+          icon: Icon(null),
+          label: "Home",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
           label: "Profile",
         ),
       ],
-      currentIndex: 1,
+      currentIndex: 2,
       selectedItemColor: primaryColour,
       selectedLabelStyle: const TextStyle(
         fontWeight: FontWeight.bold,
