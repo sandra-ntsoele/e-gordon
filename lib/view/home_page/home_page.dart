@@ -1,8 +1,10 @@
-import 'package:e_gordon/view/constants.dart';
-import 'package:e_gordon/view/profile/components/recipe_card.dart';
+import 'package:e_gordon/view/components/text_components/heading.dart';
+import 'package:e_gordon/view/home_page/components/category_chip_builder.dart';
+import 'package:e_gordon/view/home_page/home_page_controller.dart';
 import 'package:e_gordon/view/styles.dart';
-import 'package:e_gordon/view/upload/recipe.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 
 import 'components/search_bar.dart';
 
@@ -17,7 +19,8 @@ class _HomePageState extends State<HomePage> {
   FocusNode focusNode = FocusNode();
   bool fieldIsTapped = false;
   final searchBarController = TextEditingController();
-  LayoutStyles styles = LayoutStyles();
+  final HomePageController homePageController = HomePageController();
+  int selectedCategory = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -37,43 +40,72 @@ class _HomePageState extends State<HomePage> {
                 border: Border(
                   bottom: BorderSide(
                     color: ColourStyles.lightGray,
-                    width: size.width * 0.03,
+                    width: size.width * 0.02,
                   ),
                 ),
               ),
-              child: Row(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (fieldIsTapped)
-                    // [START Search box back/return button]
-                    BackButton(
-                      onPressed: () => setState(() {
-                        fieldIsTapped = false;
-                        FocusScope.of(context).requestFocus(focusNode);
-                      }),
-                      color: ColourStyles.mainText,
-                    ), // [END Search box back/return button]
-                  // [START Search box/field]
-                  SearchBar(
-                    controller: searchBarController,
-                    fieldIsTapped: fieldIsTapped,
-                    onTap: () => setState(() {
-                      fieldIsTapped = true;
-                    }),
-                    onEditingComplete: () => setState(() {
-                      fieldIsTapped = false;
-                      FocusScope.of(context).requestFocus(focusNode);
-                    }),
-                    suffixIcon: IconButton(
-                      onPressed: () =>
-                          setState(() => searchBarController.text = ''),
-                      icon: Icon(
-                        Icons.cancel,
-                        size: 15,
-                        color: ColourStyles.mainText,
+                  Row(
+                    children: [
+                      if (fieldIsTapped)
+                        // [START Search box back/return button]
+                        BackButton(
+                          onPressed: () => setState(() {
+                            fieldIsTapped = false;
+                            FocusScope.of(context).requestFocus(focusNode);
+                          }),
+                          color: ColourStyles.mainText,
+                        ), // [END Search box back/return button]
+
+                      // [START Search box/field]
+                      SearchBar(
+                        controller: searchBarController,
+                        fieldIsTapped: fieldIsTapped,
+                        onTap: () => setState(() {
+                          fieldIsTapped = true;
+                        }),
+                        onEditingComplete: () => setState(() {
+                          fieldIsTapped = false;
+                          FocusScope.of(context).requestFocus(focusNode);
+                        }),
+                        suffixIcon: IconButton(
+                          onPressed: () =>
+                              setState(() => searchBarController.text = ''),
+                          icon: Icon(
+                            Icons.cancel,
+                            size: 15,
+                            color: ColourStyles.mainText,
+                          ),
+                        ),
                       ),
-                    ),
+                      // [END Search box/field]
+                    ],
                   ),
-                  // [END Search box/field]
+                  // [START Category Chips]
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: size.height * 0.01),
+                      Heading(
+                        text: "Category",
+                        headingType: 3,
+                        overflow: false,
+                      ),
+                      SizedBox(height: size.height * 0.01),
+                      CategoryChipBuilder(
+                        // TODO: Change "filter" value on chip press,
+                        onSelected: (choice) {
+                          setState(() {
+                            homePageController.selectedCategoryIndex = choice;
+                            // print(choice);
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                  // [END Category Chips]
                 ],
               ),
             ),
@@ -88,48 +120,11 @@ class _HomePageState extends State<HomePage> {
                     FocusScope.of(context).requestFocus(focusNode);
                   });
                 },
-                child: GridView.count(
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 15,
-                  children: Recipe.samples.asMap().entries.map((recipe) {
-                    int index = recipe.key;
-                    String name = Recipe.samples[index].name;
-                    String category = Recipe.samples[index].category;
-                    double duration = Recipe.samples[index].duration;
-                    String imageUrl = Recipe.samples[index].imageUrl;
-
-                    return RecipeCard(
-                      recipe: name,
-                      category: category,
-                      duration: duration,
-                      imageUrl: imageUrl,
-                    );
-                  }).toList(),
-                ),
+                child: homePageController.recipeCardGrid(selectedCategory),
               ),
             )
           ],
         ),
-      ),
-    );
-  }
-}
-
-class SuffixIcon extends StatelessWidget {
-  const SuffixIcon({Key? key, required this.onPressed}) : super(key: key);
-
-  final Function onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () => onPressed,
-      icon: const Icon(
-        Icons.cancel,
-        size: 15,
-        color: mainTextColour,
       ),
     );
   }

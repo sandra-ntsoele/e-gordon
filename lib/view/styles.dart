@@ -12,8 +12,10 @@ class LayoutStyles {
 
 class ColourStyles {
   static Color lightGray = const Color.fromRGBO(244, 245, 247, 1);
+  static Color white = const Color.fromRGBO(255, 255, 255, 1);
   static Color outline = const Color.fromRGBO(208, 219, 234, 1);
   static Color primary = const Color.fromRGBO(31, 204, 121, 1);
   static Color secondary = const Color.fromRGBO(255, 100, 100, 1);
   static Color mainText = const Color.fromRGBO(46, 62, 92, 1);
+  static Color secondaryText = const Color.fromRGBO(159, 165, 192, 1);
 }
