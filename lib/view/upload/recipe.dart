@@ -22,10 +22,11 @@ class Recipe {
         categories.add(_category);
       } else {
         bool categoryExists = categories.any((element) => element == _category);
-        if (categoryExists)
+        if (categoryExists) {
           continue;
-        else
+        } else {
           categories.add(_category);
+        }
       }
     }
     return categories;
