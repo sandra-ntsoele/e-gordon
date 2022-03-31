@@ -1,4 +1,4 @@
-import 'package:e_gordon/view/profile/components/recipe_card.dart';
+import 'package:e_gordon/view/components/recipe_card.dart';
 import 'package:e_gordon/view/upload/recipe.dart';
 import 'package:flutter/material.dart';
 
