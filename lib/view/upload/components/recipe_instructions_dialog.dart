@@ -1,7 +1,6 @@
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/upload/components/multi_line_text_field.dart';
-import 'package:e_gordon/view/upload/components/recipe_methods.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -20,7 +19,6 @@ class RecipeInstructionsDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    instructionCount++;
 
     return Dialog(
       child: Container(
@@ -33,7 +31,7 @@ class RecipeInstructionsDialog extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Heading(
-              text: "Instruction ${instructionCount}",
+              text: "Step ${instructionCount}",
               headingType: 2,
               overflow: false,
             ),
