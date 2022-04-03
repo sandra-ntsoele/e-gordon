@@ -16,14 +16,4 @@ It lets you create, find, and share recipes with friends and family.
 
 # Screens
 
-<<<<<<< HEAD
 ![App Screenshots](assets/screen_panorama.png)
-=======
-| Onboarding                                        | Login         |
-| -------------                                     | ------------- |
-| ![Onboarding](assets/screens/on-boarding.png)     | ![Onboarding](assets/screens/login.png)  |
-| Error Message                                     | Verification |
-| -------------                                     | ------------- |
-| ![Verification](assets/screens/login-error.png)   | ![Onboarding](assets/screens/verification.png)  |
-
->>>>>>> a12cd2930da6e84d2238dda413daa541fb165af4
