@@ -1,4 +1,5 @@
 import 'package:e_gordon/view/components/text_components/heading.dart';
+import 'package:e_gordon/view/home_page/components/custom_bottom_navbar.dart';
 import 'package:e_gordon/view/home_page/components/category_chip_builder.dart';
 import 'package:e_gordon/view/home_page/home_page_controller.dart';
 import 'package:e_gordon/view/styles.dart';
@@ -28,6 +29,13 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       backgroundColor: Colors.white,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.create_outlined),
+        backgroundColor: ColourStyles.primary,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: const CustomBottomNavbar(),
       body: SafeArea(
         child: Column(
           children: [

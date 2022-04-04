@@ -23,17 +23,29 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: GoogleFonts.inter().fontFamily,
-        scrollbarTheme: ScrollbarThemeData(
-          thumbColor: MaterialStateProperty.all(outlineColour),
-          radius: const Radius.circular(100),
-        ),
-      ),
-      home: Scaffold(
-        body: user == null ? const OnboardingScreen() : const HomePage(),
+    return user == null
+        ? MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: themeData(),
+            home: const Scaffold(
+              body: OnboardingScreen(),
+            ),
+          )
+        : MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: themeData(),
+            home: Scaffold(
+              body: user == null ? const OnboardingScreen() : const HomePage(),
+            ),
+          );
+  }
+
+  ThemeData themeData() {
+    return ThemeData(
+      fontFamily: GoogleFonts.inter().fontFamily,
+      scrollbarTheme: ScrollbarThemeData(
+        thumbColor: MaterialStateProperty.all(outlineColour),
+        radius: const Radius.circular(100),
       ),
     );
   }
