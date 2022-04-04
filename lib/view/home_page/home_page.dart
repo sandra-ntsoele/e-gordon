@@ -33,17 +33,18 @@ class _HomePageState extends State<HomePage> {
           children: [
             /* Search bar and categories container */
             Container(
-              // Container styling
+              // [START Container Styling]
               padding: LayoutStyles.completePadding,
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border(
                   bottom: BorderSide(
                     color: ColourStyles.lightGray,
-                    width: size.width * 0.02,
+                    width: size.width * 0.01,
                   ),
                 ),
               ),
+              // [END Container Styling]
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -95,7 +96,6 @@ class _HomePageState extends State<HomePage> {
                       ),
                       SizedBox(height: size.height * 0.01),
                       CategoryChipBuilder(
-                        // TODO: Change "filter" value on chip press,
                         onSelected: (choice) {
                           setState(() {
                             homePageController.selectedCategoryIndex = choice;
@@ -109,7 +109,9 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            /* Recipe list */
+            // [END Header]
+            SizedBox(height: size.height * 0.03),
+            // [START Recipe list]
             Expanded(
               flex: 2,
               child: GestureDetector(
