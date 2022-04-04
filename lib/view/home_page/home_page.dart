@@ -27,115 +27,103 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.create_outlined),
-        backgroundColor: ColourStyles.primary,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: const CustomBottomNavbar(),
-      body: SafeArea(
-        child: Column(
-          children: [
-            /* Search bar and categories container */
-            Container(
-              // [START Container Styling]
-              padding: LayoutStyles.completePadding,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border(
-                  bottom: BorderSide(
-                    color: ColourStyles.lightGray,
-                    width: size.width * 0.01,
-                  ),
-                ),
-              ),
-              // [END Container Styling]
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      if (fieldIsTapped)
-                        // [START Search box back/return button]
-                        BackButton(
-                          onPressed: () => setState(() {
-                            fieldIsTapped = false;
-                            FocusScope.of(context).requestFocus(focusNode);
-                          }),
-                          color: ColourStyles.mainText,
-                        ), // [END Search box back/return button]
-
-                      // [START Search box/field]
-                      SearchBar(
-                        controller: searchBarController,
-                        fieldIsTapped: fieldIsTapped,
-                        onTap: () => setState(() {
-                          fieldIsTapped = true;
-                        }),
-                        onEditingComplete: () => setState(() {
-                          fieldIsTapped = false;
-                          FocusScope.of(context).requestFocus(focusNode);
-                        }),
-                        suffixIcon: IconButton(
-                          onPressed: () =>
-                              setState(() => searchBarController.text = ''),
-                          icon: Icon(
-                            Icons.cancel,
-                            size: 15,
-                            color: ColourStyles.mainText,
-                          ),
-                        ),
-                      ),
-                      // [END Search box/field]
-                    ],
-                  ),
-                  // [START Category Chips]
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: size.height * 0.01),
-                      Heading(
-                        text: "Category",
-                        headingType: 3,
-                        overflow: false,
-                      ),
-                      SizedBox(height: size.height * 0.01),
-                      CategoryChipBuilder(
-                        onSelected: (choice) {
-                          setState(() {
-                            homePageController.selectedCategoryIndex = choice;
-                            // print(choice);
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  // [END Category Chips]
-                ],
+    return Column(
+      children: [
+        /* Search bar and categories container */
+        Container(
+          // [START Container Styling]
+          padding: LayoutStyles.completePadding,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border(
+              bottom: BorderSide(
+                color: ColourStyles.lightGray,
+                width: size.width * 0.01,
               ),
             ),
-            // [END Header]
-            SizedBox(height: size.height * 0.03),
-            // [START Recipe list]
-            Expanded(
-              flex: 2,
-              child: GestureDetector(
-                // onTap: unfocus search bar
-                onTap: () {
-                  setState(() {
-                    fieldIsTapped = false;
-                    FocusScope.of(context).requestFocus(focusNode);
-                  });
-                },
-                child: homePageController.recipeCardGrid(selectedCategory),
+          ),
+          // [END Container Styling]
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  if (fieldIsTapped)
+                    // [START Search box back/return button]
+                    BackButton(
+                      onPressed: () => setState(() {
+                        fieldIsTapped = false;
+                        FocusScope.of(context).requestFocus(focusNode);
+                      }),
+                      color: ColourStyles.mainText,
+                    ), // [END Search box back/return button]
+
+                  // [START Search box/field]
+                  SearchBar(
+                    controller: searchBarController,
+                    fieldIsTapped: fieldIsTapped,
+                    onTap: () => setState(() {
+                      fieldIsTapped = true;
+                    }),
+                    onEditingComplete: () => setState(() {
+                      fieldIsTapped = false;
+                      FocusScope.of(context).requestFocus(focusNode);
+                    }),
+                    suffixIcon: IconButton(
+                      onPressed: () =>
+                          setState(() => searchBarController.text = ''),
+                      icon: Icon(
+                        Icons.cancel,
+                        size: 15,
+                        color: ColourStyles.mainText,
+                      ),
+                    ),
+                  ),
+                  // [END Search box/field]
+                ],
               ),
-            )
-          ],
+              // [START Category Chips]
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: size.height * 0.01),
+                  Heading(
+                    text: "Category",
+                    headingType: 3,
+                    overflow: false,
+                  ),
+                  SizedBox(height: size.height * 0.01),
+                  CategoryChipBuilder(
+                    onSelected: (choice) {
+                      setState(() {
+                        homePageController.selectedCategoryIndex = choice;
+                        // print(choice);
+                      });
+                    },
+                  ),
+                ],
+              ),
+              // [END Category Chips]
+            ],
+          ),
         ),
-      ),
+        // [END Header]
+        SizedBox(height: size.height * 0.03),
+        // [START Recipe list]
+        Expanded(
+          flex: 2,
+          child: GestureDetector(
+            // onTap: unfocus search bar
+            onTap: () {
+              setState(() {
+                fieldIsTapped = false;
+                FocusScope.of(context).requestFocus(focusNode);
+              });
+            },
+            child: homePageController.recipeCardGrid(selectedCategory),
+          ),
+        )
+      ],
     );
   }
 }

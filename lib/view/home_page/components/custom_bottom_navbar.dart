@@ -3,8 +3,11 @@ import 'package:e_gordon/view/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomNavbar extends StatefulWidget {
+  final Function(int) onTap;
+
   const CustomBottomNavbar({
     Key? key,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -20,13 +23,18 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
 
     return BottomAppBar(
       // [START BottomAppBar Styling]
-      // color: ColourStyles.primary,
       shape: const CircularNotchedRectangle(),
       notchMargin: 5,
       clipBehavior: Clip.antiAlias,
       // [END BottomAppBar Styling]
 
       child: BottomNavigationBar(
+        onTap: (itemIndex) {
+          setState(() {
+            widget.onTap(itemIndex);
+            currentIndex = itemIndex;
+          });
+        },
         currentIndex: currentIndex,
         // [START NavBar Styling]
         backgroundColor: ColourStyles.white,

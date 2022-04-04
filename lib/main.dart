@@ -1,5 +1,8 @@
 import 'package:e_gordon/view/constants.dart';
+import 'package:e_gordon/view/home_page/components/custom_bottom_navbar.dart';
 import 'package:e_gordon/view/home_page/home_page.dart';
+import 'package:e_gordon/view/sign_in/sign_in.dart';
+import 'package:e_gordon/view/styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'view/onboarding/onboarding.dart';
@@ -16,8 +19,23 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int pageIndex = 0;
+  final List<Widget> _pages = [];
+
+  @override
+  void initState() {
+    _pages.add(const HomePage());
+    _pages.add(const SignIn());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +53,20 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: themeData(),
             home: Scaffold(
-              body: user == null ? const OnboardingScreen() : const HomePage(),
+              backgroundColor: Colors.white,
+              floatingActionButton: FloatingActionButton(
+                onPressed: () {},
+                child: const Icon(Icons.create_outlined),
+                backgroundColor: ColourStyles.primary,
+              ),
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.centerDocked,
+              bottomNavigationBar: CustomBottomNavbar(
+                onTap: (itemIndex) => setState(() => pageIndex = itemIndex),
+              ),
+              body: SafeArea(
+                child: _pages[pageIndex],
+              ),
             ),
           );
   }
