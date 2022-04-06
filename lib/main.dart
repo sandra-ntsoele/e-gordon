@@ -1,8 +1,8 @@
 import 'package:e_gordon/view/constants.dart';
-import 'package:e_gordon/view/home_page/components/custom_bottom_navbar.dart';
 import 'package:e_gordon/view/home_page/home_page.dart';
+import 'package:e_gordon/view/profile/profile.dart';
+import 'package:e_gordon/view/settings/settings.dart';
 import 'package:e_gordon/view/sign_in/sign_in.dart';
-import 'package:e_gordon/view/styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'view/onboarding/onboarding.dart';
@@ -52,22 +52,11 @@ class _MyAppState extends State<MyApp> {
         : MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: themeData(),
-            home: Scaffold(
-              backgroundColor: Colors.white,
-              floatingActionButton: FloatingActionButton(
-                onPressed: () {},
-                child: const Icon(Icons.create_outlined),
-                backgroundColor: ColourStyles.primary,
-              ),
-              floatingActionButtonLocation:
-                  FloatingActionButtonLocation.centerDocked,
-              bottomNavigationBar: CustomBottomNavbar(
-                onTap: (itemIndex) => setState(() => pageIndex = itemIndex),
-              ),
-              body: SafeArea(
-                child: _pages[pageIndex],
-              ),
-            ),
+            routes: {
+              "/profile": (context) => const MyProfile(),
+              "/settings": (context) => const Settings(),
+            },
+            home: const HomePage(),
           );
   }
 
