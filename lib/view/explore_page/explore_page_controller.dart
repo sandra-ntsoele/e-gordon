@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 extension CustomAdd on List {}
 
-class HomePageController {
+class ExplorePageController {
   int selectedCategoryIndex;
 
-  HomePageController({this.selectedCategoryIndex = 0});
+  ExplorePageController({this.selectedCategoryIndex = 0});
 
   GridView recipeCardGrid([filter]) {
     return GridView.count(

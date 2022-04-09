@@ -1,8 +1,10 @@
 import 'package:e_gordon/view/constants.dart';
-import 'package:e_gordon/view/home_page/home_page.dart';
+import 'package:e_gordon/view/explore_page/components/explore_bottom_navbar.dart';
+import 'package:e_gordon/view/explore_page/explore_page.dart';
 import 'package:e_gordon/view/profile/profile.dart';
 import 'package:e_gordon/view/settings/settings.dart';
 import 'package:e_gordon/view/sign_in/sign_in.dart';
+import 'package:e_gordon/view/styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'view/onboarding/onboarding.dart';
@@ -32,7 +34,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    _pages.add(const HomePage());
+    _pages.add(const ExplorePage());
     _pages.add(const SignIn());
     super.initState();
   }
@@ -56,7 +58,20 @@ class _MyAppState extends State<MyApp> {
               "/profile": (context) => const MyProfile(),
               "/settings": (context) => const Settings(),
             },
-            home: const HomePage(),
+            home: Scaffold(
+              backgroundColor: Colors.white,
+              floatingActionButton: FloatingActionButton(
+                onPressed: () {},
+                child: const Icon(Icons.create_outlined),
+                backgroundColor: ColourStyles.primary,
+              ),
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.centerDocked,
+              bottomNavigationBar: CustomBottomNavbar(
+                onTap: (itemIndex) => setState(() => pageIndex = itemIndex),
+              ),
+              body: _pages[pageIndex],
+            ),
           );
   }
 
