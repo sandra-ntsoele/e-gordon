@@ -1,8 +1,8 @@
 import 'package:e_gordon/view/styles.dart';
 import 'package:flutter/material.dart';
 
-class SearchBar extends StatefulWidget {
-  const SearchBar({
+class SearchTextField extends StatefulWidget {
+  const SearchTextField({
     Key? key,
     required this.controller,
     required this.suffixIcon,
@@ -18,10 +18,10 @@ class SearchBar extends StatefulWidget {
   final void Function() onEditingComplete;
 
   @override
-  State<SearchBar> createState() => _SearchBarState();
+  State<SearchTextField> createState() => _SearchTextFieldState();
 }
 
-class _SearchBarState extends State<SearchBar> {
+class _SearchTextFieldState extends State<SearchTextField> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
