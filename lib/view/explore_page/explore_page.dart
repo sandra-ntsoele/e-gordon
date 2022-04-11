@@ -16,9 +16,17 @@ class ExplorePage extends StatefulWidget {
 }
 
 class _ExplorePageState extends State<ExplorePage> {
+  FocusNode focusNode = FocusNode();
   int recipeFilter = 0;
+
   selectedCategory(int userChoice) {
     setState(() => recipeFilter = userChoice);
+  }
+
+  changeFocus() {
+    setState(() {
+      FocusScope.of(context).requestFocus(focusNode);
+    });
   }
 
   @override
@@ -36,7 +44,7 @@ class _ExplorePageState extends State<ExplorePage> {
           SizedBox(height: size.height * 0.03),
           ExplorePageBody(
             filter: recipeFilter,
-            onTap: () => ExplorePage.searchFieldIsFocused = false,
+            onTap: changeFocus,
           ),
         ],
       ),
