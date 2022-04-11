@@ -20,7 +20,7 @@ class _ExploreHeaderState extends State<ExploreHeader> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     BoxDecoration headerDecoration = BoxDecoration(
-      color: Colors.black,
+      color: Colors.white,
       border: Border(
         bottom: BorderSide(
           color: ColourStyles.lightGray,
