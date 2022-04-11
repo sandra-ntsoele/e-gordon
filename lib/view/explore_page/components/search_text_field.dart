@@ -1,19 +1,15 @@
+import 'package:e_gordon/view/explore_page/components/clear_text_button.dart';
+import 'package:e_gordon/view/explore_page/explore_page.dart';
 import 'package:e_gordon/view/styles.dart';
 import 'package:flutter/material.dart';
 
 class SearchTextField extends StatefulWidget {
   const SearchTextField({
     Key? key,
-    required this.controller,
-    required this.suffixIcon,
-    required this.fieldIsTapped,
     required this.onTap,
     required this.onEditingComplete,
   }) : super(key: key);
 
-  final Widget suffixIcon;
-  final TextEditingController controller;
-  final bool fieldIsTapped;
   final void Function() onTap;
   final void Function() onEditingComplete;
 
@@ -22,6 +18,8 @@ class SearchTextField extends StatefulWidget {
 }
 
 class _SearchTextFieldState extends State<SearchTextField> {
+  final searchBarController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -31,7 +29,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
       child: SizedBox(
         height: size.height * 0.08,
         child: TextFormField(
-          controller: widget.controller,
+          controller: searchBarController,
           // [START Event handling]
           onTap: widget.onTap,
           onEditingComplete: widget.onEditingComplete,
@@ -54,7 +52,9 @@ class _SearchTextFieldState extends State<SearchTextField> {
             filled: true,
             fillColor: ColourStyles.lightGray,
             prefixIcon: const Icon(Icons.search_outlined, size: 15),
-            suffixIcon: widget.fieldIsTapped ? widget.suffixIcon : null,
+            suffixIcon: ExplorePage.searchFieldIsFocused
+                ? ClearTextButton(searchBarController: searchBarController)
+                : null,
           ),
           // [END Input field styling]
         ),

@@ -14,7 +14,6 @@ class SearchBarContainer extends StatefulWidget {
 
 class _SearchBarContainerState extends State<SearchBarContainer> {
   final FocusNode focusNode = FocusNode();
-  final searchBarController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +30,6 @@ class _SearchBarContainerState extends State<SearchBarContainer> {
           ),
         // [START Search box/field]
         SearchTextField(
-          controller: searchBarController,
-          fieldIsTapped: ExplorePage.searchFieldIsFocused,
           onTap: () => setState(() {
             ExplorePage.searchFieldIsFocused = true;
           }),
@@ -41,14 +38,6 @@ class _SearchBarContainerState extends State<SearchBarContainer> {
 
             FocusScope.of(context).requestFocus(focusNode);
           }),
-          suffixIcon: IconButton(
-            onPressed: () => setState(() => searchBarController.text = ''),
-            icon: Icon(
-              Icons.cancel,
-              size: 15,
-              color: ColourStyles.mainText,
-            ),
-          ),
         ),
         // [END Search box/field]
       ],
