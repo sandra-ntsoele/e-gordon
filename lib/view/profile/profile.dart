@@ -1,3 +1,4 @@
+import 'package:e_gordon/view/components/main_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -12,6 +13,7 @@ class MyProfile extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return const Scaffold(
+      appBar: MainCustomAppBar(title: "Profile"),
       body: Center(
         child: Text("Welcome to your profile"),
       ),
