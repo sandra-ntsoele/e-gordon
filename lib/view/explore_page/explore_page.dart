@@ -1,11 +1,13 @@
 import 'package:e_gordon/view/explore_page/components/explore_app_bar.dart';
 import 'package:e_gordon/view/explore_page/components/explore_header.dart';
+import 'package:e_gordon/view/explore_page/components/explore_page_body.dart';
 import 'package:e_gordon/view/explore_page/explore_page_controller.dart';
 import 'package:e_gordon/view/styles.dart';
 import 'package:flutter/material.dart';
 
 class ExplorePage extends StatefulWidget {
   static bool searchFieldIsFocused = false;
+  static ExplorePageController explorePageController = ExplorePageController();
 
   const ExplorePage({Key? key}) : super(key: key);
 
@@ -14,10 +16,10 @@ class ExplorePage extends StatefulWidget {
 }
 
 class _ExplorePageState extends State<ExplorePage> {
-  FocusNode focusNode = FocusNode();
-  final ExplorePageController homePageController = ExplorePageController();
-
-  int selectedCategory = 0;
+  int recipeFilter = 0;
+  selectedCategory(int userChoice) {
+    setState(() => recipeFilter = userChoice);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,22 +30,14 @@ class _ExplorePageState extends State<ExplorePage> {
       backgroundColor: ColourStyles.white,
       body: Column(
         children: [
-          ExploreHeader(),
+          ExploreHeader(
+            selectedCategory: selectedCategory,
+          ),
           SizedBox(height: size.height * 0.03),
-          // [START Recipe list]
-          Expanded(
-            flex: 2,
-            child: GestureDetector(
-              // onTap: unfocus search bar
-              onTap: () {
-                setState(() {
-                  ExplorePage.searchFieldIsFocused = false;
-                  FocusScope.of(context).requestFocus(focusNode);
-                });
-              },
-              child: homePageController.recipeCardGrid(selectedCategory),
-            ),
-          )
+          ExplorePageBody(
+            filter: recipeFilter,
+            onTap: () => ExplorePage.searchFieldIsFocused = false,
+          ),
         ],
       ),
     );

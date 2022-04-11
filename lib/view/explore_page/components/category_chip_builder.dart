@@ -1,3 +1,4 @@
+import 'package:e_gordon/view/explore_page/explore_page.dart';
 import 'package:e_gordon/view/styles.dart';
 import 'package:e_gordon/view/upload/recipe.dart';
 import 'package:flutter/material.dart';
@@ -16,9 +17,9 @@ class CategoryChipBuilder extends StatefulWidget {
 }
 
 class _CategoryChipBuilderState extends State<CategoryChipBuilder> {
-  final List<dynamic> categories = Recipe.categoryList();
+  final List<dynamic> categoryList = Recipe.categoryList();
 
-  int userChoiceIndex = 0;
+  int userChoice = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -28,22 +29,22 @@ class _CategoryChipBuilderState extends State<CategoryChipBuilder> {
       height: size.height * 0.06,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
-        itemBuilder: (context, index) {
+        itemCount: categoryList.length,
+        itemBuilder: (context, categoryChipIndex) {
           return Container(
             margin: EdgeInsets.only(right: size.width * 0.03),
             child: ChoiceChip(
-              label: Text(categories[index]),
-              selected: userChoiceIndex == index,
-              onSelected: (selected) {
-                widget.onSelected!(index);
-                userChoiceIndex = index;
+              label: Text(categoryList[categoryChipIndex]),
+              selected: userChoice == categoryChipIndex,
+              onSelected: (bool selected) {
+                widget.onSelected!(categoryChipIndex);
+                userChoice = categoryChipIndex;
                 // setState(() => userChoiceIndex = index);
               },
               // [START Chip Styling]
               selectedColor: ColourStyles.primary,
               labelStyle: TextStyle(
-                color: userChoiceIndex == index
+                color: userChoice == categoryChipIndex
                     ? ColourStyles.white
                     : ColourStyles.secondaryText,
                 fontWeight: FontWeight.bold,

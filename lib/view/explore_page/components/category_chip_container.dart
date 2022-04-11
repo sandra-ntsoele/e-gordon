@@ -4,7 +4,12 @@ import 'package:e_gordon/view/explore_page/explore_page_controller.dart';
 import 'package:flutter/material.dart';
 
 class CategoryChipContainer extends StatefulWidget {
-  const CategoryChipContainer({Key? key}) : super(key: key);
+  final dynamic selectedCategory;
+
+  CategoryChipContainer({
+    Key? key,
+    required this.selectedCategory,
+  }) : super(key: key);
 
   @override
   State<CategoryChipContainer> createState() => _CategoryChipContainerState();
@@ -28,9 +33,9 @@ class _CategoryChipContainerState extends State<CategoryChipContainer> {
         ),
         SizedBox(height: size.height * 0.01),
         CategoryChipBuilder(
-          onSelected: (choice) {
+          onSelected: (int userChoice) {
             setState(() {
-              explorePageController.selectedCategoryIndex = choice;
+              widget.selectedCategory(userChoice);
             });
           },
         ),

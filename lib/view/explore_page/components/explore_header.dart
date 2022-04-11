@@ -4,8 +4,11 @@ import 'package:e_gordon/view/styles.dart';
 import 'package:flutter/material.dart';
 
 class ExploreHeader extends StatefulWidget {
+  final dynamic selectedCategory;
+
   const ExploreHeader({
     Key? key,
+    required this.selectedCategory,
   }) : super(key: key);
 
   @override
@@ -31,9 +34,11 @@ class _ExploreHeaderState extends State<ExploreHeader> {
       decoration: headerDecoration,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          SearchBarContainer(),
-          CategoryChipContainer(),
+        children: [
+          const SearchBarContainer(),
+          CategoryChipContainer(
+            selectedCategory: widget.selectedCategory,
+          ),
         ],
       ),
     );
