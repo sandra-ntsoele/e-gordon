@@ -41,7 +41,7 @@ class OnboardingScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
               child: RoundedButton(
                 text: "Start cooking",
-                onPressed: () => Navigator.pushNamed(context, "/sign-up"),
+                onPressed: () => Navigator.pushNamed(context, "/register"),
               ),
             ),
           ],

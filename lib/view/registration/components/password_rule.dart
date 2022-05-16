@@ -1,5 +1,6 @@
+import 'package:e_gordon/view/constants.dart';
+import 'package:e_gordon/view/styles.dart';
 import 'package:flutter/material.dart';
-import '../constants.dart';
 
 class PasswordRule extends StatelessWidget {
   final String rule;
@@ -16,15 +17,15 @@ class PasswordRule extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        const Icon(
+        Icon(
           Icons.check_circle,
-          color: outlineColour,
+          color: ColourStyles.outline,
         ),
         SizedBox(width: size.width * 0.02),
         Text(
           rule,
-          style: const TextStyle(
-            color: outlineColour,
+          style: TextStyle(
+            color: ColourStyles.outline,
             fontSize: paragraphOne,
             height: 2.5,
           ),
