@@ -1,14 +1,18 @@
+import 'package:e_gordon/services/auth_service.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/components/text_components/paragraph.dart';
-import 'package:e_gordon/view/sign_in/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 
 class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({Key? key}) : super(key: key);
+  OnboardingScreen({Key? key}) : super(key: key);
+
+  final _authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
+    final _authState = _authService.authState;
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SizedBox(
@@ -41,7 +45,13 @@ class OnboardingScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
               child: RoundedButton(
                 text: "Start cooking",
-                onPressed: () => Navigator.pushNamed(context, "/register"),
+                onPressed: () {
+                  if (_authState != null) {
+                    Navigator.pushNamed(context, "/profile");
+                  } else {
+                    Navigator.pushNamed(context, "/register");
+                  }
+                },
               ),
             ),
           ],
