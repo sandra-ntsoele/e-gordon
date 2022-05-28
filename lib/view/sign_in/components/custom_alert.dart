@@ -23,9 +23,14 @@ class CustomAlert extends StatelessWidget {
             fit: BoxFit.contain,
           ),
           SizedBox(width: size.width * 0.03),
-          Text(
-            message,
-            style: const TextStyle(fontSize: smallText),
+          Flexible(
+            child: Text(
+              message,
+              softWrap: true,
+              style: const TextStyle(
+                fontSize: smallText,
+              ),
+            ),
           )
         ],
       ),
