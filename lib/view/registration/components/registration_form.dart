@@ -100,7 +100,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         );
 
                         if (response == "Success") {
-                          Navigator.of(context).pushNamed("/profile");
+                          Navigator.of(context).pushNamed("/explore");
                         } else {
                           showDialog(
                             context: context,
