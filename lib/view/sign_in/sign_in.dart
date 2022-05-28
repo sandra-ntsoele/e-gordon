@@ -5,7 +5,7 @@ import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/components/text_components/paragraph.dart';
-import 'package:e_gordon/view/sign_up/sign_up.dart';
+import 'package:e_gordon/view/registration/registration_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -85,7 +85,7 @@ class _SignInState extends State<SignIn> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const SignUp(),
+                          builder: (context) => const RegistrationScreen(),
                         ),
                       )
                     },

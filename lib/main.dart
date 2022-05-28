@@ -7,7 +7,7 @@ import 'package:e_gordon/view/to_buy/to_buy.dart';
 import 'package:e_gordon/view/verify/verify.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'view/onboarding/onboarding.dart';
+import 'view/splash_screen/splash_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: themeData(),
       routes: {
-        "/": (context) => OnboardingScreen(),
+        "/": (context) => SplashScreen(),
         "/register": (context) => const RegistrationScreen(),
         "/login": (context) => const SignIn(),
         "/registration-verification": (context) => VerifyEmail(),
