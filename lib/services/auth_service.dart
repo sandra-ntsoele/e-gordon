@@ -11,7 +11,7 @@ class AuthService {
 
   String? validateEmail(String? input) {
     if (input == null || input.isEmpty) {
-      return "Email or phone number cannot be empty";
+      return "Email is required";
     } else if (!EmailValidator.validate(input)) {
       return "Invalid email";
     }

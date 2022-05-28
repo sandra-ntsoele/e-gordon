@@ -1,18 +1,15 @@
 import 'package:e_gordon/controller/auth_controller.dart';
+import 'package:e_gordon/view/styles.dart';
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
-
 class PasswordField extends StatelessWidget {
-  final GlobalKey<FormState> formKey;
-  final TextEditingController textEditingController;
-  final Function setPassword;
+  final TextEditingController controller;
+  final FocusNode? focusNode;
 
   const PasswordField({
     Key? key,
-    required this.formKey,
-    required this.textEditingController,
-    required this.setPassword,
+    required this.controller,
+    this.focusNode,
   }) : super(key: key);
 
   @override
@@ -20,47 +17,30 @@ class PasswordField extends StatelessWidget {
     AuthController authController = AuthController();
 
     return TextFormField(
+      controller: controller,
+      focusNode: focusNode,
       obscureText: true,
-      decoration: const InputDecoration(
-        labelText: "Password",
-        prefixIcon: Icon(Icons.lock_outline),
-        labelStyle: TextStyle(
-          color: secondaryTextColour,
-        ),
-        contentPadding: EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 16,
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(100)),
-          borderSide: BorderSide(
-            color: outlineColour,
-            width: 2,
-          ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(100)),
-          borderSide: BorderSide(
-            color: outlineColour,
-            width: 2,
-          ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: primaryColour,
-            width: 2,
-          ),
-          borderRadius: BorderRadius.all(
-            Radius.circular(100),
-          ),
-        ),
-      ),
+      // [START Behaviour]
       validator: (userInput) => authController.validatePassword(userInput),
-      onChanged: (value) {
-        formKey.currentState!.validate();
-        setPassword(value);
-      },
-      controller: textEditingController,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      // [END Behaviour]
+      // [START Decoration]
+      decoration: FormStyles.textFormDecoration(
+        labelText: "Password",
+        prefixIcon: Icons.lock_outline,
+      ),
+      // [END Decoration]
     );
   }
+
+  // TextFormField(
+  //             controller: passwordController,
+  //             focusNode: passwordNode,
+  //             // [START Behaviours]
+  //             validator: (value) => value == null || value.isEmpty
+  //                 ? "Password is required"
+  //                 : null,
+  //             autovalidateMode: AutovalidateMode.onUserInteraction,
+  //             // [END Behaviours]
+  //           ),
 }
