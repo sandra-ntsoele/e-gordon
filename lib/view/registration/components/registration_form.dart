@@ -3,6 +3,7 @@ import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/password_field.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/components/rounded_textform_field.dart';
+import 'package:e_gordon/view/sign_in/components/custom_alert.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationForm extends StatefulWidget {
@@ -25,6 +26,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
   late FocusNode passwordNode;
 
   final _authService = AuthService();
+
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -84,25 +87,37 @@ class _RegistrationFormState extends State<RegistrationForm> {
             SizedBox(height: size.height * 0.03),
             // [START Submit Button]
             RoundedButton(
-              text: "Register",
-              onPressed: () async {
-                if (_formKey.currentState!.validate()) {
-                  String? response = await _authService.createAccount(
-                    emailController.text,
-                    passwordController.text,
-                  );
+              text: _isLoading ? "Loading..." : "Register",
+              onPressed: _isLoading
+                  ? () => null
+                  : () async {
+                      if (_formKey.currentState!.validate()) {
+                        setState(() => _isLoading = true);
 
-                  if (response == "Success") {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text("Success"),
-                    ));
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(response),
-                    ));
-                  }
-                }
-              },
+                        String? response = await _authService.createAccount(
+                          emailController.text,
+                          passwordController.text,
+                        );
+
+                        if (response == "Success") {
+                          Navigator.of(context).pushNamed("/profile");
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              Duration duration =
+                                  const Duration(milliseconds: 1800);
+                              Future.delayed(
+                                duration,
+                                () => Navigator.of(context).pop(),
+                              );
+                              return CustomAlert(message: response);
+                            },
+                          );
+                          setState(() => _isLoading = false);
+                        }
+                      }
+                    },
             )
             // [END Submit Button]
           ],
