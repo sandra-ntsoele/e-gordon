@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 class AuthController {
   final _authService = AuthService();
 
-  void registerUserWithEmail(
+  Future<bool?> registerUserWithEmail(
     context, {
     String? firstName,
     required String email,
@@ -24,6 +24,7 @@ class AuthController {
 
     if (response == "Success") {
       Navigator.of(context).pushNamed("/explore");
+      return null;
     } else {
       showDialog(
         context: context,
@@ -36,6 +37,7 @@ class AuthController {
           return CustomAlert(message: response);
         },
       );
+      return false;
     }
   }
 

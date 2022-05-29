@@ -91,12 +91,15 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   : () {
                       if (_formKey.currentState!.validate()) {
                         setState(() => _isLoading = true);
-                        _authController.registerUserWithEmail(
-                          context,
-                          email: emailController.text.trim(),
-                          password: passwordController.text.trim(),
-                        );
-                        setState(() => _isLoading = false);
+
+                        _authController
+                            .registerUserWithEmail(
+                              context,
+                              email: emailController.text.trim(),
+                              password: passwordController.text.trim(),
+                            )
+                            .then((isLoading) => setState(
+                                () => _isLoading = isLoading ?? false));
                       }
                     },
             ),
