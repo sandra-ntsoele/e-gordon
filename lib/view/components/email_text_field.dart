@@ -1,6 +1,7 @@
+import 'package:e_gordon/controller/auth_controller.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
-import '../../services/auth_service.dart';
 import '../styles.dart';
 
 class EmailTextField extends StatelessWidget {
@@ -15,10 +16,17 @@ class EmailTextField extends StatelessWidget {
     this.focusNode,
   }) : super(key: key);
 
+  String? validateEmail(String? input) {
+    if (input == null || input.isEmpty) {
+      return "Email is required";
+    } else if (!EmailValidator.validate(input)) {
+      return "Invalid email";
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final _authService = AuthService();
-
     return TextFormField(
       controller: controller,
       focusNode: focusNode,
@@ -30,7 +38,7 @@ class EmailTextField extends StatelessWidget {
       textCapitalization: TextCapitalization.none,
       autocorrect: false,
       // [START Behaviours]
-      validator: (email) => _authService.validateEmail(email),
+      validator: (email) => validateEmail(email),
       onEditingComplete: () => onEditingComplete(),
       autovalidateMode: AutovalidateMode.onUserInteraction,
       // [END Behaviours]

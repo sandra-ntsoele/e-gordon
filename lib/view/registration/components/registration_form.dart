@@ -1,12 +1,9 @@
-import 'package:e_gordon/services/auth_service.dart';
+import 'package:e_gordon/controller/auth_controller.dart';
 import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/password_field.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/components/rounded_textform_field.dart';
 import 'package:e_gordon/view/registration/components/social_sign_in_button.dart';
-import 'package:e_gordon/view/sign_in/components/custom_alert.dart';
-import 'package:e_gordon/view/styles.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationForm extends StatefulWidget {
@@ -26,7 +23,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
   late FocusNode emailNode;
   late FocusNode passwordNode;
 
-  final _authService = AuthService();
+  final _authController = AuthController();
 
   bool _isLoading = false;
 
@@ -91,32 +88,15 @@ class _RegistrationFormState extends State<RegistrationForm> {
               text: _isLoading ? "Loading..." : "Register",
               onPressed: _isLoading
                   ? () => null
-                  : () async {
+                  : () {
                       if (_formKey.currentState!.validate()) {
                         setState(() => _isLoading = true);
-
-                        String? response = await _authService.createAccount(
-                          emailController.text,
-                          passwordController.text,
+                        _authController.registerUserWithEmail(
+                          context,
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim(),
                         );
-
-                        if (response == "Success") {
-                          Navigator.of(context).pushNamed("/explore");
-                        } else {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              Duration duration =
-                                  const Duration(milliseconds: 1800);
-                              Future.delayed(
-                                duration,
-                                () => Navigator.of(context).pop(),
-                              );
-                              return CustomAlert(message: response);
-                            },
-                          );
-                          setState(() => _isLoading = false);
-                        }
+                        setState(() => _isLoading = false);
                       }
                     },
             ),

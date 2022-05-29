@@ -1,4 +1,3 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -10,20 +9,11 @@ class AuthService {
 
   Stream<User?> get userChanges => _auth.userChanges();
 
-  String? validateEmail(String? input) {
-    if (input == null || input.isEmpty) {
-      return "Email is required";
-    } else if (!EmailValidator.validate(input)) {
-      return "Invalid email";
-    }
-    return null;
-  }
-
   Future<String> createAccount(String email, String password) async {
     try {
       await _auth.createUserWithEmailAndPassword(
-        email: email.trim(),
-        password: password.trim(),
+        email: email,
+        password: password,
       );
 
       return "Success";
