@@ -3,7 +3,10 @@ import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/password_field.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/components/rounded_textform_field.dart';
+import 'package:e_gordon/view/registration/components/social_sign_in_button.dart';
 import 'package:e_gordon/view/sign_in/components/custom_alert.dart';
+import 'package:e_gordon/view/styles.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationForm extends StatefulWidget {
@@ -14,8 +17,6 @@ class RegistrationForm extends StatefulWidget {
 }
 
 class _RegistrationFormState extends State<RegistrationForm> {
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController firstNameController = TextEditingController();
@@ -85,7 +86,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
             ),
             // [END Password TextField]
             SizedBox(height: size.height * 0.03),
-            // [START Submit Button]
+            // [START Register Button]
             RoundedButton(
               text: _isLoading ? "Loading..." : "Register",
               onPressed: _isLoading
@@ -118,8 +119,15 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         }
                       }
                     },
-            )
-            // [END Submit Button]
+            ),
+            // [END Register Button]
+            SizedBox(height: size.height * 0.03),
+            // [START Reg with Google Button]
+            SocialSignInBtn(
+              onPressed: () {},
+              btnLabel: "Register with Google",
+              providerLogo: "google_logo.png",
+            ),
           ],
         ),
       ),

@@ -24,7 +24,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 ScreenHeader(),
-                // passwordRules(),
                 RegistrationForm(),
                 LoginSpan(),
               ],

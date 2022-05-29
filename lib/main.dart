@@ -1,4 +1,5 @@
 import 'package:e_gordon/view/constants.dart';
+import 'package:e_gordon/view/explore_page/explore_page.dart';
 import 'package:e_gordon/view/profile/profile.dart';
 import 'package:e_gordon/view/registration/registration_screen.dart';
 import 'package:e_gordon/view/settings/settings.dart';
@@ -34,11 +35,9 @@ class _MyAppState extends State<MyApp> {
       routes: {
         "/": (context) => SplashScreen(),
         "/register": (context) => const RegistrationScreen(),
-        "/login": (context) => const SignIn(),
         "/registration-verification": (context) => VerifyEmail(),
-        "/profile": (context) => const MyProfile(),
-        "/settings": (context) => const Settings(),
-        "/to-buy": (context) => const ToBuy(),
+        "/login": (context) => const SignIn(),
+        "/explore": (context) => const ExplorePage(),
       },
       initialRoute: "/",
       // home: Scaffold(
