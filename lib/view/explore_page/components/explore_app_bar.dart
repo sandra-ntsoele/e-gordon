@@ -20,11 +20,14 @@ class _ExploreAppBarState extends State<ExploreAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       title: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Text(
           widget.title,
-          style: TextStyle(),
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       actions: const [
