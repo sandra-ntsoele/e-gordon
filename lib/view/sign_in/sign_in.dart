@@ -1,11 +1,6 @@
-import 'package:e_gordon/controller/auth_controller.dart';
-import 'package:e_gordon/view/components/password_field.dart';
-import 'package:e_gordon/view/components/rounded_button.dart';
-import 'package:e_gordon/view/constants.dart';
-import 'package:e_gordon/view/components/text_components/heading.dart';
-import 'package:e_gordon/view/components/text_components/paragraph.dart';
-import 'package:e_gordon/view/registration/registration_screen.dart';
-import 'package:flutter/gestures.dart';
+import 'package:e_gordon/view/registration/components/screen_header.dart';
+import 'package:e_gordon/view/sign_in/components/rich_text_footer.dart';
+import 'package:e_gordon/view/sign_in/sign_in_form.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -16,14 +11,6 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final _formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  String email = "";
-  String password = "";
-  bool isButtonDisabled = true;
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -34,146 +21,17 @@ class _SignInState extends State<SignIn> {
         width: double.infinity,
         child: Center(
           child: SingleChildScrollView(
-            child: Form(
-              key: _formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  screenHeader(size),
-                  inputFields(size),
-                  signInButtons(size, context),
-                  signUpRichText(size, context),
-                ],
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                ScreenHeader(),
+                SignInForm(),
+                RichTextFooter(),
+              ],
             ),
           ),
         ),
       ),
-    );
-  }
-
-  Widget signUpRichText(Size size, BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: 25,
-        vertical: size.height * 0.03,
-      ),
-      child: RichText(
-        text: TextSpan(
-          style: DefaultTextStyle.of(context).style,
-          children: [
-            const TextSpan(
-              text: "Don't have an account? ",
-              style: TextStyle(
-                fontSize: paragraphTwo,
-                color: mainTextColour,
-                decoration: TextDecoration.none,
-              ),
-            ),
-            TextSpan(
-              text: "Sign Up",
-              style: const TextStyle(
-                fontSize: paragraphTwo,
-                color: primaryColour,
-                decoration: TextDecoration.none,
-              ),
-              recognizer: TapGestureRecognizer()
-                ..onTap = () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const RegistrationScreen(),
-                        ),
-                      )
-                    },
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget signInButtons(Size size, context) {
-    AuthController authController = AuthController(context);
-
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: 25,
-        vertical: size.height * 0.03,
-      ),
-      child: Column(
-        children: [
-          RoundedButton(
-            text: "Login",
-            onPressed: () => email.isEmpty || password.isEmpty
-                ? null
-                : authController.signIn(context, email, password),
-            btnIcon: Icons.login,
-          ),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
-          const Paragraph(
-            text: "Or continue with",
-            paragraphType: 2,
-          ),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
-          RoundedButton(
-            text: "Google",
-            onPressed: () {},
-            btnColour: const Color.fromRGBO(222, 82, 70, 1),
-            btnIcon: Icons.email,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Padding inputFields(Size size) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 25,
-        vertical: 25,
-      ),
-      // Email text field
-      child: Column(
-        children: [
-          /** SECTION: Input Fields */
-          // EmailTextField(
-          //   formKey: _formKey,
-          //   controller: emailController,
-          //   setEmail: (value) => email = value,
-          // ),
-          SizedBox(height: size.height * 0.03),
-          PasswordField(
-            controller: passwordController,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Column screenHeader(Size size) {
-    return Column(
-      children: [
-        Heading(
-          text: "Welcome Back!",
-          headingType: 1,
-          overflow: false,
-        ),
-        SizedBox(
-          height: size.height * 0.02,
-        ),
-        const Paragraph(
-          text: "Enter account details here",
-          paragraphType: 2,
-        ),
-        SizedBox(
-          height: size.height * 0.02,
-        ),
-      ],
     );
   }
 }

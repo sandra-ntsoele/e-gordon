@@ -71,28 +71,29 @@ class AuthController {
     );
   }
 
-  void signIn(context, email, password) async {
-    AuthModel authModel = AuthModel();
+  Future<bool?> signIn(context, email, password) async {
+    String? response = await _authService.signInWithEmail(
+      email.trim(),
+      password.trim(),
+    );
 
-    authModel.signIn(email, password).then((error) {
-      if (error == null) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const MyProfile(),
-          ),
-        );
-      } else {
-        showDialog(
-          context: context,
-          builder: (context) {
-            const duration = Duration(seconds: 2);
-            Future.delayed(duration, () => Navigator.of(context).pop());
-            return CustomAlert(message: error);
-          },
-        );
-      }
-    });
+    if (response == "Success") {
+      Navigator.of(context).pushNamed("/explore");
+      return null;
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) {
+          Duration duration = const Duration(milliseconds: 1800);
+          Future.delayed(
+            duration,
+            () => Navigator.of(context).pop(),
+          );
+          return CustomAlert(message: response);
+        },
+      );
+      return false;
+    }
   }
 
   void signOutUser(context) {
