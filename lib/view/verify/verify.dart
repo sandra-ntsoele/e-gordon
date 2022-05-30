@@ -1,17 +1,14 @@
 import 'dart:async';
 
+import 'package:e_gordon/model/user_model.dart';
+import 'package:e_gordon/services/auth_service.dart';
 import 'package:e_gordon/view/components/text_components/heading.dart';
 import 'package:e_gordon/view/components/text_components/paragraph.dart';
-import 'package:e_gordon/view/profile/profile.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class VerifyEmail extends StatefulWidget {
-  User? user;
-
-  VerifyEmail({
+  const VerifyEmail({
     Key? key,
-    this.user,
   }) : super(key: key);
 
   @override
@@ -19,13 +16,17 @@ class VerifyEmail extends StatefulWidget {
 }
 
 class _VerifyEmailState extends State<VerifyEmail> {
-  final auth = FirebaseAuth.instance;
   Timer? timer;
+  final AuthService _authService = AuthService();
 
   @override
   void initState() {
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      checkEmailVerified();
+      // Check if email is verified
+      if (_authService.emailIsVerified) {
+        Navigator.of(context).pushNamed("/explore");
+        timer.cancel();
+      }
     });
 
     super.initState();
@@ -33,13 +34,13 @@ class _VerifyEmailState extends State<VerifyEmail> {
 
   @override
   void dispose() {
-    timer!.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final user = ModalRoute.of(context)!.settings.arguments as UserModel;
 
     return Scaffold(
       body: SizedBox(
@@ -61,8 +62,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
               ),
               SizedBox(height: size.height * 0.05),
               Paragraph(
-                text:
-                    "We sent a verification link to \n${widget.user!.email ?? 'your email'}",
+                text: "We sent a verification link to \n${user.email}",
                 paragraphType: 2,
               )
             ],
@@ -70,21 +70,5 @@ class _VerifyEmailState extends State<VerifyEmail> {
         ),
       ),
     );
-  }
-
-  Future<void> checkEmailVerified() async {
-    widget.user = auth.currentUser;
-    await widget.user!.reload();
-
-    if (widget.user!.emailVerified) {
-      timer!.cancel();
-
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const MyProfile(),
-        ),
-      );
-    }
   }
 }

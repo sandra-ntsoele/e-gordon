@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:e_gordon/model/auth_model.dart';
+import 'package:e_gordon/model/user_model.dart';
 import 'package:e_gordon/services/auth_service.dart';
 import 'package:e_gordon/view/profile/profile.dart';
 import 'package:e_gordon/view/sign_in/components/custom_alert.dart';
@@ -9,21 +10,28 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthController {
+  BuildContext context;
   final _authService = AuthService();
+
+  AuthController(this.context);
 
   Future<bool?> registerUserWithEmail(
     context, {
-    String? firstName,
+    required String firstName,
     required String email,
     required String password,
   }) async {
     String? response = await _authService.createAccount(
+      firstName.trim(),
       email.trim(),
       password.trim(),
     );
 
     if (response == "Success") {
-      Navigator.of(context).pushNamed("/explore");
+      Navigator.of(context).pushNamed(
+        "/registration-verification",
+        arguments: UserModel(email, firstName),
+      );
       return null;
     } else {
       showDialog(
@@ -40,6 +48,8 @@ class AuthController {
       return false;
     }
   }
+
+  void checkEmailVerification() {}
 
   void signIn(context, email, password) async {
     AuthModel authModel = AuthModel();

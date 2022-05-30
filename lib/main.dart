@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         "/": (context) => SplashScreen(),
         "/register": (context) => const RegistrationScreen(),
-        "/registration-verification": (context) => VerifyEmail(),
+        "/registration-verification": (context) => const VerifyEmail(),
         "/login": (context) => const SignIn(),
         "/explore": (context) => const ExplorePage(),
       },

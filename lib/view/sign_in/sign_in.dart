@@ -1,5 +1,4 @@
 import 'package:e_gordon/controller/auth_controller.dart';
-import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/password_field.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
 import 'package:e_gordon/view/constants.dart';
@@ -8,8 +7,6 @@ import 'package:e_gordon/view/components/text_components/paragraph.dart';
 import 'package:e_gordon/view/registration/registration_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/widgets.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -44,7 +41,7 @@ class _SignInState extends State<SignIn> {
                 children: [
                   screenHeader(size),
                   inputFields(size),
-                  signInButtons(size),
+                  signInButtons(size, context),
                   signUpRichText(size, context),
                 ],
               ),
@@ -96,8 +93,8 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-  Widget signInButtons(Size size) {
-    AuthController authController = AuthController();
+  Widget signInButtons(Size size, context) {
+    AuthController authController = AuthController(context);
 
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -144,16 +141,14 @@ class _SignInState extends State<SignIn> {
       child: Column(
         children: [
           /** SECTION: Input Fields */
-          EmailTextField(
-            formKey: _formKey,
-            textEditingController: emailController,
-            setEmail: (value) => email = value,
-          ),
+          // EmailTextField(
+          //   formKey: _formKey,
+          //   controller: emailController,
+          //   setEmail: (value) => email = value,
+          // ),
           SizedBox(height: size.height * 0.03),
           PasswordField(
-            formKey: _formKey,
-            textEditingController: passwordController,
-            setPassword: (value) => password = value,
+            controller: passwordController,
           ),
         ],
       ),

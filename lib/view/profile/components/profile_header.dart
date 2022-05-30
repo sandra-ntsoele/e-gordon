@@ -16,7 +16,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    AuthController authController = AuthController();
+    AuthController authController = AuthController(context);
     User? user = FirebaseAuth.instance.currentUser;
 
     return Column(

@@ -23,8 +23,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
   late FocusNode emailNode;
   late FocusNode passwordNode;
 
-  final _authController = AuthController();
-
   bool _isLoading = false;
 
   @override
@@ -47,6 +45,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
 
   @override
   Widget build(BuildContext context) {
+    AuthController _authController = AuthController(context);
     Size size = MediaQuery.of(context).size;
 
     return Padding(
@@ -95,6 +94,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         _authController
                             .registerUserWithEmail(
                               context,
+                              firstName: firstNameController.text.trim(),
                               email: emailController.text.trim(),
                               password: passwordController.text.trim(),
                             )
