@@ -107,7 +107,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
             SizedBox(height: size.height * 0.03),
             // [START Reg with Google Button]
             SocialSignInBtn(
-              onPressed: () {},
+              onPressed: () => _authController.signInWithGoogle(),
               btnLabel: "Register with Google",
               providerLogo: "google_logo.png",
             ),

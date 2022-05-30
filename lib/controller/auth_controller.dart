@@ -49,7 +49,27 @@ class AuthController {
     }
   }
 
-  void checkEmailVerification() {}
+  void signInWithGoogle() {
+    _authService.signInWithGoogle().then(
+      (userCredential) {
+        Navigator.of(context).pushNamed("/explore");
+      },
+      onError: (error) {
+        print("On error: ${error.message}");
+        showDialog(
+          context: context,
+          builder: (context) {
+            Duration duration = const Duration(milliseconds: 1800);
+            Future.delayed(
+              duration,
+              () => Navigator.of(context).pop(),
+            );
+            return const CustomAlert(message: "Authentication failed");
+          },
+        );
+      },
+    );
+  }
 
   void signIn(context, email, password) async {
     AuthModel authModel = AuthModel();

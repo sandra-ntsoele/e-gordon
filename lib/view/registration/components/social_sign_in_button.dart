@@ -2,7 +2,7 @@ import 'package:e_gordon/view/styles.dart';
 import 'package:flutter/material.dart';
 
 class SocialSignInBtn extends StatelessWidget {
-  final Function onPressed;
+  final Function()? onPressed;
   final String providerLogo;
   final String btnLabel;
 
@@ -51,7 +51,7 @@ class SocialSignInBtn extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         ),
         // [END Btn decoration]
-        onPressed: () async => onPressed,
+        onPressed: () => onPressed!.call(),
       ),
       // [END Reg with Google Button]
     );

@@ -80,24 +80,29 @@ class AuthService {
     }
   }
 
-  Future<UserCredential> signInWithGoogle() async {
+  Future<dynamic> signInWithGoogle() async {
+    // Trigger auth flow
+    final GoogleSignInAccount? user = await GoogleSignIn().signIn();
+
+    // Get auth details
+    final GoogleSignInAuthentication? googleAuth = await user?.authentication;
+
+    // Create a credential
+    final OAuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth!.accessToken,
+      idToken: googleAuth.idToken,
+    );
     try {
-      // Trigger auth flow
-      final GoogleSignInAccount? user = await GoogleSignIn().signIn();
-
-      // Get auth details
-      final GoogleSignInAuthentication? googleAuth = await user?.authentication;
-
-      // Create a credential
-      final OAuthCredential credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
-      );
-
       // Sign in and return the UserCredential
       return await _auth.signInWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'account-exists-with-different-credential') {
+        return e.message;
+      } else if (e.code == 'invalid-credential') {
+        return e.message;
+      }
     } catch (e) {
-      rethrow;
+      return e;
     }
   }
 }

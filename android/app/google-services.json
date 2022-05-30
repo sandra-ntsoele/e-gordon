@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "712914661608-rvqb96tkg7n78qphtvo2rd0h4f8ejg5u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.egordon.android",
+            "certificate_hash": "4746d1af5fbc852c835a509a5644ffb53951365d"
+          }
+        },
+        {
           "client_id": "712914661608-44pv05mh826j4resjbcee5lbdguektrn.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "712914661608-44pv05mh826j4resjbcee5lbdguektrn.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "712914661608-ah35ppjfmcl7dh10aod4deon8bi307lk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.egordon.ios"
+              }
             }
           ]
         }
