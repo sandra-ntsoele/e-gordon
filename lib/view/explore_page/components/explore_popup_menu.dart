@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../../services/auth_service.dart';
 
-class HomePopupMenu extends StatefulWidget {
-  const HomePopupMenu({Key? key}) : super(key: key);
+class ExplorePopupMenu extends StatefulWidget {
+  const ExplorePopupMenu({Key? key}) : super(key: key);
 
   @override
-  State<HomePopupMenu> createState() => _HomePopupMenuState();
+  State<ExplorePopupMenu> createState() => _ExplorePopupMenuState();
 }
 
-class _HomePopupMenuState extends State<HomePopupMenu> {
+class _ExplorePopupMenuState extends State<ExplorePopupMenu> {
   final _authService = AuthService();
 
   @override
@@ -20,7 +20,7 @@ class _HomePopupMenuState extends State<HomePopupMenu> {
 
         if (route == "/sign-out") {
           _authService.signOut();
-          Navigator.pushNamed(context, route);
+          Navigator.pushNamed(context, "/");
         } else {
           Navigator.pushNamed(context, route);
         }

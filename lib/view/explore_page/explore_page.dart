@@ -1,8 +1,10 @@
+import 'package:e_gordon/services/auth_service.dart';
 import 'package:e_gordon/view/explore_page/components/explore_app_bar.dart';
 import 'package:e_gordon/view/explore_page/components/explore_header.dart';
 import 'package:e_gordon/view/explore_page/components/explore_page_body.dart';
 import 'package:e_gordon/view/explore_page/explore_page_controller.dart';
 import 'package:e_gordon/view/styles.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ExplorePage extends StatefulWidget {
@@ -18,6 +20,7 @@ class ExplorePage extends StatefulWidget {
 class _ExplorePageState extends State<ExplorePage> {
   FocusNode focusNode = FocusNode();
   int recipeFilter = 0;
+  final User? currentUser = AuthService().user;
 
   selectedCategory(int userChoice) {
     setState(() => recipeFilter = userChoice);
@@ -32,6 +35,9 @@ class _ExplorePageState extends State<ExplorePage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    if (currentUser == null) {
+      Navigator.of(context).pushNamed("/");
+    }
 
     return Scaffold(
       appBar: const ExploreAppBar(title: "Explore"),

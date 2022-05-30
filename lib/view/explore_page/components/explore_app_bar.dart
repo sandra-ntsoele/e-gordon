@@ -31,7 +31,7 @@ class _ExploreAppBarState extends State<ExploreAppBar> {
         ),
       ),
       actions: const [
-        HomePopupMenu(),
+        ExplorePopupMenu(),
       ],
       // [START Appbar styling]
       elevation: 0,
