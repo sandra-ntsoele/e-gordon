@@ -11,7 +11,7 @@ class PasswordField extends StatelessWidget {
     this.focusNode,
   }) : super(key: key);
 
-  String? validatePassword(String? userInput) {
+  String? _validatePassword(String? userInput) {
     /* 
       r'^
       (?=.*[A-Z])       // should contain at least one upper case
@@ -61,7 +61,7 @@ class PasswordField extends StatelessWidget {
       focusNode: focusNode,
       obscureText: true,
       // [START Behaviour]
-      validator: (userInput) => validatePassword(userInput),
+      validator: (userInput) => _validatePassword(userInput),
       autovalidateMode: AutovalidateMode.onUserInteraction,
       // [END Behaviour]
       // [START Decoration]

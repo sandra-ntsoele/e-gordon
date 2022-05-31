@@ -104,4 +104,10 @@ class AuthController {
           ),
         ));
   }
+
+  Future<bool> resetPassword() async {
+    return false;
+    // TODO send link to email
+    // TODO show dialog with appropriate response
+  }
 }

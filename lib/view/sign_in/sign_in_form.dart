@@ -2,8 +2,8 @@ import 'package:e_gordon/controller/auth_controller.dart';
 import 'package:e_gordon/view/components/email_text_field.dart';
 import 'package:e_gordon/view/components/password_field.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
-import 'package:e_gordon/view/components/rounded_textform_field.dart';
 import 'package:e_gordon/view/registration/components/social_sign_in_button.dart';
+import 'package:e_gordon/view/styles.dart';
 import 'package:flutter/material.dart';
 
 class SignInForm extends StatefulWidget {
@@ -69,6 +69,7 @@ class _SignInFormState extends State<SignInForm> {
               focusNode: passwordNode,
             ),
             // [END Password TextField]
+            const ResetPasswordButton(),
             SizedBox(height: size.height * 0.03),
             // [START Register Button]
             RoundedButton(
@@ -100,6 +101,29 @@ class _SignInFormState extends State<SignInForm> {
               providerLogo: "google_logo.png",
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class ResetPasswordButton extends StatelessWidget {
+  const ResetPasswordButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.bottomRight,
+      child: TextButton(
+        onPressed: () => Navigator.of(context).pushNamed("/password-recovery"),
+        child: Text(
+          "Forgot password?",
+          style: TextStyle(
+            color: ColourStyles.mainText,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );

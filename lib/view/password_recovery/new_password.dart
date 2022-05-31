@@ -1,59 +1,59 @@
-import 'package:e_gordon/view/components/password_rule.dart';
+import 'package:e_gordon/view/components/password_field.dart';
 import 'package:e_gordon/view/components/rounded_button.dart';
-import 'package:e_gordon/view/components/text_components/heading.dart';
-import 'package:e_gordon/view/components/text_components/paragraph.dart';
+import 'package:e_gordon/view/registration/components/screen_header.dart';
+import 'package:e_gordon/view/styles.dart';
 
 import 'package:flutter/material.dart';
 
-class NewPassword extends StatelessWidget {
+import '../registration/components/password_rule.dart';
+
+class NewPassword extends StatefulWidget {
   const NewPassword({Key? key}) : super(key: key);
+
+  @override
+  State<NewPassword> createState() => _NewPasswordState();
+}
+
+class _NewPasswordState extends State<NewPassword> {
+  final passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return SizedBox(
-      width: double.infinity,
-      height: size.height,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // SECTION: Heading Text
-          Heading(
-            text: "Reset your password",
-            headingType: 1,
-            overflow: false,
-          ),
-          const Paragraph(
-            text: "Please enter your new password",
-            paragraphType: 1,
-          ),
-          SizedBox(height: size.height * 0.03),
-          // SECTION: New password Input field
-          // EmailTextField(
-          //   labelText: "Password",
-          //   prefixIcon: Icons.lock_outline,
-          // ),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
-          // SECTION: Password rules
-          Column(
-            children: const [
-              PasswordRule(rule: "Atleast 8 characters,"),
-              PasswordRule(rule: "Including 1 letter,"),
-              PasswordRule(rule: "And 1 number"),
+    return Scaffold(
+      body: Form(
+        key: _formKey,
+        child: Container(
+          width: double.infinity,
+          height: size.height,
+          padding: LayoutStyles.completePadding,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const ScreenHeader(
+                title: "Reset your password",
+                subtitle: "Please enter your new password",
+              ),
+              SizedBox(height: size.height * 0.03),
+              PasswordField(
+                controller: passwordController,
+              ),
+              SizedBox(height: size.height * 0.03),
+              SizedBox(
+                height: size.height * 0.03,
+              ),
+              // SECTION: Submission button
+              RoundedButton(
+                text: "Reset password",
+                onPressed: () {
+                  _formKey.currentState!.validate();
+                },
+              )
             ],
           ),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
-          // SECTION: Submission button
-          RoundedButton(
-            text: "Done",
-            onPressed: () {},
-          )
-        ],
+        ),
       ),
     );
   }

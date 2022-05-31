@@ -1,10 +1,9 @@
 import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/explore_page/explore_page.dart';
-import 'package:e_gordon/view/profile/profile.dart';
+import 'package:e_gordon/view/password_recovery/new_password.dart';
+import 'package:e_gordon/view/password_recovery/password_recovery.dart';
 import 'package:e_gordon/view/registration/registration_screen.dart';
-import 'package:e_gordon/view/settings/settings.dart';
 import 'package:e_gordon/view/sign_in/sign_in.dart';
-import 'package:e_gordon/view/to_buy/to_buy.dart';
 import 'package:e_gordon/view/verify/verify.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +37,8 @@ class _MyAppState extends State<MyApp> {
         "/registration-verification": (context) => const VerifyEmail(),
         "/login": (context) => const SignIn(),
         "/explore": (context) => const ExplorePage(),
+        "/password-recovery": (context) => const PasswordRecovery(),
+        "/new-password": (context) => const NewPassword(),
       },
       initialRoute: "/",
       // home: Scaffold(
