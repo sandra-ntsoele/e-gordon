@@ -24,7 +24,10 @@ class _SignInState extends State<SignIn> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
-                ScreenHeader(),
+                ScreenHeader(
+                  title: "Welcome",
+                  subtitle: "Please enter account details",
+                ),
                 SignInForm(),
                 RichTextFooter(),
               ],

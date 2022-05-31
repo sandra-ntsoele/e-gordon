@@ -23,7 +23,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
-                ScreenHeader(),
+                ScreenHeader(
+                  title: "Welcome",
+                  subtitle: "Please enter account details",
+                ),
                 RegistrationForm(),
                 LoginSpan(),
               ],

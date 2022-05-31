@@ -3,7 +3,14 @@ import 'package:e_gordon/view/components/text_components/paragraph.dart';
 import 'package:flutter/material.dart';
 
 class ScreenHeader extends StatelessWidget {
-  const ScreenHeader({Key? key}) : super(key: key);
+  final String title;
+  final String subtitle;
+
+  const ScreenHeader({
+    Key? key,
+    required this.title,
+    required this.subtitle,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +19,12 @@ class ScreenHeader extends StatelessWidget {
     return Column(
       children: [
         Heading(
-          text: "Welcome!",
+          text: title,
           headingType: 1,
           overflow: false,
         ),
-        const Paragraph(
-          text: "Please enter account details",
+        Paragraph(
+          text: subtitle,
           paragraphType: 2,
         ),
         SizedBox(height: size.height * 0.03),
