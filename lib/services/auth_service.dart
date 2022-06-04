@@ -105,4 +105,23 @@ class AuthService {
       return e;
     }
   }
+
+  Future<String> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(
+        email: email,
+        // actionCodeSettings: ActionCodeSettings(url: url),
+      );
+
+      return "Success";
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "user-not-found") {
+        return "That email does not exist";
+      } else {
+        return e.message.toString();
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
