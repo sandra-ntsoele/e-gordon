@@ -55,7 +55,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                 height: size.height * 0.25,
               ),
               SizedBox(height: size.height * 0.03),
-              Heading(
+              const Heading(
                 text: "Check your email",
                 headingType: 1,
                 overflow: false,

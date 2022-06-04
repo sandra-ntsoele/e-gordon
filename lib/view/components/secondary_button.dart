@@ -4,10 +4,10 @@ import 'package:e_gordon/view/constants.dart';
 class SecondaryButton extends StatelessWidget {
   final String text;
   final Function onPressed;
-  IconData? btnIcon;
+  final IconData? btnIcon;
   final bool isGhostButton;
 
-  SecondaryButton({
+  const SecondaryButton({
     Key? key,
     required this.text,
     required this.onPressed,

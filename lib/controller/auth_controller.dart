@@ -53,7 +53,6 @@ class AuthController {
         Navigator.of(context).pushNamed("/explore");
       },
       onError: (error) {
-        print("On error: ${error.message}");
         showDialog(
           context: context,
           builder: (context) {

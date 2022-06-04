@@ -1,6 +1,5 @@
 import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/explore_page/explore_page.dart';
-import 'package:e_gordon/view/password_recovery/new_password.dart';
 import 'package:e_gordon/view/password_recovery/password_recovery.dart';
 import 'package:e_gordon/view/registration/registration_screen.dart';
 import 'package:e_gordon/view/sign_in/sign_in.dart';
@@ -38,7 +37,6 @@ class _MyAppState extends State<MyApp> {
         "/login": (context) => const SignIn(),
         "/explore": (context) => const ExplorePage(),
         "/password-recovery": (context) => const PasswordRecovery(),
-        "/new-password": (context) => const NewPassword(),
       },
       initialRoute: "/",
       // home: Scaffold(

@@ -21,7 +21,7 @@ class SignUpVerification extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // SECTION: Header text
-              Heading(
+              const Heading(
                 text: "Check your email",
                 headingType: 1,
                 overflow: false,

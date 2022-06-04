@@ -29,7 +29,7 @@ class SplashScreen extends StatelessWidget {
               Image.asset('assets/images/onboarding-old.png'),
               SizedBox(height: size.height * 0.03),
               // [START Welcome text]
-              Heading(
+              const Heading(
                 text: "e-Gordon",
                 headingType: 1,
                 overflow: false,

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class CategoryChipContainer extends StatefulWidget {
   final dynamic selectedCategory;
 
-  CategoryChipContainer({
+  const CategoryChipContainer({
     Key? key,
     required this.selectedCategory,
   }) : super(key: key);
@@ -26,7 +26,7 @@ class _CategoryChipContainerState extends State<CategoryChipContainer> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: size.height * 0.01),
-        Heading(
+        const Heading(
           text: "Category",
           headingType: 3,
           overflow: false,

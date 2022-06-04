@@ -1,16 +1,15 @@
-import 'package:e_gordon/view/explore_page/explore_page.dart';
 import 'package:e_gordon/view/styles.dart';
 import 'package:e_gordon/view/upload/recipe.dart';
 import 'package:flutter/material.dart';
 
 class CategoryChipBuilder extends StatefulWidget {
-  CategoryChipBuilder({
+  const CategoryChipBuilder({
     Key? key,
     this.onSelected,
   }) : super(key: key);
 
-  void Function(int index)? onSelected;
-  int userChoiceIndex = 0;
+  final void Function(int index)? onSelected;
+  final int userChoiceIndex = 0;
 
   @override
   State<CategoryChipBuilder> createState() => _CategoryChipBuilderState();

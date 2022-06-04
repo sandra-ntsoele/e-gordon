@@ -3,11 +3,11 @@ import '../../constants.dart';
 
 // Paragraph One
 class Heading extends StatelessWidget {
-  String? text;
+  final String? text;
   final int headingType;
-  bool overflow;
+  final bool overflow;
 
-  Heading(
+  const Heading(
       {Key? key,
       required this.text,
       required this.headingType,

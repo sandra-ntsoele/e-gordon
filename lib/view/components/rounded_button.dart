@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:e_gordon/view/constants.dart';
 
 class RoundedButton extends StatelessWidget {
-  RoundedButton({
+  const RoundedButton({
     Key? key,
     required this.text,
     required this.onPressed,
@@ -12,8 +12,8 @@ class RoundedButton extends StatelessWidget {
 
   final String text;
   final Function onPressed;
-  Color? btnColour;
-  IconData? btnIcon;
+  final Color? btnColour;
+  final IconData? btnIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class RoundedButton extends StatelessWidget {
           fontSize: 15,
           color: Colors.white,
         ),
-        primary: btnColour != null ? btnColour : primaryColour,
+        primary: btnColour ?? primaryColour,
         fixedSize: const Size.fromHeight(56),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(50)),
