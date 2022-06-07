@@ -1,6 +1,7 @@
 import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/explore_page/explore_page.dart';
 import 'package:e_gordon/view/home/home_screen.dart';
+import 'package:e_gordon/view/index.dart';
 import 'package:e_gordon/view/password_recovery/password_recovery.dart';
 import 'package:e_gordon/view/registration/registration_screen.dart';
 import 'package:e_gordon/view/sign_in/sign_in.dart';
@@ -36,7 +37,7 @@ class _MyAppState extends State<MyApp> {
         "/register": (context) => const RegistrationScreen(),
         "/registration-verification": (context) => const VerifyEmail(),
         "/login": (context) => const SignIn(),
-        "/home": (context) => const HomeScreen(),
+        "/index": (context) => const Index(),
         "/explore": (context) => const ExplorePage(),
         "/password-recovery": (context) => const PasswordRecovery(),
       },

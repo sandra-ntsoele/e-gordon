@@ -12,7 +12,7 @@ class SplashScreen extends StatelessWidget {
   void onPressed(context, snapshot) {
     Navigator.pushNamed(
       context,
-      snapshot.hasData ? "/home" : "/register",
+      snapshot.hasData ? "/index" : "/register",
     );
   }
 
