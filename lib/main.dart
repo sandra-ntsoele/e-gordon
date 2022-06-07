@@ -1,5 +1,6 @@
 import 'package:e_gordon/view/constants.dart';
 import 'package:e_gordon/view/explore_page/explore_page.dart';
+import 'package:e_gordon/view/home/home_screen.dart';
 import 'package:e_gordon/view/password_recovery/password_recovery.dart';
 import 'package:e_gordon/view/registration/registration_screen.dart';
 import 'package:e_gordon/view/sign_in/sign_in.dart';
@@ -35,24 +36,11 @@ class _MyAppState extends State<MyApp> {
         "/register": (context) => const RegistrationScreen(),
         "/registration-verification": (context) => const VerifyEmail(),
         "/login": (context) => const SignIn(),
+        "/home": (context) => const HomeScreen(),
         "/explore": (context) => const ExplorePage(),
         "/password-recovery": (context) => const PasswordRecovery(),
       },
       initialRoute: "/",
-      // home: Scaffold(
-      //   backgroundColor: Colors.white,
-      //   floatingActionButton: FloatingActionButton(
-      //     onPressed: () {},
-      //     child: const Icon(Icons.create_outlined),
-      //     backgroundColor: ColourStyles.primary,
-      //   ),
-      //   floatingActionButtonLocation:
-      //       FloatingActionButtonLocation.centerDocked,
-      //   bottomNavigationBar: CustomBottomNavbar(
-      //     onTap: (itemIndex) => setState(() => pageIndex = itemIndex),
-      //   ),
-      //   body: _pages[pageIndex],
-      // ),
     );
   }
 
