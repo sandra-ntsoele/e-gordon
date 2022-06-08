@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomTheme {
   // Supporting colours
@@ -48,6 +49,7 @@ class CustomTheme {
   static ThemeData light() {
     return ThemeData(
       brightness: Brightness.light,
+      fontFamily: GoogleFonts.inter().fontFamily,
       appBarTheme: AppBarTheme(
         foregroundColor: mainTextPrussianBlue,
         backgroundColor: white,
@@ -57,6 +59,10 @@ class CustomTheme {
           color: mainTextPrussianBlue,
           fontSize: lightTextTheme.bodyMedium?.fontSize,
         ),
+      ),
+      scrollbarTheme: ScrollbarThemeData(
+        thumbColor: MaterialStateProperty.all(outline),
+        radius: const Radius.circular(100),
       ),
       // textTheme: lightTextTheme,
     );
