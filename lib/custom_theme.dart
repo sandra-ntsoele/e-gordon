@@ -60,6 +60,16 @@ class CustomTheme {
           fontSize: lightTextTheme.bodyMedium?.fontSize,
         ),
       ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: white,
+        selectedItemColor: primaryEmerald,
+        unselectedItemColor: outline,
+        selectedLabelStyle: const TextStyle(fontSize: 10),
+        unselectedLabelStyle: const TextStyle(fontSize: 10),
+      ),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: primaryEmerald,
+      ),
       scrollbarTheme: ScrollbarThemeData(
         thumbColor: MaterialStateProperty.all(outline),
         radius: const Radius.circular(100),
