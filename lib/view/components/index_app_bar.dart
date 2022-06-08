@@ -1,4 +1,5 @@
 import 'package:e_gordon/controller/auth_controller.dart';
+import 'package:e_gordon/custom_theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -22,37 +23,36 @@ class IndexAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       automaticallyImplyLeading: false,
       titleSpacing: 15,
-      title: const Text(
+      title: Text(
         "e-gordon",
-        // style: TODO: style the title,
+        style: CustomTheme.lightTextTheme.headlineLarge,
       ),
-      // backgroundColor: TODO style the background color,
       actions: [
         PopupMenuButton(
           // [START Avatar Button]
           child: Padding(
             padding: const EdgeInsets.only(right: 15),
             child: CircleAvatar(
-              // backgroundColor: TODO style the background,
+              backgroundColor: CustomTheme.primaryEmerald,
               // TODO: Check if photo exists than render either pic or text
-              child: Text(displayName),
+              child: Text(
+                displayName,
+                style: TextStyle(color: CustomTheme.white),
+              ),
             ),
           ),
           // [END Avatar Button]
           itemBuilder: (context) {
-            final _authController = AuthController(context);
             return const <PopupMenuEntry>[
               PopupMenuItem(
                 child: Text(
                   "Profile",
-                  // style: TODO: style popup menu text,
                 ),
                 value: "/profile",
               ),
               PopupMenuItem(
                 child: Text(
                   "Logout",
-                  // style: TODO: style popup menu text,
                 ),
                 value: "/sign-out",
               ),
