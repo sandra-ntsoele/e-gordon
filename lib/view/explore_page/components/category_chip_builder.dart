@@ -32,9 +32,14 @@ class _CategoryChipBuilderState extends State<CategoryChipBuilder> {
         itemCount: categoryList.length,
         itemBuilder: (context, categoryChipIndex) {
           return Container(
-            margin: EdgeInsets.only(right: size.width * 0.03),
+            margin: EdgeInsets.only(right: size.width * 0.015),
             child: ChoiceChip(
-              label: Text(categoryList[categoryChipIndex]),
+              label: Text(
+                categoryList[categoryChipIndex],
+                style: TextStyle(
+                  fontSize: CustomTheme.lightTextTheme.bodySmall?.fontSize,
+                ),
+              ),
               selected: userChoice == categoryChipIndex,
               onSelected: (bool selected) {
                 widget.onSelected!(categoryChipIndex);
