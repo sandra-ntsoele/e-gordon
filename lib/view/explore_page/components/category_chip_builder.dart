@@ -1,3 +1,4 @@
+import 'package:e_gordon/custom_theme.dart';
 import 'package:e_gordon/view/styles.dart';
 import 'package:e_gordon/view/upload/recipe.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,7 @@ class _CategoryChipBuilderState extends State<CategoryChipBuilder> {
                 fontWeight: FontWeight.bold,
               ),
               padding: EdgeInsets.all(size.height * 0.015),
-              backgroundColor: ColourStyles.lightGray,
+              backgroundColor: CustomTheme.lightGray,
               // [END Chip Styling]
             ),
           );

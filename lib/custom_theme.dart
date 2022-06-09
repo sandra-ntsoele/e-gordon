@@ -53,6 +53,7 @@ class CustomTheme {
       appBarTheme: AppBarTheme(
         foregroundColor: mainTextPrussianBlue,
         backgroundColor: white,
+        elevation: 0,
       ),
       popupMenuTheme: PopupMenuThemeData(
         textStyle: TextStyle(
