@@ -46,6 +46,22 @@ class CustomTheme {
     ),
   );
 
+  static BoxDecoration mainRecipeCardDecoration() {
+    return BoxDecoration(
+      borderRadius: const BorderRadius.all(Radius.circular(10)),
+      image: DecorationImage(
+        image: const AssetImage("assets/recipes/grilled_cheese.jpg"),
+        fit: BoxFit.cover,
+        opacity: 0.5,
+        colorFilter: ColorFilter.mode(
+          mainTextPrussianBlue,
+          BlendMode.overlay,
+        ),
+      ),
+      color: CustomTheme.secondaryTextWildBlue,
+    );
+  }
+
   static ThemeData light() {
     return ThemeData(
       brightness: Brightness.light,
