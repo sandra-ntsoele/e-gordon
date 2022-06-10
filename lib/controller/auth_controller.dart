@@ -13,8 +13,7 @@ class AuthController {
 
   AuthController(this.context);
 
-  Future<bool?> registerUserWithEmail(
-    context, {
+  Future<bool?> registerUserWithEmail({
     required String firstName,
     required String email,
     required String password,
@@ -68,14 +67,14 @@ class AuthController {
     );
   }
 
-  Future<bool?> signIn(context, email, password) async {
+  Future<bool?> signIn(email, password) async {
     String? response = await _authService.signInWithEmail(
       email.trim(),
       password.trim(),
     );
 
     if (response == "Success") {
-      Navigator.of(context).pushNamed("/explore");
+      Navigator.of(context).pushNamed("/index");
       return null;
     } else {
       showDialog(
@@ -93,7 +92,7 @@ class AuthController {
     }
   }
 
-  void signOutUser(context) {
+  void signOutUser() {
     FirebaseAuth.instance.signOut().then((value) => Navigator.push(
           context,
           MaterialPageRoute(

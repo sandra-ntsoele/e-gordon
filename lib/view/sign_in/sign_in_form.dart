@@ -82,7 +82,6 @@ class _SignInFormState extends State<SignInForm> {
 
                         _authController
                             .signIn(
-                              context,
                               emailController.text,
                               passwordController.text,
                             )

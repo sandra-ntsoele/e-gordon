@@ -93,7 +93,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
 
                         _authController
                             .registerUserWithEmail(
-                              context,
                               firstName: firstNameController.text.trim(),
                               email: emailController.text.trim(),
                               password: passwordController.text.trim(),
