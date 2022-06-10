@@ -3,8 +3,8 @@ import 'package:e_gordon/view/styles.dart';
 import 'package:e_gordon/view/upload/recipe.dart';
 import 'package:flutter/material.dart';
 
-class CategoryChipBuilder extends StatefulWidget {
-  const CategoryChipBuilder({
+class CategoryChipListView extends StatefulWidget {
+  const CategoryChipListView({
     Key? key,
     this.onSelected,
   }) : super(key: key);
@@ -13,10 +13,10 @@ class CategoryChipBuilder extends StatefulWidget {
   final int userChoiceIndex = 0;
 
   @override
-  State<CategoryChipBuilder> createState() => _CategoryChipBuilderState();
+  State<CategoryChipListView> createState() => _CategoryChipListViewState();
 }
 
-class _CategoryChipBuilderState extends State<CategoryChipBuilder> {
+class _CategoryChipListViewState extends State<CategoryChipListView> {
   final List<dynamic> categoryList = Recipe.categoryList();
 
   int userChoice = 0;
@@ -26,7 +26,7 @@ class _CategoryChipBuilderState extends State<CategoryChipBuilder> {
     final Size size = MediaQuery.of(context).size;
 
     return SizedBox(
-      height: size.height * 0.06,
+      height: size.height * 0.085,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: categoryList.length,
