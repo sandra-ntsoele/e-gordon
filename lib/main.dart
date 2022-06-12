@@ -7,6 +7,7 @@ import 'package:e_gordon/view/sign_in/sign_in.dart';
 import 'package:e_gordon/view/verify/verify.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'view/splash_screen/splash_screen.dart';
 
 void main() async {
@@ -14,6 +15,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
+  await Supabase.initialize(
+      url: "https://igzvyjvoqclpdwvokngt.supabase.co",
+      anonKey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlnenZ5anZvcWNscGR3dm9rbmd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTAyOTE5NjQsImV4cCI6MTk2NTg2Nzk2NH0.ogT2qbFL-4RxbzVWA_Ab2kTLOcGOcXRGOITjGCebHPA");
   runApp(const MyApp());
 }
 
