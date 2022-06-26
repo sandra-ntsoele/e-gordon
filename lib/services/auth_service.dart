@@ -2,17 +2,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  /* FIELDS */
+  FirebaseAuth auth = FirebaseAuth.instance;
 
-  // Listen to auth state changes
-  Stream<User?> get userStateStream => _auth.authStateChanges();
+  /* PROPERTIES*/
+  Stream<User?> get userStateStream => auth.authStateChanges();
+  Stream<User?> get userChanges => auth.userChanges();
+  User? get currentUser => auth.currentUser;
+  FirebaseAuth get firebase => auth;
 
-  Stream<User?> get userChanges => _auth.userChanges();
-
-  User? get user => _auth.currentUser;
-
-  AuthService();
-
+  /* METHODS */
   Future<String> createAccount(
     String firstName,
     String email,
@@ -20,20 +19,21 @@ class AuthService {
   ) async {
     try {
       // Create user
-      await _auth
+      await auth
           .createUserWithEmailAndPassword(
         email: email,
         password: password,
       )
-          .then((userCredential) {
-        User? user = userCredential.user;
+          .then(
+        (userCredential) async {
+          User? user = userCredential.user;
 
-        // Then verify their email
-        if (user != null) {
-          user.updateDisplayName(firstName);
-          user.sendEmailVerification();
-        }
-      });
+          if (user != null) {
+            user.updateDisplayName(firstName);
+            user.sendEmailVerification();
+          }
+        },
+      );
 
       return "Success";
     } on FirebaseAuthException catch (e) {
@@ -43,19 +43,9 @@ class AuthService {
     }
   }
 
-  bool get emailIsVerified {
-    user!.reload();
-
-    if (user!.emailVerified) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   Future<String> signInWithEmail(String email, String password) async {
     try {
-      await _auth.signInWithEmailAndPassword(
+      await auth.signInWithEmailAndPassword(
         email: email.trim(),
         password: password.trim(),
       );
@@ -70,7 +60,7 @@ class AuthService {
 
   Future<String> signOut() async {
     try {
-      await _auth.signOut();
+      await auth.signOut();
 
       return "Success";
     } on FirebaseAuthException catch (e) {
@@ -94,7 +84,7 @@ class AuthService {
     );
     try {
       // Sign in and return the UserCredential
-      return await _auth.signInWithCredential(credential);
+      return await auth.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'account-exists-with-different-credential') {
         return e.message;
@@ -108,7 +98,7 @@ class AuthService {
 
   Future<String> sendPasswordResetEmail(String email) async {
     try {
-      await _auth.sendPasswordResetEmail(
+      await auth.sendPasswordResetEmail(
         email: email,
         // actionCodeSettings: ActionCodeSettings(url: url),
       );

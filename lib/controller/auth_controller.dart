@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 
 class AuthController {
   BuildContext context;
-  final _authService = AuthService();
+  final AuthService _authService = AuthService();
 
   AuthController(this.context);
 
