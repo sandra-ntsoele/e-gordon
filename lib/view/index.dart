@@ -2,7 +2,6 @@ import 'package:e_gordon/services/auth_service.dart';
 import 'package:e_gordon/view/components/index_app_bar.dart';
 import 'package:e_gordon/view/components/index_bottom_app_bar.dart';
 import 'package:e_gordon/view/explore_page/explore_page.dart';
-import 'package:e_gordon/view/sign_in/sign_in.dart';
 import 'package:e_gordon/view/to_buy/to_buy.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +14,9 @@ class Index extends StatefulWidget {
 }
 
 class _IndexState extends State<Index> {
-  final userStream = AuthService().userStateStream;
   final List<Widget> _pages = [];
   int _pageIndex = 0;
+  final AuthService _authService = AuthService();
 
   @override
   void initState() {
@@ -29,13 +28,16 @@ class _IndexState extends State<Index> {
 
   @override
   Widget build(BuildContext context) {
+    User? currentUser = _authService.currentUser;
+    if (currentUser == null) {
+      Navigator.of(context).pushNamed("/login");
+    } else if (!currentUser.emailVerified) {
+      Navigator.of(context).pushNamed("/registration-verification");
+    }
     return StreamBuilder(
-      stream: userStream,
+      stream: _authService.userStateStream,
       builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return const SignIn();
-        } else {
-          final User? currentUser = AuthService().user;
+        if (snapshot.hasData) {
           return Scaffold(
             appBar: IndexAppBar(currentUser: currentUser),
             bottomNavigationBar: IndexBottomAppBar(
@@ -44,13 +46,15 @@ class _IndexState extends State<Index> {
               },
             ),
             floatingActionButton: FloatingActionButton(
-              onPressed: () {},
+              onPressed: () async {},
               child: const Icon(Icons.create_outlined),
             ),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
             body: _pages[_pageIndex],
           );
+        } else {
+          return const CircularProgressIndicator();
         }
       },
     );
